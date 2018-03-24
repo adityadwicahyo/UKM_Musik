@@ -11,9 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
 Route::get('/test', function () {
-    return view('test');
+    return view('main.inventaris');
 });
+
+Route::get('/', 'ViewController@home');
+Route::get('/about', 'ViewController@about');
+Route::get('/inventaris', 'ViewController@inventaris');
+Route::get('/kegiatan', 'ViewController@kegiatan');
+Route::get('/contact', 'ViewController@contact');
+Route::get('/pendaftaran', 'ViewController@pendaftaran');
