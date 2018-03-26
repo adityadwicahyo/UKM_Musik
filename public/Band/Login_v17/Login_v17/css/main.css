@@ -34,19 +34,16 @@
 /*//////////////////////////////////////////////////////////////////
 [ RESTYLE TAG ]*/
 
-* {
-	margin: 0px; 
-	padding: 0px; 
-	box-sizing: border-box;
-}
-
-body, html {
-	height: 100%;
-	font-family: Poppins-Regular, sans-serif;
+.alls{
+  margin: 0px; 
+  padding: 0px; 
+  box-sizing: border-box;
+  height: 100%;
+  font-family: Poppins-Regular, sans-serif;
 }
 
 /*---------------------------------------------*/
-a {
+.a-login {
 	font-family: Poppins-Regular;
 	font-size: 14px;
 	line-height: 1.7;
@@ -58,33 +55,14 @@ a {
   -moz-transition: all 0.4s;
 }
 
-a:focus {
+.a-login:focus {
 	outline: none !important;
 }
 
-a:hover {
+.a-login:hover {
 	text-decoration: none;
   color: #333333;
 }
-
-/*---------------------------------------------*/
-h1,h2,h3,h4,h5,h6 {
-	margin: 0px;
-}
-
-p {
-	font-family: Poppins-Regular;
-	font-size: 14px;
-	line-height: 1.7;
-	color: #666666;
-	margin: 0px;
-}
-
-ul, li {
-	margin: 0px;
-	list-style-type: none;
-}
-
 
 /*---------------------------------------------*/
 input {

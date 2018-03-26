@@ -19,5 +19,8 @@ Route::get('/', 'ViewController@home');
 Route::get('/about', 'ViewController@about');
 Route::get('/inventaris', 'ViewController@inventaris');
 Route::get('/kegiatan', 'ViewController@kegiatan');
+Route::get('/formkegiatan', 'ViewController@formkegiatan');
 Route::get('/contact', 'ViewController@contact');
 Route::get('/pendaftaran', 'ViewController@pendaftaran');
+Route::get('/login', 'ViewController@login');
+Route::get('/signup', 'ViewController@signup');

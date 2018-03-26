@@ -18,10 +18,19 @@ class ViewController extends Controller
     public function kegiatan(){
         return view('main.kegiatan');
     }
+    public function formkegiatan(){
+        return view('main.formkegiatan');
+    }
     public function contact(){
         return view('main.contact');
     }
     public function pendaftaran(){
         return view('main.pendaftaran');
+    }
+    public function login(){
+        return view('main.login');
+    }
+    public function signup(){
+        return view('main.signup');
     }
 }

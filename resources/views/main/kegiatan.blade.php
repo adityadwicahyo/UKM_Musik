@@ -15,7 +15,7 @@ Kegiatan | UKM Musik ITS
 <main class="main-content">
 	<div class="fullwidth-block inner-content">
 		<div class="container">
-			<a href="{{url('Band/ContactFrom/ContactFrom_v17/index.html')}}">
+			<a href="{{action('ViewController@formkegiatan')}}">
 				<div style="padding-bottom: 30px">
 					<i class="fas fa-plus-square" style="color: #EA5724; font-size: 40px; float: left"></i>
 					<input type="submit" class="button cut-corner" value="Upload Kegiatan" style="margin-left: 20px">

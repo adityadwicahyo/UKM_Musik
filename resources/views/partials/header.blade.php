@@ -21,9 +21,9 @@
 							</a>
 
 							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-								<a class="dropdown-item" href="{{url('Band/Login_v17/Login_v17/index.html')}}" style="padding: 0px 0px 0px 15px">Login</a>
+								<a class="dropdown-item" href="{{action('ViewController@login')}}" style="padding: 0px 0px 0px 15px">Login</a>
 								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="{{url('Band/Login_v17/Login_v17/signup.html')}}" style="padding: 0px 0px 0px 15px">Sign Up</a>
+								<a class="dropdown-item" href="{{action('ViewController@signup')}}" style="padding: 0px 0px 0px 15px">Sign Up</a>
 							</div>
 						</li>
 					</ul> <!-- .menu -->
