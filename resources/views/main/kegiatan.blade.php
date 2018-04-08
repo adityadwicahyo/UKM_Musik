@@ -1,148 +1,101 @@
 @extends('layouts.master')
 
-@section('title')
-Kegiatan | UKM Musik ITS
-@endsection
+@section('title') SIMUSIK | Kegiatan @endsection
 
-@section('current4')
-	current-menu-item
-@endsection
+@section('active-kegiatan') style="font-weight: bold" @endsection
+
+@section('navbar') style="background: linear-gradient(45deg, #1de099, #1dc8cd)" @endsection
 
 @section('content')
-<br>
-<br>
-<br>
-<main class="main-content">
-	<div class="fullwidth-block inner-content">
-		<div class="container">
-			<a href="{{action('ViewController@formkegiatan')}}">
-				<div style="padding-bottom: 30px">
-					<i class="fas fa-plus-square" style="color: #EA5724; font-size: 40px; float: left"></i>
-					<input type="submit" class="button cut-corner" value="Upload Kegiatan" style="margin-left: 20px">
-				</div>
-			</a>
-			<div class="row">
-				<div class="col-md-7">
-					<div class="content">
-						<h2 class="entry-title">Kegiatan</h2>
+<link rel="stylesheet" type="text/css" href="{{url('NEW/css/kegiatan.css')}}">
+<link href="https://fonts.googleapis.com/css?family=Kanit:300,700" rel="stylesheet">
+{{-- <br><br><br><br><br> --}}
+<div class="body-kegiatan">
+<div class="calendar-base">
 
-						<div class="post">
-							<div class="entry-date">
-								<div class="date">23</div>
-								<span class="month">Jun</span>
-							</div>
-							<div class="featured-image">
-								<img src="{{url('Band/dummy/featured-image-1.jpg')}}" alt="">
-							</div>
-							<h2 class="entry-title"><a href="#">Sed et persipiatis unde omnis iste natus</a></h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati officia quo dicta, similique, reiciendis beatae enim adipisci voluptates molestiae iusto, totam harum aliquid. Non officiis nobis, ut nesciunt eligendi asperiores.</p>
-							<a href="#">Read more</a>
-						</div>
+    <div class="year">2017</div>
+    <!-- year -->
 
-						<div class="post">
-							<div class="entry-date">
-								<div class="date">23</div>
-								<span class="month">Jun</span>
-							</div>
-							<div class="featured-image">
-								<img src="{{url('Band/dummy/featured-image-2.jpg')}}" alt="">
-							</div>
-							<h2 class="entry-title"><a href="#">Consectetur adipisicing elit</a></h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati officia quo dicta, similique, reiciendis beatae enim adipisci voluptates molestiae iusto, totam harum aliquid. Non officiis nobis, ut nesciunt eligendi asperiores.</p>
-							<a href="#">Read more</a>
-						</div>
+    <div class="triangle-left"></div>
+    <!--triangle -->
+    <div class="triangle-right"></div>
+    <!--  triangle -->
 
-						<div class="post">
-							<div class="entry-date">
-								<div class="date">23</div>
-								<span class="month">Jun</span>
-							</div>
-							<div class="featured-image">
-								<img src="{{url('Band/dummy/featured-image-3.jpg')}}" alt="">
-							</div>
-							<h2 class="entry-title"><a href="#">Adipisci voluptates molestiae iusto</a></h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati officia quo dicta, similique, reiciendis beatae enim adipisci voluptates molestiae iusto, totam harum aliquid. Non officiis nobis, ut nesciunt eligendi asperiores.</p>
-							<a href="#">Read more</a>
-						</div>
+    <div class="months">
+      <span class="month-hover">Jan</span>
+      <span class="month-hover">Feb</span> 
+      <span class="month-hover">Mar</span> 
+      <strong class="month-color">Apr</strong>
+      <span class="month-hover">May</span>
+      <span class="month-hover">Jun</span>
+      <span class="month-hover">July</span> 
+      <span class="month-hover">Aug</span> 
+      <span class="month-hover">Sep</span> 
+      <span class="month-hover">Oct</span> 
+      <span class="month-hover">Nov</span> 
+      <span class="month-hover">Dec</span>
+    </div><!-- months -->
+    <hr class="month-line" />
 
-						<div class="post">
-							<div class="entry-date">
-								<div class="date">23</div>
-								<span class="month">Jun</span>
-							</div>
-							<div class="featured-image">
-								<img src="{{url('Band/dummy/featured-image-4.jpg')}}" alt="">
-							</div>
-							<h2 class="entry-title"><a href="#">Obcaecati officia quo dicta</a></h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati officia quo dicta, similique, reiciendis beatae enim adipisci voluptates molestiae iusto, totam harum aliquid. Non officiis nobis, ut nesciunt eligendi asperiores.</p>
-							<a href="#">Read more</a>
-						</div>
+    <div class="days">SUN MON TUE WED THU FRI SAT</div>
+    <!-- days -->
 
-						<div class="post">
-							<div class="entry-date">
-								<div class="date">23</div>
-								<span class="month">Jun</span>
-							</div>
-							<div class="featured-image">
-								<img src="{{url('Band/dummy/featured-image-5.jpg')}}" alt="">
-							</div>
-							<h2 class="entry-title"><a href="#">Nesciunt eligendi asperiores</a></h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati officia quo dicta, similique, reiciendis beatae enim adipisci voluptates molestiae iusto, totam harum aliquid. Non officiis nobis, ut nesciunt eligendi asperiores.</p>
-							<a href="#">Read more</a>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4 col-md-push-1">
-					<aside class="sidebar">
-						<div class="widget">
-							<h3 class="widget-title">Discography</h3>
-							<ul class="discography-list">
-								<li>
-									<figure class="cover"><img src="{{url('Band/dummy/thumbnail-1.jpg')}}" alt="thumbnail 1"></figure>
-									<div class="detail">
-										<h3><a href="#">Deserunt mollitia animi</a></h3>
-										<span class="year">2004</span>
-										<span class="track">17 tracks</span>
-									</div>
-								</li>
-								<li>
-									<figure class="cover"><img src="{{url('Band/dummy/thumbnail-2.jpg')}}" alt="thumbnail 2"></figure>
-									<div class="detail">
-										<h3><a href="#">Deserunt mollitia animi</a></h3>
-										<span class="year">2004</span>
-										<span class="track">17 tracks</span>
-									</div>
-								</li>
-								<li>
-									<figure class="cover"><img src="{{url('Band/dummy/thumbnail-3.jpg')}}" alt="thumbnail 3"></figure>
-									<div class="detail">
-										<h3><a href="#">Deserunt mollitia animi</a></h3>
-										<span class="year">2004</span>
-										<span class="track">17 tracks</span>
-									</div>
-								</li>
-								<li>
-									<figure class="cover"><img src="{{url('Band/dummy/thumbnail-4.jpg')}}" alt="thumbnail 4"></figure>
-									<div class="detail">
-										<h3><a href="#">Deserunt mollitia animi</a></h3>
-										<span class="year">2004</span>
-										<span class="track">17 tracks</span>
-									</div>
-								</li>
-								<li>
-									<figure class="cover"><img src="{{url('Band/dummy/thumbnail-5.jpg')}}" alt="thumbnail 5"></figure>
-									<div class="detail">
-										<h3><a href="#">Deserunt mollitia animi</a></h3>
-										<span class="year">2004</span>
-										<span class="track">17 tracks</span>
-									</div>
-								</li>
-							</ul>
-						</div>
-					</aside>
-				</div>
-			</div>
-		</div>
-	</div> <!-- .testimonial-section -->
-</main> <!-- .main-content -->
+    <div class="num-dates">
+
+      <div class="first-week"><span class="grey">26 27 28 29 30 31</span> 01</div>
+      <!-- first week -->
+      <div class="second-week">02 03 04 05 06 07 08</div>
+      <!-- week -->
+      <div class="third-week"> 09 10 11 12 13 14 15</div>
+      <!-- week -->
+      <div class="fourth-week"> 16 17 18 19 20 21 22</div>
+      <!-- week -->
+      <div class="fifth-week"> 23 24 25 26 <strong class="white">27</strong> 28 29</div>
+      <!-- week -->
+      <div class="sixth-week"> 30 <span class="grey">01 02 03 04 05 06</span></div>
+      <!-- week -->
+    </div>
+    <!-- num-dates -->
+    <div class="event-indicator"></div>
+    <!-- event-indicator -->
+    <div class="active-day"></div>
+    <!-- active-day -->
+    <div class="event-indicator two"></div>
+    <!-- event-indicator -->
+
+  </div>
+  <!-- calendar-base -->
+  <div class="calendar-left">
+
+    <div class="hamburger">
+      <div class="burger-line"></div>
+      <!-- burger-line -->
+      <div class="burger-line"></div>
+      <!-- burger-line -->
+      <div class="burger-line"></div>
+      <!-- burger-line -->
+    </div>
+    <!-- hamburger -->
+
+
+    <div class="num-date">27</div>
+    <!--num-date -->
+    <div class="day">THURSDAY</div>
+    <!--day -->
+    <div class="current-events">Current Events
+      <br/>
+      <ul>
+        <li>Day 09 Daily CSS Image</li>
+      </ul>
+      <span class="posts">See post events</span></div>
+    <!--current-events -->
+
+    <div class="create-event">Create an Event</div>
+    <!-- create-event -->
+    <hr class="event-line" />
+    <div class="add-event"><span class="add">+</span></div>
+    <!-- add-event -->
+
+  </div>
+</div>
 @endsection

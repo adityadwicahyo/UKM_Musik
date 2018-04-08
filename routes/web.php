@@ -11,16 +11,13 @@
 |
 */
 
-Route::get('/test', function () {
-    return view('main.inventaris');
-});
+// Route::get('/about', function () {
+//     return view('main.about');
+// });
 
 Route::get('/', 'ViewController@home');
-Route::get('/about', 'ViewController@about');
 Route::get('/inventaris', 'ViewController@inventaris');
 Route::get('/kegiatan', 'ViewController@kegiatan');
-Route::get('/formkegiatan', 'ViewController@formkegiatan');
-Route::get('/contact', 'ViewController@contact');
-Route::get('/pendaftaran', 'ViewController@pendaftaran');
+Route::get('/pendaftaran', 'ViewController@anggota');
 Route::get('/login', 'ViewController@login');
 Route::get('/signup', 'ViewController@signup');

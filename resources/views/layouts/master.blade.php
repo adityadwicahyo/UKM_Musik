@@ -1,47 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1">
+  <meta charset="utf-8">
+  <title>@yield('title')</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="" name="keywords">
+  <meta content="" name="description">
 
-	<title>@yield('title')</title>
-	<!-- Loading third party fonts -->
-	<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,900" rel="stylesheet" type="text/css">
-	<link href="{{url('Band/fonts/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-	<!-- Loading main css file -->
-	<link rel="stylesheet" href="{{url('Band/style.css')}}">
-	<link rel="shortcut icon" type="image/png" href="{{url('Band/dummy/favicon.png')}}"/>
+  <!-- Favicons -->
+  <link href="{{url('NEW/img/favicon.gif')}}" rel="icon">
+  <link href="{{url('NEW/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
 
-	{{-- Fontawesome --}}
-	<script defer src="https://use.fontawesome.com/releases/v5.0.8/js/solid.js" integrity="sha384-+Ga2s7YBbhOD6nie0DzrZpJes+b2K1xkpKxTFFcx59QmVPaSA8c7pycsNaFwUK6l" crossorigin="anonymous"></script>
-	<script defer src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js" integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c" crossorigin="anonymous"></script>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700|Open+Sans:300,300i,400,400i,700,700i" rel="stylesheet">
 
-	<!--[if lt IE 9]>
-		<script src="{{url('Band/js/ie-support/html5.js')}}"></script>
-		<script src="{{url('Band/js/ie-support/respond.js')}}"></script>
-	<![endif]-->
+  <!-- Bootstrap CSS File -->
+  <link href="{{url('NEW/lib/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
 
+  {{-- Font Awesome --}}
+  <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
+
+  <!-- Libraries CSS Files -->
+  <link href="{{url('NEW/lib/animate/animate.min.css')}}" rel="stylesheet">
+  <link href="{{url('NEW/lib/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
+  <link href="{{url('NEW/lib/ionicons/css/ionicons.min.css')}}" rel="stylesheet">
+  <link href="{{url('NEW/lib/magnific-popup/magnific-popup.css')}}" rel="stylesheet">
+
+  <!-- Main Stylesheet File -->
+  <link href="{{url('NEW/css/style.css')}}" rel="stylesheet">
 </head>
+<body>
+  <main id="main">
+    @include('partials.header')
+    @yield('content')
+    @include('partials.footer')
+  </main>
+  <!-- JavaScript Libraries -->
+  <script src="{{url('NEW/lib/jquery/jquery.min.js')}}"></script>
+  <script src="{{url('NEW/lib/jquery/jquery-migrate.min.js')}}"></script>
+  <script src="{{url('NEW/lib/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+  <script src="{{url('NEW/lib/easing/easing.min.js')}}"></script>
+  <script src="{{url('NEW/lib/wow/wow.min.js')}}"></script>
+  <script src="{{url('NEW/lib/superfish/hoverIntent.js')}}"></script>
+  <script src="{{url('NEW/lib/superfish/superfish.min.js')}}"></script>
+  <script src="{{url('NEW/lib/magnific-popup/magnific-popup.min.js')}}"></script>
 
-<body class="header-collapse">
+  <!-- Contact Form JavaScript File -->
+  <script src="{{url('NEW/contactform/contactform.js')}}"></script>
 
-	<div id="site-content">
-		@include('partials.header')
-		
-		@yield('content')
-
-		@include('partials.footer')
-	</div> <!-- #site-content -->
-
-	<script src="{{url('Band/js/jquery-1.11.1.min.js')}}"></script>		
-	<script src="{{url('Band/js/plugins.js')}}"></script>
-	<script src="{{url('Band/js/app.js')}}"></script>
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <!-- Template Main Javascript File -->
+  <script src="{{url('NEW/js/main.js')}}"></script>
 
 </body>
-
 </html>

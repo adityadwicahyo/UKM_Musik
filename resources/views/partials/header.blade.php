@@ -1,33 +1,30 @@
-<header class="site-header">
-			<div class="container">
-				<a href="{{action('ViewController@home')}}" id="branding">
-					<img src="{{url('Band/dummy/logo.png')}}" alt="Site Title">
-					<small class="site-description">Institut Teknologi Sepuluh Nopember</small>
-				</a> <!-- #branding -->
+<!--==========================
+    Header
+  ============================-->
+  <header id="header" @yield('navbar')>
+    <div class="container">
 
-				<nav class="main-navigation">
-					<button type="button" class="toggle-menu"><i class="fa fa-bars"></i></button>
-					<ul class="menu">
-						<li class="menu-item @yield('current0')"><a href="{{action('ViewController@home')}}">Home</a></li>
-						<li class="menu-item @yield('current1')"><a href="{{action('ViewController@about')}}">About</a></li>
-						<li class="menu-item @yield('current2')"><a href="{{action('ViewController@inventaris')}}">Inventaris</a></li>
-						<li class="menu-item @yield('current3')"><a href="{{action('ViewController@pendaftaran')}}">Pendaftaran</a></li>
-						<li class="menu-item @yield('current4')"><a href="{{action('ViewController@kegiatan')}}">Kegiatan</a></li>
-						<li class="menu-item @yield('current5')"><a href="{{action('ViewController@contact')}}">Contact</a></li>
-						<li class="menu-item nav-item dropdown @yield('current6')">
+      <div id="logo" class="pull-left">
+        <h1><a href="#intro" class="scrollto">SIMUSIK</a></h1>
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <a href="#intro"><img src="img/logo.png" alt="" title=""></a> -->
+      </div>
 
-							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								Account <i class="fas fa-user-circle" style="margin-left: 5px"></i>
-							</a>
-
-							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-								<a class="dropdown-item" href="{{action('ViewController@login')}}" style="padding: 0px 0px 0px 15px">Login</a>
-								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="{{action('ViewController@signup')}}" style="padding: 0px 0px 0px 15px">Sign Up</a>
-							</div>
-						</li>
-					</ul> <!-- .menu -->
-				</nav> <!-- .main-navigation -->
-				<div class="mobile-menu"></div>
-			</div>
-		</header> <!-- .site-header -->
+      <nav id="nav-menu-container">
+        <ul class="nav-menu">
+          <li class="menu-active"><a href="{{action('ViewController@home')}}" @yield('active-beranda')>Beranda</a></li>
+          <li><a href="{{action('ViewController@kegiatan')}}" @yield('active-kegiatan')>Kegiatan</a></li>
+          <li><a href="{{action('ViewController@inventaris')}}" @yield('active-inventaris')>Inventaris</a></li>
+          <li><a href="{{action('ViewController@anggota')}}" @yield('active-anggota')>Anggota</a></li>
+          <li class="menu-has-children">
+            <a href=""><i class="fas fa-user-circle"></i> Akun</a>
+            <ul>
+              <li><a href="{{action('ViewController@login')}}">Login</a></li>
+              <li><a href="#">Registra</a></li>
+            </ul>
+          </li>
+          
+        </ul>
+      </nav><!-- #nav-menu-container -->
+    </div>
+  </header><!-- #header -->

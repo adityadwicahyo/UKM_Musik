@@ -1,83 +1,49 @@
 @extends('layouts.master')
 
-@section('title')
-About | UKM Musik ITS
-@endsection
+@section('title') SIMUSIK | About @endsection
 
-@section('current1')
-	current-menu-item
-@endsection
+@section('navbar') style="background: linear-gradient(45deg, #1de099, #1dc8cd)" @endsection
 
 @section('content')
-<br>
-<br>
-<main class="main-content">
-	<div class="fullwidth-block inner-content">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-7">
-					<div class="content">
-						<h2 class="entry-title">Our History</h2>
-						<figure class="featured-image">
-							<img src="{{url('Band/dummy/post-image.jpg')}}" alt="post image">
-						</figure>
-						<p class="leading">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat odio autem iste neque architecto alias culpa, ab libero, praesentium esse natus quae possimus sed qui dolorum laudantium illum, incidunt eligendi?</p>
-						<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam.</p>
+<br><br><br>
+<!--==========================
+      About Us Section
+    ============================-->
+    <section id="about" class="section-bg">
+      <div class="container-fluid">
+        <div class="section-header">
+          <h3 class="section-title">About Us</h3>
+          <span class="section-divider"></span>
+          <p class="section-description">
+            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque<br>
+            sunt in culpa qui officia deserunt mollit anim id est laborum
+          </p>
+        </div>
 
-						<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.</p>
-					</div>
-				</div>
-				<div class="col-md-4 col-md-push-1">
-					<aside class="sidebar">
-						<div class="widget">
-							<h3 class="widget-title">Discography</h3>
-							<ul class="discography-list">
-								<li>
-									<figure class="cover"><img src="{{url('Band/dummy/thumbnail-1.jpg')}}" alt="thumbnail 1"></figure>
-									<div class="detail">
-										<h3><a href="#">Deserunt mollitia animi</a></h3>
-										<span class="year">2004</span>
-										<span class="track">17 tracks</span>
-									</div>
-								</li>
-								<li>
-									<figure class="cover"><img src="{{url('Band/dummy/thumbnail-2.jpg')}}" alt="thumbnail 2"></figure>
-									<div class="detail">
-										<h3><a href="#">Deserunt mollitia animi</a></h3>
-										<span class="year">2004</span>
-										<span class="track">17 tracks</span>
-									</div>
-								</li>
-								<li>
-									<figure class="cover"><img src="{{url('Band/dummy/thumbnail-3.jpg')}}" alt="thumbnail 3"></figure>
-									<div class="detail">
-										<h3><a href="#">Deserunt mollitia animi</a></h3>
-										<span class="year">2004</span>
-										<span class="track">17 tracks</span>
-									</div>
-								</li>
-								<li>
-									<figure class="cover"><img src="{{url('Band/dummy/thumbnail-4.jpg')}}" alt="thumbnail 4"></figure>
-									<div class="detail">
-										<h3><a href="#">Deserunt mollitia animi</a></h3>
-										<span class="year">2004</span>
-										<span class="track">17 tracks</span>
-									</div>
-								</li>
-								<li>
-									<figure class="cover"><img src="{{url('Band/dummy/thumbnail-5.jpg')}}" alt="thumbnail 5"></figure>
-									<div class="detail">
-										<h3><a href="#">Deserunt mollitia animi</a></h3>
-										<span class="year">2004</span>
-										<span class="track">17 tracks</span>
-									</div>
-								</li>
-							</ul>
-						</div>
-					</aside>
-				</div>
-			</div>
-		</div>
-	</div> <!-- .testimonial-section -->
-</main> <!-- .main-content -->
+        <div class="row">
+          <div class="col-lg-6 about-img wow fadeInLeft">
+            <img src="{{url('NEW/img/about-img.jpg')}}" alt="">
+          </div>
+
+          <div class="col-lg-6 content wow fadeInRight">
+            <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elite storium paralate</h2>
+            <h3>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </p>
+
+            <ul>
+              <li><i class="ion-android-checkmark-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+              <li><i class="ion-android-checkmark-circle"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
+              <li><i class="ion-android-checkmark-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
+            </ul>
+
+            <p>
+              Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum Libero justo laoreet sit amet cursus sit amet dictum sit. Commodo sed egestas egestas fringilla phasellus faucibus scelerisque eleifend donec
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- #about -->
 @endsection

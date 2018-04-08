@@ -1,86 +1,105 @@
 @extends('layouts.master')
 
-@section('title')
-Iventaris | UKM Musik ITS
-@endsection
+@section('title') SIMUSIK | Inventaris @endsection
 
-@section('current2')
-current-menu-item
-@endsection
+@section('active-inventaris') style="font-weight: bold" @endsection
+
+@section('navbar') style="background: linear-gradient(45deg, #1de099, #1dc8cd)" @endsection
 
 @section('content')
-<br>
-<br>
-<br>
-<main class="main-content">
-	<div class="fullwidth-block gallery">
-		<div class="container">
-			<div class="content fullwidth">
-				<h2 class="entry-title">Inventaris</h2>
-				<div class="filter-links filterable-nav">
-					<select class="mobile-filter">
-						<option value="*">Show all</option>
-						<option value=".concert">Concert</option>
-						<option value=".band">Band</option>
-						<option value=".stuff">Stuff</option>
-					</select>
-					<a href="#" class="current" data-filter="*">Show all</a>
-					<a href="#" data-filter=".concert">Concert</a>
-					<a href="#" data-filter=".band">Band</a>
-					<a href="#" data-filter=".stuff">Stuff</a>
-				</div>
-				<div class="filterable-items">
-					<div class="filterable-item concert">
-						<a href="{{url('Band/dummy/large-gallery/gallery-1.jpg')}}"><figure><img src="{{url('Band/dummy/gallery-1.jpg')}}" alt="gallery 1"></figure></a>
-						<input type="submit" class="button cut-corner" value="Pinjam" style="margin-top: 5px">
-					</div>
-					<div class="filterable-item concert">
-						<a href="{{url('Band/dummy/large-gallery/gallery-2.jpg')}}"><figure><img src="{{url('Band/dummy/gallery-2.jpg')}}" alt="gallery 2"></figure></a>
-						<input type="submit" class="button cut-corner" value="Pinjam" style="margin-top: 10px">
-					</div>
-					<div class="filterable-item stuff">
-						<a href="{{url('Band/dummy/large-gallery/gallery-3.jpg')}}"><figure><img src="{{url('Band/dummy/gallery-3.jpg')}}" alt="gallery 3"></figure></a>
-						<input type="submit" class="button cut-corner" value="Pinjam" style="margin-top: 10px">
-					</div>
-					<div class="filterable-item concert">
-						<a href="{{url('Band/dummy/large-gallery/gallery-4.jpg')}}"><figure><img src="{{url('Band/dummy/gallery-4.jpg')}}" alt="gallery 4"></figure></a>
-						<input type="submit" class="button cut-corner" value="Pinjam" style="margin-top: 10px">
-					</div>
-					<div class="filterable-item band">
-						<a href="{{url('Band/dummy/large-gallery/gallery-5.jpg')}}"><figure><img src="{{url('Band/dummy/gallery-5.jpg')}}" alt="gallery 5"></figure></a>
-						<input type="submit" class="button cut-corner" value="Pinjam" style="margin-top: 10px">
-					</div>
-					<div class="filterable-item stuff">
-						<a href="{{url('Band/dummy/large-gallery/gallery-6.jpg')}}"><figure><img src="{{url('Band/dummy/gallery-6.jpg')}}" alt="gallery 6"></figure></a>
-						<input type="submit" class="button cut-corner" value="Pinjam" style="margin-top: 10px">
-					</div>
-					<div class="filterable-item concert">
-						<a href="{{url('Band/dummy/large-gallery/gallery-7.jpg')}}"><figure><img src="{{url('Band/dummy/gallery-7.jpg')}}" alt="gallery 7"></figure></a>
-						<input type="submit" class="button cut-corner" value="Pinjam" style="margin-top: 10px">
-					</div>
-					<div class="filterable-item band">
-						<a href="{{url('Band/dummy/large-gallery/gallery-8.jpg')}}"><figure><img src="{{url('Band/dummy/gallery-8.jpg')}}" alt="gallery 8"></figure></a>
-						<input type="submit" class="button cut-corner" value="Pinjam" style="margin-top: 10px">
-					</div>
-					<div class="filterable-item band">
-						<a href="{{url('Band/dummy/large-gallery/gallery-9.jpg')}}"><figure><img src="{{url('Band/dummy/gallery-9.jpg')}}" alt="gallery 9"></figure></a>
-						<input type="submit" class="button cut-corner" value="Pinjam" style="margin-top: 10px">
-					</div>
-					<div class="filterable-item stuff">
-						<a href="{{url('Band/dummy/large-gallery/gallery-10.jpg')}}"><figure><img src="{{url('Band/dummy/gallery-10.jpg')}}" alt="gallery 10"></figure></a>
-						<input type="submit" class="button cut-corner" value="Pinjam" style="margin-top: 10px">
-					</div>
-					<div class="filterable-item band">
-						<a href="{{url('Band/dummy/large-gallery/gallery-11.jpg')}}"><figure><img src="{{url('Band/dummy/gallery-11.jpg')}}" alt="gallery 11"></figure></a>
-						<input type="submit" class="button cut-corner" value="Pinjam" style="margin-top: 10px">
-					</div>
-					<div class="filterable-item stuff">
-						<a href="{{url('Band/dummy/large-gallery/gallery-12.jpg')}}"><figure><img src="{{url('Band/dummy/gallery-12.jpg')}}" alt="gallery 12"></figure></a>
-						<input type="submit" class="button cut-corner" value="Pinjam" style="margin-top: 10px">
-					</div>
-				</div>
-			</div>
-		</div>
-	</div> <!-- .testimonial-section -->
-</main> <!-- .main-content -->
+<br><br><br>
+	<!--==========================
+      Kegiatan Section
+    ============================-->
+    <section id="team" class="section-bg">
+      <div class="container">
+        <div class="section-header">
+          <h3 class="section-title">DAFTAR INVENTARIS</h3>
+          <span class="section-divider"></span>
+          <p class="section-description"></p>
+        </div>
+        <div class="row wow fadeInUp">
+          <div class="col-lg-3 col-md-6">
+            <div class="member">
+              <div class="pic">
+                <img id="myImg" src="{{url('NEW/img/gitar.jpg')}}" alt="GITAR TIPE">
+<!-- The Modal -->
+                <div id="myModal" class="modal">
+                  <span class="close" style=" font-size: 100px">&times;</span>
+                  <img class="modal-content" id="img01">
+                  <div id="caption"></div>
+                </div>
+                
+              </div>
+              <h4>gitar akustik</h4>
+              <span>gitar tipe</span>
+              <div style="padding: 20px"> 
+                <button type="button" class="btn btn-success">PINJAM</button>
+                
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <div class="member">
+              <div class="pic">
+                <img id="myImg" src="{{url('NEW/img/drum.jpg')}}" alt="Trolltunga, Norway">
+<!-- The Modal -->
+                <div id="myModal" class="modal">
+                  <span class="close" style=" font-size: 100px">&times;</span>
+                  <img class="modal-content" id="img01">
+                  <div id="caption"></div>
+                </div>
+                
+              </div>
+              <h4>drum </h4>
+              <span>drum tipe</span>
+              <div style="padding: 20px"> 
+                <button type="button" class="btn btn-success">PINJAM</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <div class="member" >
+              <div class="pic">
+                <img id="myImg" src="{{url('NEW/img/mic.jpg')}}" alt="Trolltunga, Norway">
+<!-- The Modal -->
+                <div id="myModal" class="modal">
+                  <span class="close" style=" font-size: 100px">&times;</span>
+                  <img class="modal-content" id="img01">
+                  <div id="caption"></div>
+                </div>
+                
+              </div>
+              <h4>mikrofon</h4>
+              <span>mikrofon type </span>
+               <div style="padding: 20px"> 
+                <button type="button" class="btn btn-success">PINJAM</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <div class="member">
+              <div class="pic">
+                <img id="myImg" src="{{url('NEW/img/keyboard.jpg')}}" alt="Trolltunga, Norway">
+<!-- The Modal -->
+                <div id="myModal" class="modal">
+                  <span class="close" style=" font-size: 100px">&times;</span>
+                  <img class="modal-content" id="img01">
+                  <div id="caption"></div>
+                </div>
+                
+              </div>
+              <h4>keyboard</h4>
+              <span>keyboard type</span>
+               <div style="padding: 20px"> 
+                <button type="button" class="btn btn-success">PINJAM</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- #team -->
 @endsection
