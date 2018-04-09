@@ -19,9 +19,9 @@ class ViewController extends Controller
         return view('main.anggota');
     }
     public function login(){
-        return view('main.login');
+        return view('user.login');
     }
     public function signup(){
-        return view('main.signup');
+        return view('user.signup');
     }
 }

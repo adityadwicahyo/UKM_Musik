@@ -235,10 +235,11 @@
 		<div class="container">
 			<h1>Welcome</h1>
 
-			<form class="form">
-				<input type="text" placeholder="Username">
-				<input type="password" placeholder="Password">
-				<button type="submit" id="login-button">Login</button>
+			<form class="form" action="/dashboard" method="post">
+				<input type="hidden" name="_token" value="{{ csrf_token() }}">
+				<input type="text" placeholder="NRP" name="nrp_anggota">
+				<input type="password" placeholder="Password" name="password_anggota">
+				<button type="submit" id="login-button" name="login" value="Login">Login</button>
 			</form>
 		</div>
 

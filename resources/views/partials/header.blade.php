@@ -5,7 +5,7 @@
     <div class="container">
 
       <div id="logo" class="pull-left">
-        <h1><a href="#intro" class="scrollto">SIMUSIK</a></h1>
+        <h1><a href="{{action('ViewController@home')}}" class="scrollto">SIMUSIK</a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="#intro"><img src="img/logo.png" alt="" title=""></a> -->
       </div>
@@ -20,7 +20,7 @@
             <a href=""><i class="fas fa-user-circle"></i> Akun</a>
             <ul>
               <li><a href="{{action('ViewController@login')}}">Login</a></li>
-              <li><a href="#">Registra</a></li>
+              <li><a href="{{route('user.signup')}}">Registra</a></li>
             </ul>
           </li>
           
