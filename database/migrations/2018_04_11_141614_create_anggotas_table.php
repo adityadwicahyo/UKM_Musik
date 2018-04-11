@@ -11,8 +11,6 @@ class CreateAnggotasTable extends Migration
      *
      * @return void
      */
-    
-    
     public function up()
     {
         Schema::create('anggotas', function (Blueprint $table) {
