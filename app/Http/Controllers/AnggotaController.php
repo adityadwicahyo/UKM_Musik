@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Anggota;
+use Validator;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+
 
 // use App\Http\Request;
 
@@ -14,11 +17,23 @@ class AnggotaController extends Controller
     }
 
     public function postSignup(Request $request){
-    	// this->validate($request, [
-    	// 	'nrp_anggota' => 'nrp_anggota|required|unique:anggota',
-    	// 	'email_anggota' => 'email_anggota|required|unique:anggota',
-    	// 	'password_anggota' => 'required|min:4'
-    	// ]);
+    	$validator = Validator::make($request->all(), [
+            'nrp_anggota' => 'required|unique:anggota',
+            'email_anggota' => 'required|unique:anggota',
+            'password_anggota' => 'required|min:4',
+            'nama_anggota' =>'required',
+            'notelp_anggota' =>'required',
+            'biodata_anggota' =>'required',
+            'foto_anggota' =>'required',
+            'status_anggota' =>'required',
+            'berkas_anggota' =>'required',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect('/signup')
+                        ->withErrors($validator)
+                        ->withInput();
+        }
 
     	$anggota = new Anggota([
     		'nrp_anggota' =>$request->input('nrp_anggota'),

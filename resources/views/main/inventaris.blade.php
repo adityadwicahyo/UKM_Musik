@@ -32,7 +32,7 @@
                 
               </div>
               <h4>gitar akustik</h4>
-              <span>gitar tipe</span>
+              <span>gitar dengan suara yang unik</span>
               <div style="padding: 20px"> 
                 <button type="button" class="btn btn-success">PINJAM</button>
                 
@@ -102,4 +102,5 @@
         </div>
       </div>
     </section><!-- #team -->
+</div>
 @endsection

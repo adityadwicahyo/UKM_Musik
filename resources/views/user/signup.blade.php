@@ -234,15 +234,15 @@
 	<div class="wrapper">
 		<div class="container">
 			<h1>Sign Up</h1>
-			@if(count($errors) > 0)
+			{{-- @if(count($errors) > 0) --}}
 			<div class="alert alert-danger">
-				@foreach($errors->all() as $error)
-				<p>{{ error }}</p>
-				@endforeach
+				{{-- @foreach($errors->all() as $error) --}}
+				{{-- <p>{{ error }}</p> --}}
+				{{-- @endforeach --}}
 			</div>
-			@endif
-			<form class="form" action="{{route('user.signup')}}" method="post">
-				{{-- <input type="hidden" name="_token" value="{{ csrf_token() }}"> --}}
+			{{-- @endif --}}
+			<form class="form" action="" method="post">
+				{{ csrf_field() }}
 				<input type="text" placeholder="Nama" name="nama_anggota">
 				<input type="text" placeholder="NRP" name="nrp_anggota">
 				<input type="password" placeholder="Password" name="password_anggota">
@@ -253,7 +253,6 @@
 				<input type="text" placeholder="Status" name="status_anggota">
 				<input type="text" placeholder="Berkas" name="berkas_anggota">
 				<button type="submit" id="login-button" name="login" value="Login">Sign Up</button>
-				{{ csrf_field() }}
 			</form>
 		</div>
 

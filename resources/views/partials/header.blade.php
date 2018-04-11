@@ -20,7 +20,7 @@
             <a href=""><i class="fas fa-user-circle"></i> Akun</a>
             <ul>
               <li><a href="{{action('ViewController@login')}}">Login</a></li>
-              <li><a href="{{route('user.signup')}}">Registra</a></li>
+              <li><a href="{{route('user.signup')}}">Signup</a></li>
             </ul>
           </li>
           
