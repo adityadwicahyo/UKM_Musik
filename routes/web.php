@@ -17,7 +17,7 @@
 
 Route::get('/', 'ViewController@home');
 
-Route::get('/inventaris', 'ViewController@inventaris');
+Route::get('/inventaris', 'InventarisController@getIndex');
 Route::get('/kegiatan', 'ViewController@kegiatan');
 Route::get('/pendaftaran', 'ViewController@anggota');
 Route::get('/login', 'ViewController@login');

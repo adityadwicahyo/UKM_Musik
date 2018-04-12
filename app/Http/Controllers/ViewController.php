@@ -9,9 +9,9 @@ class ViewController extends Controller
     public function home(){
         return view('main.home');
     }
-    public function inventaris(){
-        return view('main.inventaris');
-    }
+    // public function inventaris(){
+    //     return view('main.inventaris');
+    // }
     public function kegiatan(){
         return view('main.kegiatan');
     }

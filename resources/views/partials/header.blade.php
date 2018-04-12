@@ -14,13 +14,13 @@
         <ul class="nav-menu">
           <li class="menu-active"><a href="{{action('ViewController@home')}}" @yield('active-beranda')>Beranda</a></li>
           <li><a href="{{action('ViewController@kegiatan')}}" @yield('active-kegiatan')>Kegiatan</a></li>
-          <li><a href="{{action('ViewController@inventaris')}}" @yield('active-inventaris')>Inventaris</a></li>
+          <li><a href="{{action('InventarisController@getIndex')}}" @yield('active-inventaris')>Inventaris</a></li>
           <li><a href="{{action('ViewController@anggota')}}" @yield('active-anggota')>Anggota</a></li>
           <li class="menu-has-children">
             <a href=""><i class="fas fa-user-circle"></i> Akun</a>
             <ul>
               <li><a href="{{action('ViewController@login')}}">Login</a></li>
-              <li><a href="{{route('user.signup')}}">Signup</a></li>
+              <li><a href="{{action('ViewController@signup')}}">Signup</a></li>
             </ul>
           </li>
           
