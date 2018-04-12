@@ -231,6 +231,7 @@
 </style>
 </head>
 <body>
+	{{-- <h1>{{ $data }}</h1> --}}
 	<div class="wrapper">
 		<div class="container">
 			<h1>Welcome</h1>

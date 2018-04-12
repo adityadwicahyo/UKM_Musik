@@ -16,23 +16,11 @@
 // });
 
 Route::get('/', 'ViewController@home');
-// Route::get('/', [
-// 	'uses' => 'ViewContrller@home',
-// 	'as' => 'view.home'
-// ]);
 
 Route::get('/inventaris', 'ViewController@inventaris');
 Route::get('/kegiatan', 'ViewController@kegiatan');
 Route::get('/pendaftaran', 'ViewController@anggota');
 Route::get('/login', 'ViewController@login');
-// Route::get('/signup', 'ViewController@login');
 
-Route::get('/signup', [
-	'uses' => 'AnggotaController@getSignup',
-	'as' => 'user.signup'
-]);
-
-Route::post('/signup', [
-	'uses' => 'AnggotaController@postSignup',
-	'as' => 'user.signup'
-]);
+Route::get('/signup', 'ViewController@signup');
+Route::post('/signup', 'AnggotasController@store');

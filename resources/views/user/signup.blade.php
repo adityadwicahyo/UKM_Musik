@@ -241,7 +241,7 @@
 				{{-- @endforeach --}}
 			</div>
 			{{-- @endif --}}
-			<form class="form" action="" method="post">
+			<form class="form" action="{{action('AnggotasController@store')}}" method="post">
 				{{ csrf_field() }}
 				<input type="text" placeholder="Nama" name="nama_anggota">
 				<input type="text" placeholder="NRP" name="nrp_anggota">
@@ -252,7 +252,7 @@
 				<input type="text" placeholder="Foto" name="foto_anggota">
 				<input type="text" placeholder="Status" name="status_anggota">
 				<input type="text" placeholder="Berkas" name="berkas_anggota">
-				<button type="submit" id="login-button" name="login" value="Login">Sign Up</button>
+				<button type="submit" id="login-button" name="signup" value="Signup">Sign Up</button>
 			</form>
 		</div>
 
