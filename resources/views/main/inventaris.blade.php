@@ -32,7 +32,7 @@
             <a href="#" class="btn btn-success" style="float: left">Pinjam</a>
             @else
             <p style="font-weight: bold; margin-bottom: 20px"><i class="fas fa-times-circle" style="color: red"></i> {{$invent->status_inv}}</p>
-            <a href="#" class="btn btn-secondary" style="float: left">Pinjam</a>
+            <button href="#" class="btn btn-secondary" style="float: left" disabled>Pinjam</button>
             @endif
           </div>
         </div>
