@@ -18,10 +18,10 @@ class AnggotasController extends Controller
         // }
 
         $validator = Validator::make($data, [
-            'nrp_anggota' => 'required',
+            'nrp_anggota' => 'required|min:14|max:14|unique:anggotas',
             'nama_anggota' => 'required',
             'password' => 'required|confirmed',
-            'confirm' => 'required',
+            'password_confirmation' => 'required',
             'email_anggota' => 'required',
             'notelp_anggota' => 'required',
             'berkas_anggota' => 'required',
@@ -34,9 +34,9 @@ class AnggotasController extends Controller
             ->withInput();
         }
         else{
-            $data['status_anggota'] = 'string';
+            $data['status_anggota'] = 'user';
             $data['password_anggota'] = bcrypt($data['password']);
-            $data = 'user';
+            // $data = 'user';
             Anggotas::create($data, [
                 'except' => '_token',
                 'except' => 'confirm'

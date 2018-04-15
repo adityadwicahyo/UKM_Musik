@@ -18,9 +18,16 @@
 Route::get('/', 'ViewController@home');
 
 Route::get('/inventaris', 'InventarisController@getIndex');
+Route::get('/inventaris/pinjam/{id}', 'InventarisController@pinjam');
+Route::post('/inventaris/pinjam', 'InventarisController@pinjamStore');
+
 Route::get('/kegiatan', 'ViewController@kegiatan');
 Route::get('/pendaftaran', 'ViewController@anggota');
 Route::get('/login', 'ViewController@login');
 
 Route::get('/signup', 'ViewController@signup');
 Route::post('/signup', 'AnggotasController@store');
+
+Route::get('/calendar', function(){
+	return view('partials.calendar');
+});

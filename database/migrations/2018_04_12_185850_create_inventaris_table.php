@@ -19,7 +19,7 @@ class CreateInventarisTable extends Migration
             $table->string('nama_inv');
             $table->string('foto_inv');
             $table->string('deskripsi_inv');
-            $table->string('status_inv');
+            $table->int('jumlah_inv');
         });
     }
 

@@ -27,11 +27,11 @@
           <div class="card-body">
             <h5 class="card-title" style="font-weight: bold">{{$invent->nama_inv}}</h5>
             <p class="card-text" style="margin-bottom: 15px">{{$invent->deskripsi_inv}}</p>
-            @if($invent->status_inv == 'Belum Dipinjam')
-            <p style="font-weight: bold; margin-bottom: 20px"><i class="fas fa-check-circle" style="color: green"></i> {{$invent->status_inv}}</p>
-            <a href="#" class="btn btn-success" style="float: left">Pinjam</a>
+            @if($invent->jumlah_inv > 0)
+            <p style="font-weight: bold; margin-bottom: 20px"><i class="fas fa-check-circle" style="color: green"></i> Jumlah : {{$invent->jumlah_inv}}</p>
+            <a href="/inventaris/pinjam/{{$invent->id}}" class="btn btn-success" style="float: left">Pinjam</a>
             @else
-            <p style="font-weight: bold; margin-bottom: 20px"><i class="fas fa-times-circle" style="color: red"></i> {{$invent->status_inv}}</p>
+            <p style="font-weight: bold; margin-bottom: 20px"><i class="fas fa-times-circle" style="color: red"></i> Jumlah : {{$invent->jumlah_inv}}</p>
             <button href="#" class="btn btn-secondary" style="float: left" disabled>Pinjam</button>
             @endif
           </div>

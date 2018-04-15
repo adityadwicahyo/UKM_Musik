@@ -52,80 +52,29 @@
 			</div>
 
 			@if($errors->any('notelp_anggota'))
-				<p style="color: red; float: right; margin-bottom: 0px; font-weight: bold">{{ $errors->first('notelp_anggota')}}</p>
-				@endif
-			<label for="number" Telepon:</label>
-				<input type="text" class="form-control" name="notelp_anggota" value="{{old('notelp_anggota')}}">
+			<p style="color: red; float: right; margin-bottom: 0px; font-weight: bold">{{ $errors->first('notelp_anggota')}}</p>
+			@endif
+			<label for="number"> Telepon:</label>
+			<input type="text" class="form-control" name="notelp_anggota" value="{{old('notelp_anggota')}}">
 
-				<legend><span class="number">2</span>Your profile</legend>
-				<label for="bio">Biodata:</label>
-				<textarea name="biodata_anggota"></textarea>
+			<legend><span class="number">2</span>Your profile</legend>
+			<label for="bio">Biodata:</label>
+			<textarea name="biodata_anggota"></textarea>
 
-				@if($errors->any('foto_anggota'))
-				<p style="color: red; float: right; margin-bottom: 0px; font-weight: bold">{{ $errors->first('foto_anggota')}}</p>
-				@endif
-				<label for="foto">Foto:</label>
-				<input type="file" name="foto_anggota" value="{{old('foto_anggota')}}">
+			@if($errors->any('foto_anggota'))
+			<p style="color: red; float: right; margin-bottom: 0px; font-weight: bold">{{ $errors->first('foto_anggota')}}</p>
+			@endif
+			<label for="foto">Foto:</label>
+			<input type="file" name="foto_anggota" value="{{old('foto_anggota')}}">
 
-				@if($errors->any('berkas_anggota'))
-				<p style="color: red; float: right; margin-bottom: 0px; font-weight: bold">{{ $errors->first('berkas_anggota')}}</p>
-				@endif
-				<label for="berkas" style="padding-top: 30px">Berkas:</label>
-				<input type="file" name="berkas_anggota" value="{{old('berkas_anggota')}}">
-			</fieldset>
+			@if($errors->any('berkas_anggota'))
+			<p style="color: red; float: right; margin-bottom: 0px; font-weight: bold">{{ $errors->first('berkas_anggota')}}</p>
+			@endif
+			<label for="berkas" style="padding-top: 30px">Berkas:</label>
+			<input type="file" name="berkas_anggota" value="{{old('berkas_anggota')}}">
+		</fieldset>
 
-			<button type="submit" value="Signup">Sign Up</button>
-		</form>
-	</body>
-	</html>
-
-{{-- <div class="wrapper">
-	<div class="container">
-			<h1>Sign Up</h1>
-			<h4 style="color: red"></h4>
-
-			<form class="form" action="{{action('AnggotasController@store')}}" method="post">
-				{{ csrf_field() }}
-				@if($errors->any('nama_anggota'))
-				<h4 style="color: red; padding: 5px 0px 5px 0px">{{$errors->first('nama_anggota')}}</h4>
-				@endif
-				<input type="text" placeholder="Nama" name="nama_anggota">
-
-				@if($errors->any('nrp_anggota'))
-				<h4 style="color: red; padding: 5px 0px 5px 0px">{{$errors->first('nrp_anggota')}}</h4>
-				@endif
-				<input type="text" placeholder="NRP" name="nrp_anggota">
-
-				@if($errors->any('password_anggota'))
-				<h4 style="color: red; padding: 5px 0px 5px 0px">{{$errors->first('password_anggota')}}</h4>
-				@endif
-				<input type="password" placeholder="Password" name="password_anggota">
-
-				@if($errors->any('email_anggota'))
-				<h4 style="color: red; padding: 5px 0px 5px 0px">{{$errors->first('email_anggota')}}</h4>
-				@endif
-				<input type="email" placeholder="Email" name="email_anggota">
-
-				@if($errors->any('notelp_anggota'))
-				<h4 style="color: red; padding: 5px 0px 5px 0px">{{$errors->first('notelp_anggota')}}</h4>
-				@endif
-				<input type="text" placeholder="Nomor Telepon" name="notelp_anggota">
-
-				@if($errors->any('biodata_anggota'))
-				<h4 style="color: red; padding: 5px 0px 5px 0px">{{$errors->first('biodata_anggota')}}</h4>
-				@endif
-				<input type="text" placeholder="Biodata" name="biodata_anggota">
-
-				@if($errors->any('foto_anggota'))
-				<h4 style="color: red; padding: 5px 0px 5px 0px">{{$errors->first('foto_anggota')}}</h4>
-				@endif
-				<input type="file" placeholder="Foto" name="foto_anggota">
-
-				@if($errors->any('berkas_anggota'))
-				<h4 style="color: red; padding: 5px 0px 5px 0px">{{$errors->first('berkas_anggota')}}</h4>
-				@endif
-				<input type="file" placeholder="Berkas" name="berkas_anggota">
-				<button type="submit" id="login-button" name="signup" value="Signup">Sign Up</button>
-			</form>
-	</div>
-</div> --}}
+		<button type="submit">Sign Up</button>
+	</form>
+</body>
+</html>
