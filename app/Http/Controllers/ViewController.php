@@ -24,4 +24,7 @@ class ViewController extends Controller
     public function signup(){
         return view('user.signup');
     }
+    public function oprec(){
+        return view('main.oprec');
+    }
 }

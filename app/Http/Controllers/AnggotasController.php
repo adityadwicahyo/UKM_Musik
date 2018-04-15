@@ -11,11 +11,6 @@ class AnggotasController extends Controller
 {
     public function store(Request $request){
         $data = $request->all();
-        // dd($data['password_anggota']);
-        // if($data['password_anggota'] != $data['confirm']){
-        //     $data['confirmpass'] = 1;
-        //     return view('user.signup', $data);
-        // }
 
         $validator = Validator::make($data, [
             'nrp_anggota' => 'required|min:14|max:14|unique:anggotas',
@@ -29,29 +24,44 @@ class AnggotasController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return redirect('/signup')
+            return redirect('/oprec')
             ->withErrors($validator)
             ->withInput();
         }
         else{
-            $data['status_anggota'] = 'user';
+            //Default status
+            $data['status_anggota'] = 'Unverified';
+
+            //Encrypt password
             $data['password_anggota'] = bcrypt($data['password']);
-            // $data = 'user';
+
+            //Upload Image
+            $image = $request->file('foto_anggota');
+            $input['imageName'] = $data['nrp_anggota'] . '.' . $image->getClientOriginalExtension();
+            $destinationPath = public_path('data\foto_anggota');
+            $image->move($destinationPath, $input['imageName']);
+            $data['foto_anggota'] = "data/foto_anggota/" . $input['imageName'];
+
+            //Upload Document
+            $doc = $request->file('berkas_anggota');
+
+            $input['docName'] = $data['nrp_anggota'] . '.' . $doc->getClientOriginalExtension();
+            $destinationPath = public_path('data\berkas_anggota');
+            $doc->move($destinationPath, $input['docName']);
+            $data['berkas_anggota'] = $destinationPath . "\\" . $input['docName'];
+
             Anggotas::create($data, [
                 'except' => '_token',
                 'except' => 'confirm'
-            // 'nrp_anggota' => $request->nrp_anggota,
-            // 'password_anggota' => $request->password_anggota,
-            // 'nama_anggota' => $request->nama_anggota,
-            // 'email_anggota' => $request->email_anggota,
-            // 'notelp_anggota' => $request->notelp_anggota,
-            // 'biodata_anggota' => $request->biodata_anggota,
-            // 'status_anggota' => $request->status_anggota,
-            // 'berkas_anggota' => $request->berkas_anggota,
-            // 'foto_anggota' => $request->foto_anggota
             ]);
         }
-        return redirect('/login');
+        return redirect('/oprec')->withErrors(array('Success' => 'Pendaftaran berhasil'));
+    }
+
+    public function organisasi(){
+        $anggotas = Anggotas::all();
+
+        return view('main.organisasi', ['anggotas' => $anggotas]);
     }
 }
 

@@ -7,10 +7,12 @@
 @section('navbar') style="background: linear-gradient(45deg, #1de099, #1dc8cd)" @endsection
 
 @section('content')
-<br><br><br>
+<br><br>
 <!--==========================Kegiatan Section============================-->
 <section id="team" class="section-bg">
   <div class="container">
+
+   
 
     <div class="section-header">
       <h3 class="section-title">DAFTAR INVENTARIS</h3>
@@ -18,6 +20,12 @@
       {{-- <p class="section-description"></p> --}}
     </div>
 
+     @if($errors->any('Success'))
+    <div class="alert alert-success" align="center">
+      <strong>Success! {{ $errors->first('Success')}}</strong>
+    </div>
+    @endif
+    
     @foreach($inventaris->chunk(3) as $inventarisChunk)
     <div class="row">
       @foreach($inventarisChunk as $invent)

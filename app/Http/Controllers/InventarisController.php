@@ -54,6 +54,6 @@ class InventarisController extends Controller
 				]);
 			}
 		}
-		return redirect('/inventaris');
+		return redirect('/inventaris')->withErrors(array('Success' => 'Peminjaman inventaris berhasil'));
 	}
 }

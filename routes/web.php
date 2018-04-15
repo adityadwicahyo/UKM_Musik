@@ -26,7 +26,11 @@ Route::get('/pendaftaran', 'ViewController@anggota');
 Route::get('/login', 'ViewController@login');
 
 Route::get('/signup', 'ViewController@signup');
-Route::post('/signup', 'AnggotasController@store');
+
+Route::get('/oprec', 'ViewController@oprec');
+Route::post('/oprec', 'AnggotasController@store');
+
+Route::get('/organisasi', 'AnggotasController@organisasi');
 
 Route::get('/calendar', function(){
 	return view('partials.calendar');
