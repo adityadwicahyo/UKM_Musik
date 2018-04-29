@@ -15,8 +15,8 @@ class AnggotasController extends Controller
         $validator = Validator::make($data, [
             'nrp_anggota' => 'required|min:14|max:14|unique:anggotas',
             'nama_anggota' => 'required',
-            'password' => 'required|confirmed',
-            'password_confirmation' => 'required',
+            // 'password' => 'required|confirmed',
+            // 'password_confirmation' => 'required',
             'email_anggota' => 'required',
             'notelp_anggota' => 'required',
             'berkas_anggota' => 'required',
@@ -33,7 +33,7 @@ class AnggotasController extends Controller
             $data['status_anggota'] = 'Unverified';
 
             //Encrypt password
-            $data['password_anggota'] = bcrypt($data['password']);
+            // $data['password_anggota'] = bcrypt($data['password']);
 
             //Upload Image
             $image = $request->file('foto_anggota');

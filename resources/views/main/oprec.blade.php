@@ -40,20 +40,6 @@
 			<label for="email">Email:</label>
 			<input type="email" class="form-control" name="email_anggota" value="{{old('email_anggota')}}">
 
-			<div class="form-group">
-				@if($errors->any('password'))
-				<p style="color: red; float: right; margin-bottom: 0px; font-weight: bold">{{ $errors->first('password')}}</p>
-				@endif
-				<label for="Password" class="control-label">Password</label>
-				<div class="form-inline row">
-					<div class="form-group col-sm-6">
-						<input type="password" class="form-control" id="Password" placeholder="Password" name="password">
-					</div>
-					<div class="form-group col-sm-6">
-						<input type="password" class="form-control" placeholder="Confirm" name="password_confirmation">
-					</div>
-				</div>
-			</div>
 
 			@if($errors->any('notelp_anggota'))
 			<p style="color: red; float: right; margin-bottom: 0px; font-weight: bold">{{ $errors->first('notelp_anggota')}}</p>
@@ -78,7 +64,7 @@
 			<input type="file" name="berkas_anggota" value="{{old('berkas_anggota')}}">
 		</fieldset>
 
-		<button type="submit">Sign Up</button>
+		<button type="submit">Daftar</button>
 	</form>
 
 @endsection

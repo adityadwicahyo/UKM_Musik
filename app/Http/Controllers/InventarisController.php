@@ -11,6 +11,10 @@ use App\Peminjamans;
 
 class InventarisController extends Controller
 {
+	// public function __construct(){
+	// 	$this->middleware('auth');
+	// }
+
 	public function getIndex(){
 		$inventaris = Inventaris::all();
 

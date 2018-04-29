@@ -17,7 +17,6 @@ class CreateAnggotasTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->string('nrp_anggota', 14);
-            $table->string('password_anggota');
             $table->string('nama_anggota');
             $table->string('email_anggota');
             $table->string('notelp_anggota');

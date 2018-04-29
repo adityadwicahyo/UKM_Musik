@@ -13,7 +13,7 @@
       <nav id="nav-menu-container">
         <ul class="nav-menu">
           <li class="menu-active"><a href="{{action('ViewController@home')}}" @yield('active-beranda')>Beranda</a></li>
-          <li><a href="{{action('ViewController@kegiatan')}}" @yield('active-kegiatan')>Kegiatan</a></li>
+          <li><a href="{{action('KegiatansController@getIndex')}}" @yield('active-kegiatan')>Kegiatan</a></li>
           <li><a href="{{action('InventarisController@getIndex')}}" @yield('active-inventaris')>Inventaris</a></li>
           <li class="menu-has-children">
             <a href="" @yield('active-anggota')>Anggota</a>
