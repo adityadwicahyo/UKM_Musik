@@ -16,12 +16,12 @@ class CreateKegiatansTable extends Migration
         Schema::create('kegiatans', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->string('Foto_Kegiatan');
+            $table->string('Foto_Kegiatan')->nullable();
             $table->string('Nama_Kegiatan', 100);
             $table->date('Tanggal_Kegiatan');
             $table->time('Waktu_Kegiatan');
-            $table->date('Batas_Tanggal_Kegiatan');
-            $table->time('Batas_Waktu_Kegiatan');
+            $table->date('Batas_Tanggal_Kegiatan')->nullable();
+            $table->time('Batas_Waktu_Kegiatan')->nullable();
             $table->string('Deskripsi_Kegiatan', 500);
             $table->string('Tipe_Kegiatan', 30);
         });

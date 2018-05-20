@@ -18,7 +18,7 @@
 
 	<div class="row">
 		<div class="col-md-5">
-			<img style="width: 400px" src="{{$kegiatans->Foto_Kegiatan}}">
+			<img style="width: 400px" src="{{url($kegiatans->Foto_Kegiatan)}}">
 		</div>
 		<div class="col-md-7">
 			<h1>{{$kegiatans->Nama_Kegiatan}}</h1>

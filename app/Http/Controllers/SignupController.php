@@ -29,7 +29,7 @@ class SignupController extends Controller
         else{
 
             //Encrypt password
-            $data['Password_User'] = bcrypt($data['password']);
+            $data['password'] = bcrypt($data['password']);
 
             //Upload Image
             $image = $request->file('Foto_User');
@@ -40,17 +40,18 @@ class SignupController extends Controller
 
             //Upload Document
             $ktm = $request->file('KTM_User');
-
             $input['ktmName'] = $data['NRP_User'] . '.' . $ktm->getClientOriginalExtension();
             $destinationPath = public_path('data\KTM_User');
             $ktm->move($destinationPath, $input['ktmName']);
             $data['KTM_User'] = $destinationPath . "\\" . $input['ktmName'];
+
+            $data['Level_User'] = 'User';
 
             User::create($data, [
                 'except' => '_token',
                 'except' => 'confirm'
             ]);
         }
-        return redirect('/login')->withErrors(array('Success' => 'Signup berhasil silahkan login'));
+        return redirect('/login')->withErrors(array('Success' => 'Success! Signup berhasil silahkan login'));
     }
 }

@@ -18,9 +18,10 @@ class CreateUsersTable extends Migration
             $table->timestamps();
             $table->string('Nama_User');
             $table->string('NRP_User');
-            $table->string('Password_User');
+            $table->string('password');
             $table->string('Foto_User');
             $table->string('KTM_User');
+            $table->string('Level_User');
         });
     }
 

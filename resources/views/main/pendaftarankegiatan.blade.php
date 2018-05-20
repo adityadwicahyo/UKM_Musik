@@ -12,10 +12,10 @@
 	<link rel="stylesheet" type="text/css" href="{{url('css/signup.css')}}">
 </head>
 <body>
-	<div class="container">
+	<div class="container" style="margin-top: 60px">
 		<div class="row">
 		<div class="col-md-6">
-			<img style="height: 620px" src="{{$kegiatans->Foto_Kegiatan}}">
+			<img style="height: 500px" src="{{$kegiatans->Foto_Kegiatan}}">
 		</div>
 		<div class="col-md-6">
 			<form action="{{action('KegiatansController@pendaftaranStore')}}" method="post" enctype="multipart/form-data">

@@ -13,7 +13,7 @@
 <div class="row">
 	<div class="col-md-6">
 		<div class="card" style="width: 30rem; margin-top: 10px">
-			<img class="card-img-top" style="height: 200px; object-fit: scale-down;" src="{{$inventaris->foto_inv}}" alt="Card image cap">
+			<img class="card-img-top" style="height: 200px; object-fit: scale-down;" src="{{url($inventaris->foto_inv)}}" alt="Card image cap">
 			<div class="card-body">
 				<h5 class="card-title" style="font-weight: bold">{{$inventaris->nama_inv}}</h5>
 				<p class="card-text" style="margin-bottom: 15px">{{$inventaris->deskripsi_inv}}</p>
@@ -31,7 +31,7 @@
 				<p style="color: red; float: right; margin-bottom: 0px; font-weight: bold">{{ $errors->first('Jumlah_Barang')}}</p>
 				@endif
 				<label for="nrp">Jumlah Barang:</label>
-				<input type="number" class="form-control" name="Jumlah_Barang" value="{{old('Jumlah_Barang')}}">
+				<input type="number" class="form-control" name="Jumlah_Barang" value="{{old('Jumlah_Barang')}}" min="1">
 
 				@if($errors->any('Tanggal_Kembali'))
 				<p style="color: red; float: right; margin-bottom: 0px; font-weight: bold">{{ $errors->first('Tanggal_Kembali')}}</p>
@@ -39,7 +39,7 @@
 				<label for="nrp">Tanggal Kembali:</label>
 				<input type="date" class="form-control" name="Tanggal_Kembali" value="{{old('Tanggal_Kembali')}}">
 				<input type="hidden" name="id" value="{{$inventaris->id}}">
-
+				<input type="hidden" name="NRP_Peminjam" value="{{Auth::user()->NRP_User}}">
 			<button type="submit">Pinjam</button>
 		</form>
 	</div>

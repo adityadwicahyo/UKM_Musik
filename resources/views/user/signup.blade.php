@@ -1,19 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Sign Up Form</title>
-	<link rel="stylesheet" href="css/normalize.css">
+	<title>SIMUSIK | Registrasi</title>
 	<link href='https://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" href="css/main.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link href="{{url('NEW/img/favicon.gif')}}" rel="icon">
 	<link rel="stylesheet" type="text/css" href="{{url('css/signup.css')}}">
 </head>
 <body>
 	<form action="{{action('SignupController@store')}}" method="post" enctype="multipart/form-data">
-		<h1>Sign Up</h1>
+		<h1>Registrasi</h1>
 		<fieldset>
 			<legend><span class="number">1</span>Your basic info</legend>
 			{{ csrf_field() }}

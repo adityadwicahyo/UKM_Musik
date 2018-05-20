@@ -30,7 +30,7 @@ class AnggotasController extends Controller
         }
         else{
             //Default status
-            $data['status_anggota'] = 'Unverified';
+            $data['status_anggota'] = 'Pendaftar';
 
             //Encrypt password
             // $data['password_anggota'] = bcrypt($data['password']);
@@ -38,21 +38,21 @@ class AnggotasController extends Controller
             //Upload Image
             $image = $request->file('foto_anggota');
             $input['imageName'] = $data['nrp_anggota'] . '.' . $image->getClientOriginalExtension();
-            $destinationPath = public_path('data\foto_anggota');
+            $destinationPath = public_path('data\Oprec'.'\\'.$data['nrp_anggota']);
             $image->move($destinationPath, $input['imageName']);
-            $data['foto_anggota'] = "data/foto_anggota/" . $input['imageName'];
+            $data['foto_anggota'] = 'data\Oprec'.'\\'.$data['nrp_anggota'].'\\'.$input['imageName'];
 
             //Upload Document
             $doc = $request->file('berkas_anggota');
 
             $input['docName'] = $data['nrp_anggota'] . '.' . $doc->getClientOriginalExtension();
-            $destinationPath = public_path('data\berkas_anggota');
+            $destinationPath = public_path('data\Oprec'.'\\'.$data['nrp_anggota']);
             $doc->move($destinationPath, $input['docName']);
-            $data['berkas_anggota'] = $destinationPath . "\\" . $input['docName'];
+            $data['berkas_anggota'] = 'data\Oprec'.'\\'.$data['nrp_anggota'].'\\'.$input['docName'];
 
             Anggotas::create($data, [
-                'except' => '_token',
-                'except' => 'confirm'
+                'except' => '_token'
+                // 'except' => 'confirm'
             ]);
         }
         return redirect('/oprec')->withErrors(array('Success' => 'Pendaftaran berhasil'));

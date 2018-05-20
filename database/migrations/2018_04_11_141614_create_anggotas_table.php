@@ -20,7 +20,7 @@ class CreateAnggotasTable extends Migration
             $table->string('nama_anggota');
             $table->string('email_anggota');
             $table->string('notelp_anggota');
-            $table->string('biodata_anggota');
+            $table->string('biodata_anggota')->nullable();
             $table->string('status_anggota');
             $table->string('berkas_anggota');
             $table->string('foto_anggota');

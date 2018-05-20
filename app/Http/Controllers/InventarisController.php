@@ -33,14 +33,19 @@ class InventarisController extends Controller
 		$inventaris = Inventaris::find($data['id']);
 
 		$validator = Validator::make($data, [
-			'Jumlah_Barang' => 'required|min:1',
-			'Tanggal_Kembali' => 'required',
+			'Jumlah_Barang' => 'required|integer|min:1',
+			'Tanggal_Kembali' => 'required'
 		]);
 
 		if ($validator->fails()) {
 			return redirect('/inventaris/pinjam/'.$data['id'])
 			->withErrors($validator)
 			->withInput();
+		}
+		elseif($data['Tanggal_Kembali'] < now()){
+			return redirect('/inventaris/pinjam/'.$data['id'])
+			->withErrors(array('Tanggal_Kembali' => 'Date must greater than now'))
+			->withInput();;
 		}
 		else{
 			if($inventaris->jumlah_inv < $data['Jumlah_Barang']){
@@ -51,8 +56,7 @@ class InventarisController extends Controller
 				$inventaris->save();
 				$data['Tanggal_Peminjaman'] = now()->format('Y-m-d');
 				$data['Nama_Barang'] = $inventaris->nama_inv;
-            // $data['NRP_Peminjam'] = 
-            // dd($data);
+
 				Peminjamans::create($data, [
 					'except' => '_token',
 				]);
