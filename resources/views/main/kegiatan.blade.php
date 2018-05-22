@@ -15,6 +15,7 @@
 </head>
 
 <div class="container">
+
 	@foreach($kegiatans->where('Tipe_Kegiatan', 'Rutin') as $event)
 	<div class="row">
 		<div class="col-md-12" style="box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); padding: 0 0 0 0">
@@ -52,7 +53,7 @@
 						<i class="far fa-clock"></i><p style="display: inline-block; padding-left: 10px">{{ Carbon\Carbon::parse($event->Batas_Waktu_Kegiatan)->format('H:i') }}</p>
 					</div>
 					<h2 class="card__title" style="padding-top: 45px"><a href="#">{{$event->Nama_Kegiatan}}</a></h2>
-					<p class="card__description">{{str_limit($event->Deskripsi_Kegiatan, 120, '...')}}</p>
+					<p class="card__description">{{str_limit($event->Deskripsi_Kegiatan, 170, '...')}}</p>
 				</div>
 
 				<footer class="card__footer">
@@ -64,6 +65,7 @@
 	</div>
 	<br>
 	@endforeach
+
 </div>
 <br>
 @endsection

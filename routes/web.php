@@ -16,6 +16,9 @@
 // });
 Route::get('/', 'HomeController@getIndex');
 
+Route::get('/editprofil', 'ProfilController@viewEditProfil');
+Route::post('/editprofil', 'ProfilController@updateProfil');
+
 Route::get('/blog/{id}', 'BlogController@getIndex');
 Route::get('/blog', 'BlogController@getFirstBlog');
 
@@ -27,6 +30,8 @@ Route::get('/kegiatan', 'KegiatansController@getIndex');
 Route::get('/kegiatan/{id}', 'KegiatansController@detailKegiatan');
 Route::get('/kegiatan/{id}/pendaftaran', 'KegiatansController@pendaftaranKegiatan');
 Route::post('/kegiatan/pendaftaran', 'KegiatansController@pendaftaranStore');
+Route::get('/kegiatanrutin', 'KegiatansController@getIndexRutin');
+Route::get('/kegiatanpendaftaran', 'KegiatansController@getIndexPendaftaran');
 
 Route::get('/pendaftaran', 'ViewController@anggota');
 
@@ -48,6 +53,8 @@ Route::post('/editkegiatan', 'AdminController@updateKegiatan');
 Route::get('/deletekegiatan/{id}', 'AdminController@deleteKegiatan');
 Route::get('/tambahkegiatan', 'AdminController@viewTambahKegiatan');
 Route::post('/tambahkegiatan', 'AdminController@storeKegiatan');
+Route::get('/pendaftarkegiatan/{id}', 'AdminController@getPendaftar');
+Route::get('/tolakpendaftar/{id}', 'AdminController@tolakPendaftar');
 
 Route::get('/admininventaris', 'AdminController@adminInventaris');
 Route::get('/tambahinventaris', 'AdminController@viewTambahInventaris');
@@ -55,6 +62,10 @@ Route::post('/tambahinventaris', 'AdminController@storeInventaris');
 Route::get('/editinventaris/{id}', 'AdminController@viewEditInventaris');
 Route::post('/editinventaris', 'AdminController@updateInventaris');
 Route::get('/deleteinventaris/{id}', 'AdminController@deleteInventaris');
+Route::get('/tolakpeminjaman/{id}', 'AdminController@tolakPeminjaman');
+Route::get('/setujupeminjaman/{id}', 'AdminController@setujuPeminjaman');
+Route::get('/ambilpeminjaman/{id}', 'AdminController@ambilPeminjaman');
+Route::get('/kembalipeminjaman/{id}', 'AdminController@kembaliPeminjaman');
 
 Route::get('/adminblog', 'AdminController@adminBlog');
 Route::get('/tambahblog', 'AdminController@viewTambahBlog');

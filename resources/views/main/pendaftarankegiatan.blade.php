@@ -15,7 +15,7 @@
 	<div class="container" style="margin-top: 60px">
 		<div class="row">
 		<div class="col-md-6">
-			<img style="height: 500px" src="{{$kegiatans->Foto_Kegiatan}}">
+			<img style="height: 500px" src="{{url($kegiatans->Foto_Kegiatan)}}">
 		</div>
 		<div class="col-md-6">
 			<form action="{{action('KegiatansController@pendaftaranStore')}}" method="post" enctype="multipart/form-data">
@@ -40,7 +40,6 @@
 			<input type="file" name="Berkas_Pendaftar" value="{{old('Berkas_Pendaftar')}}">
 			<input type="hidden" name="id" value="{{$kegiatans->id}}">
 		</fieldset>
-
 		<button type="submit">Daftar</button>
 	</form>
 		</div>

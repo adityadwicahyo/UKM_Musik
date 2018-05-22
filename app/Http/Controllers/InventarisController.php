@@ -57,11 +57,15 @@ class InventarisController extends Controller
 				$data['Tanggal_Peminjaman'] = now()->format('Y-m-d');
 				$data['Nama_Barang'] = $inventaris->nama_inv;
 
+				$data['id_barang'] = $inventaris->id;
+				$data['Status_Peminjaman'] = 'Tunggu';
+
 				Peminjamans::create($data, [
 					'except' => '_token',
 				]);
 			}
 		}
+
 		return redirect('/inventaris')->withErrors(array('Success' => 'Peminjaman inventaris berhasil'));
 	}
 }

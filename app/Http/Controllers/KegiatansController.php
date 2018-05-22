@@ -16,6 +16,21 @@ class KegiatansController extends Controller
 		return view('main.kegiatan', ['kegiatans' => $kegiatans]);
 	}
 
+	public function getIndexRutin(){
+		$kegiatans = Kegiatans::all();
+		return view('main.kegiatanrutin', ['kegiatans' => $kegiatans]);
+	}
+
+	public function getIndexPendaftaran(){
+		$kegiatans = Kegiatans::all();
+		return view('main.kegiatanpendaftaran', ['kegiatans' => $kegiatans]);
+	}
+
+	public function getPendaftar($id){
+		$pendaftaran = Pendaftarans::find($id);
+		return view('main.pendaftarkegiatan', ['pendaftaran' => $pendaftaran]);
+	}
+
 	public function detailKegiatan($id){
 		$kegiatans = Kegiatans::find($id);
 		return view('main.detailkegiatan', ['kegiatans' => $kegiatans]);

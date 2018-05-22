@@ -7,6 +7,9 @@ use App\Kegiatans;
 use App\Inventaris;
 use App\Informasi;
 use App\Anggotas;
+use App\Peminjamans;
+use App\Pendaftarans;
+use App\User;
 use Validator;
 
 class AdminController extends Controller
@@ -18,7 +21,8 @@ class AdminController extends Controller
 
 	public function adminInventaris(){
 		$inventaris = Inventaris::all();
-		return view('admin.admin_inventaris', ['inventaris' => $inventaris]);
+		$peminjamans = Peminjamans::all();
+		return view('admin.admin_inventaris', ['inventaris' => $inventaris], ['peminjamans' => $peminjamans]);
 	}
 
 	public function adminBlog(){
@@ -64,6 +68,20 @@ class AdminController extends Controller
 	public function viewTambahBlog(){
 		
 		return view('admin.admin_tambahblog');
+	}
+
+	public function getPendaftar($id){
+		$pendaftaran = Pendaftarans::all()->where('Id_Kegiatan', $id);
+		$user = User::all();
+		$kegiatan = Kegiatans::find($id);
+		return view('admin.admin_pendaftarkegiatan', ['pendaftaran' => $pendaftaran], ['user' => $user], ['kegiatan' => $kegiatan]);
+	}
+
+	public function tolakPendaftar($id){
+		$pendaftaran = Pendaftarans::find($id);
+		$cek = $pendaftaran->Id_Kegiatan;
+		$pendaftaran->delete();
+		return redirect('/pendaftarkegiatan/'.$cek);
 	}
 
 	public function storeKegiatan(Request $request){
@@ -291,6 +309,38 @@ class AdminController extends Controller
 		$anggota = Anggotas::find($id);
 		$anggota->delete();
 		return redirect('/adminanggota')->withErrors(array('Tolak' => 'Pendaftar telah ditolak'));	
+	}
+
+	public function tolakPeminjaman($id){
+		$peminjaman = Peminjamans::find($id);
+		$inventaris = Inventaris::find($peminjaman->id_barang);
+		$inventaris->jumlah_inv = $inventaris->jumlah_inv + $peminjaman->Jumlah_Barang;
+		$inventaris->save();
+		$peminjaman->delete();
+		return redirect('/admininventaris')->withErrors(array('TolakPeminjaman' => 'Peminjaman telah ditolak'));	
+	}
+
+	public function setujuPeminjaman($id){
+		$peminjaman = Peminjamans::find($id);
+		$peminjaman->Status_Peminjaman = 'Setuju';
+		$peminjaman->save();
+		return redirect('/admininventaris')->withErrors(array('SetujuPeminjaman' => 'Peminjaman telah disetujui'));	
+	}
+
+	public function ambilPeminjaman($id){
+		$peminjaman = Peminjamans::find($id);
+		$peminjaman->Status_Peminjaman = 'Diambil';
+		$peminjaman->save();
+		return redirect('/admininventaris')->withErrors(array('AmbilPeminjaman' => 'Peminjaman telah diambil'));	
+	}
+
+	public function kembaliPeminjaman($id){
+		$peminjaman = Peminjamans::find($id);
+		$inventaris = Inventaris::find($peminjaman->id_barang);
+		$inventaris->jumlah_inv = $inventaris->jumlah_inv + $peminjaman->Jumlah_Barang;
+		$inventaris->save();
+		$peminjaman->delete();
+		return redirect('/admininventaris')->withErrors(array('KembaliPeminjaman' => 'Peminjaman telah dikembalikan'));	
 	}
 
 	public function hapusAnggota($id){

@@ -31,7 +31,7 @@
       <header>
         <h1>{{$artikel->Judul_Informasi}}</h1>
         <p class="date" style="margin-bottom: 10px">
-          Oleh <a href="">Aditya Dwicahyo</a> 
+          Oleh <a href="">{{$artikel->Poster_Informasi}}</a> 
           | Posted <a href="">{{ Carbon\Carbon::parse($artikel->Tanggal_Informasi)->format('d F Y') }}</a>
         </p>
       </header>

@@ -61,7 +61,7 @@
 
                   <tr>
                     <td class="text-center">
-                      <img class="center" style="height: 20%; width: auto; margin: 0" src="{{url($anggota->foto_anggota)}}">
+                      <img class="center" style="height: 110px; width: auto; margin: 0" src="{{url($anggota->foto_anggota)}}">
                     </td>
                     <td class="align-middle text-center">{{$anggota->nama_anggota}}</td>
                     <td class="align-middle text-center">{{$anggota->nrp_anggota}}</td>
@@ -143,7 +143,7 @@
 
                   <tr>
                     <td class="text-center">
-                      <img class="center" style="height: 20%; width: auto; margin: 0" src="{{url($anggota->foto_anggota)}}">
+                      <img class="center" style="height: 110px; width: auto; margin: 0" src="{{url($anggota->foto_anggota)}}">
                     </td>
                     <td class="align-middle text-center">{{$anggota->nama_anggota}}</td>
                     <td class="align-middle text-center">{{$anggota->nrp_anggota}}</td>

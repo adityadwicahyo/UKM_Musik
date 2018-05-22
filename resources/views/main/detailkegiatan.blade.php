@@ -37,7 +37,9 @@
 			<p>
 				{{$kegiatans->Deskripsi_Kegiatan}}
 			</p>
+			@if(Auth::user()->Level_User == 'User')
 			<a class="btn btn-success" href="/kegiatan/{{$kegiatans->id}}/pendaftaran">Daftar</a>
+			@endif
 		</div>
 	</div>
 </div>

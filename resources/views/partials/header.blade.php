@@ -26,10 +26,19 @@
       <nav id="nav-menu-container">
         <ul class="nav-menu">
           <li class="menu-active"><a href="{{action('HomeController@getIndex')}}" @yield('active-beranda')>Beranda</a></li>
-          <li class="menu-active"><a href="/blog" @yield('active-blog')>Blog</a></li>
-          <li><a href="{{action('KegiatansController@getIndex')}}" @yield('active-kegiatan')>Kegiatan</a></li>
+          {{--<li class="menu-active"><a href="/blog" @yield('active-blog')>Blog</a></li>--}}
+          {{--<li><a href="{{action('KegiatansController@getIndex')}}" @yield('active-kegiatan')>Kegiatan</a></li>--}}
+          <li class="menu-has-children">
+            <a href="" @yield('active-kegiatan')>Kegiatan</a>
+            <ul>
+              <li><a href="{{action('KegiatansController@getIndexRutin')}}">Rutin</a></li>
+              <li><a href="{{action('KegiatansController@getIndexPendaftaran')}}">Event</a></li>
+            </ul>
+          </li>
+
           <li><a href="{{action('InventarisController@getIndex')}}" @yield('active-inventaris')>Inventaris</a></li>
 
+          @if(Auth::user()->Level_User == 'User')
           <li class="menu-has-children">
             <a href="" @yield('active-anggota')>Anggota</a>
             <ul>
@@ -37,12 +46,13 @@
               <li><a href="{{action('AnggotasController@organisasi')}}">Organisasi</a></li>
             </ul>
           </li>
+          @endif
 
           @if(Auth::user()->Level_User == 'Admin')
           <li class="menu-has-children">
             <a href="" @yield('active-admin')>Kelola</a>
             <ul>
-              <li><a href="{{action('AdminController@adminBlog')}}">Blog</a></li>
+              <li><a href="{{action('AdminController@adminBlog')}}">Informasi</a></li>
               <li><a href="{{action('AdminController@adminKegiatan')}}">Kegiatan</a></li>
               <li><a href="{{action('AdminController@adminInventaris')}}">Inventaris</a></li>
               <li><a href="{{action('AdminController@adminAnggota')}}">Anggota</a></li>
@@ -58,7 +68,7 @@
             </a>
             <ul>
               <li><a href="/logout">Logout</a></li>
-              <li><a href="#">Setting</a></li>
+              <li><a href="/editprofil">Setting</a></li>
             </ul>
             @else
             <a href=""><i class="fas fa-user-circle"></i> Akun</a>

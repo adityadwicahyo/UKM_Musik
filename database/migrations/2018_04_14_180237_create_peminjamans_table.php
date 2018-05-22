@@ -16,6 +16,7 @@ class CreatePeminjamansTable extends Migration
         Schema::create('peminjamans', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
+            $table->integer('id_barang');
             $table->string('NRP_Peminjam', 14);
             $table->string('Nama_Barang', 200);
             $table->integer('Jumlah_Barang');

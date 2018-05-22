@@ -21,6 +21,7 @@ class CreateInformasisTable extends Migration
             $table->longText('Isi_Informasi');
             $table->string('Gambar_Informasi');
             $table->string('Singkat_Informasi');
+            $table->string('Poster_Informasi');
         });
     }
 
