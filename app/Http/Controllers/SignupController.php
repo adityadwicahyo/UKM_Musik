@@ -14,12 +14,12 @@ class SignupController extends Controller
         $data = $request->all();
 
         $validator = Validator::make($data, [
-            'NRP_Mahasiswa' => 'required|min:14|max:14|unique:users',
+            'NRP_Mahasiswa' => 'required|min:14|max:14',
             'Nama_Mahasiswa' => 'required',
             'password' => 'required|confirmed',
             'password_confirmation' => 'required',
             'Foto_Mahasiswa' => 'required',
-            'Email_Mahasiswa' => 'required|unique:users',
+            'Email_Mahasiswa' => 'required',
             'No_telp_Mahasiswa' => 'required',
             'Berkas_Mahasiswa' => 'required'
         ]);
