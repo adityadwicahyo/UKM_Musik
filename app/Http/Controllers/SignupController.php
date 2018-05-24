@@ -6,6 +6,7 @@ use Validator;
 
 use Illuminate\Http\Request;
 use App\User;
+// use App\Anggotas;
 
 class SignupController extends Controller
 {
@@ -13,12 +14,14 @@ class SignupController extends Controller
         $data = $request->all();
 
         $validator = Validator::make($data, [
-            'NRP_User' => 'required|min:14|max:14|unique:users',
-            'Nama_User' => 'required',
+            'NRP_Mahasiswa' => 'required|min:14|max:14|unique:users',
+            'Nama_Mahasiswa' => 'required',
             'password' => 'required|confirmed',
             'password_confirmation' => 'required',
-            'KTM_User' => 'required',
-            'Foto_User' => 'required'
+            'Foto_Mahasiswa' => 'required',
+            'Email_Mahasiswa' => 'required|unique:users',
+            'No_telp_Mahasiswa' => 'required',
+            'Berkas_Mahasiswa' => 'required'
         ]);
 
         if ($validator->fails()) {
@@ -27,31 +30,31 @@ class SignupController extends Controller
             ->withInput();
         }
         else{
-
             //Encrypt password
             $data['password'] = bcrypt($data['password']);
 
             //Upload Image
-            $image = $request->file('Foto_User');
-            $input['imageName'] = $data['NRP_User'] . '.' . $image->getClientOriginalExtension();
-            $destinationPath = public_path('data\Foto_User');
+            $image = $request->file('Foto_Mahasiswa');
+            $input['imageName'] = $data['NRP_Mahasiswa'] . '.' . $image->getClientOriginalExtension();
+            $destinationPath = public_path('data\Mahasiswa'.'\\'.$data['NRP_Mahasiswa']);
             $image->move($destinationPath, $input['imageName']);
-            $data['Foto_User'] = "data/Foto_User/" . $input['imageName'];
+            $data['Foto_Mahasiswa'] = "data/Mahasiswa/".$data['NRP_Mahasiswa']."/". $input['imageName'];
 
             //Upload Document
-            $ktm = $request->file('KTM_User');
-            $input['ktmName'] = $data['NRP_User'] . '.' . $ktm->getClientOriginalExtension();
-            $destinationPath = public_path('data\KTM_User');
-            $ktm->move($destinationPath, $input['ktmName']);
-            $data['KTM_User'] = $destinationPath . "\\" . $input['ktmName'];
+            $berkas = $request->file('Berkas_Mahasiswa');
+            $input['berkasName'] = $data['NRP_Mahasiswa'] . '.' . $berkas->getClientOriginalExtension();
+            $destinationPath = public_path('data\Mahasiswa'.'\\'.$data['NRP_Mahasiswa']);
+            $berkas->move($destinationPath, $input['berkasName']);
+            $data['Berkas_Mahasiswa'] = "data/Mahasiswa/".$data['NRP_Mahasiswa']."/". $input['berkasName'];
 
-            $data['Level_User'] = 'User';
+            //Status
+            $data['Status_Mahasiswa'] = 'Unverified';
 
             User::create($data, [
                 'except' => '_token',
                 'except' => 'confirm'
             ]);
         }
-        return redirect('/login')->withErrors(array('Success' => 'Success! Signup berhasil silahkan login'));
+        return redirect('/login')->withErrors(array('Success' => 'SignUp berhasil, tunggu sms pemberitahuan agar dapat login'));
     }
 }

@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Kegiatans;
 use App\Inventaris;
 use App\Informasi;
-use App\Anggotas;
+use App\Transaksi_peminjaman;
 use App\Peminjamans;
 use App\Pendaftarans;
 use App\User;
@@ -21,8 +21,9 @@ class AdminController extends Controller
 
 	public function adminInventaris(){
 		$inventaris = Inventaris::all();
-		$peminjamans = Peminjamans::all();
-		return view('admin.admin_inventaris', ['inventaris' => $inventaris], ['peminjamans' => $peminjamans]);
+		$peminjamans = Peminjamans::all()->where('Status_Peminjaman', 'Tunggu');
+		$transaksi = Transaksi_peminjaman::all();
+		return view('admin.admin_inventaris', ['inventaris' => $inventaris], ['peminjamans' => $peminjamans], ['transaksi' => $transaksi]);
 	}
 
 	public function adminBlog(){
@@ -31,7 +32,7 @@ class AdminController extends Controller
 	}
 
 	public function adminAnggota(){
-		$anggotas = Anggotas::all();
+		$anggotas = User::all();
 		return view('admin.admin_anggota', ['anggotas' => $anggotas]);
 	}
 
@@ -51,13 +52,18 @@ class AdminController extends Controller
 	}
 
 	public function viewEditAnggota($id){
-		$anggota = Anggotas::find($id);
+		$anggota = User::find($id);
 		return view('admin.admin_editanggota', ['anggota' => $anggota]);
 	}
 
-	public function viewTambahKegiatan(){
+	public function viewTambahKegiatanRutin(){
 
-		return view('admin.admin_tambahkegiatan');
+		return view('admin.admin_tambahkegiatanrutin');
+	}
+
+	public function viewTambahKegiatanPendaftaran(){
+
+		return view('admin.admin_tambahkegiatanpendaftaran');
 	}
 
 	public function viewTambahInventaris(){
@@ -71,7 +77,7 @@ class AdminController extends Controller
 	}
 
 	public function getPendaftar($id){
-		$pendaftaran = Pendaftarans::all()->where('Id_Kegiatan', $id);
+		$pendaftaran = Pendaftarans::all()->where('ID_Kegiatan', $id);
 		$user = User::all();
 		$kegiatan = Kegiatans::find($id);
 		return view('admin.admin_pendaftarkegiatan', ['pendaftaran' => $pendaftaran], ['user' => $user], ['kegiatan' => $kegiatan]);
@@ -79,61 +85,63 @@ class AdminController extends Controller
 
 	public function tolakPendaftar($id){
 		$pendaftaran = Pendaftarans::find($id);
-		$cek = $pendaftaran->Id_Kegiatan;
+		$cek = $pendaftaran->ID_Kegiatan;
 		$pendaftaran->delete();
 		return redirect('/pendaftarkegiatan/'.$cek);
 	}
 
-	public function storeKegiatan(Request $request){
+	public function storeKegiatanRutin(Request $request){
 		$data = $request->all();
-
-		if($data['Tipe_Kegiatan'] == 'Rutin'){
-			$validator = Validator::make($data, [
-				'Nama_Kegiatan' => 'required',
-				'Tanggal_Kegiatan' => 'required',
-				'Waktu_Kegiatan' => 'required',
-				'Deskripsi_Kegiatan' => 'required',
-				'Tipe_Kegiatan' => 'required'
-			]);
-		}
-		elseif($data['Tipe_Kegiatan'] == 'Pendaftaran'){
-			$validator = Validator::make($data, [
-				'Nama_Kegiatan' => 'required',
-				'Foto_Kegiatan' => 'required',
-				'Tanggal_Kegiatan' => 'required',
-				'Waktu_Kegiatan' => 'required',
-				'Batas_Tanggal_Kegiatan' => 'required',
-				'Batas_Waktu_Kegiatan' => 'required',
-				'Deskripsi_Kegiatan' => 'required',
-				'Tipe_Kegiatan' => 'required'
-			]);
-		}
-		else{
-			$validator = Validator::make($data, [
-				'Nama_Kegiatan' => 'required',
-				'Foto_Kegiatan' => 'required',
-				'Tanggal_Kegiatan' => 'required',
-				'Waktu_Kegiatan' => 'required',
-				'Batas_Tanggal_Kegiatan' => 'required',
-				'Batas_Waktu_Kegiatan' => 'required',
-				'Deskripsi_Kegiatan' => 'required',
-				'Tipe_Kegiatan' => 'required'
-			]);
-		}
+ 		// dd($data);
+		$validator = Validator::make($data, [
+			'Nama_Kegiatan' => 'required',
+			'Tanggal_Kegiatan' => 'required',
+			'Waktu_Kegiatan' => 'required',
+			'Deskripsi_Kegiatan' => 'required'
+		]);
 
 		if ($validator->fails()) {
-			return redirect('/tambahkegiatan')
+			return redirect('/tambahkegiatanrutin')
 			->withErrors($validator)
 			->withInput();
 		}
 		else{
-			if($data['Tipe_Kegiatan'] == 'Pendaftaran'){
-				$image = $request->file('Foto_Kegiatan');
-				$input['imageName'] = $data['Nama_Kegiatan'] . '.' . $image->getClientOriginalExtension();
-				$destinationPath = public_path('data\Kegiatan');
-				$image->move($destinationPath, $input['imageName']);
-				$data['Foto_Kegiatan'] = "data/Kegiatan/" . $input['imageName'];
-			}
+			$data['Tipe_Kegiatan'] = 'Rutin';
+			
+			Kegiatans::create($data, [
+				'except' => '_token',
+			]);
+		}
+		return redirect('/adminkegiatan')->withErrors(array('Success' => 'Kegiatan berhasil ditambahkan'));
+	}
+
+	public function storeKegiatanPendaftaran(Request $request){
+		$data = $request->all();
+
+		$validator = Validator::make($data, [
+			'Nama_Kegiatan' => 'required',
+			'Foto_Kegiatan' => 'required',
+			'Tanggal_Kegiatan' => 'required',
+			'Waktu_Kegiatan' => 'required',
+			'Batas_Tanggal_Kegiatan' => 'required',
+			'Batas_Waktu_Kegiatan' => 'required',
+			'Deskripsi_Kegiatan' => 'required'
+		]);
+
+		if ($validator->fails()) {
+			return redirect('/tambahkegiatanpendaftaran')
+			->withErrors($validator)
+			->withInput();
+		}
+		else{
+			$image = $request->file('Foto_Kegiatan');
+			$input['imageName'] = $data['Nama_Kegiatan'] . '.' . $image->getClientOriginalExtension();
+			$destinationPath = public_path('data\Kegiatan');
+			$image->move($destinationPath, $input['imageName']);
+			$data['Foto_Kegiatan'] = "data/Kegiatan/" . $input['imageName'];
+
+			$data['Tipe_Kegiatan'] = 'Pendaftaran';
+
 			Kegiatans::create($data, [
 				'except' => '_token',
 			]);
@@ -145,10 +153,10 @@ class AdminController extends Controller
 		$data = $request->all();
 
 		$validator = Validator::make($data, [
-			'nama_inv' => 'required',
-			'foto_inv' => 'required',
-			'deskripsi_inv' => 'required',
-			'jumlah_inv' => 'required'
+			'Nama_Inventaris' => 'required',
+			'Foto_Inventaris' => 'required',
+			'Deskripsi_Inventaris' => 'required',
+			'Jumlah_Inventaris' => 'required'
 		]);
 
 		if ($validator->fails()) {
@@ -156,11 +164,11 @@ class AdminController extends Controller
 			->withErrors($validator)
 			->withInput();
 		}
-		$image = $request->file('foto_inv');
-		$input['imageName'] = $data['nama_inv'] . '.' . $image->getClientOriginalExtension();
+		$image = $request->file('Foto_Inventaris');
+		$input['imageName'] = $data['Nama_Inventaris'] . '.' . $image->getClientOriginalExtension();
 		$destinationPath = public_path('data\Inventaris');
 		$image->move($destinationPath, $input['imageName']);
-		$data['foto_inv'] = "data/Inventaris/" . $input['imageName'];
+		$data['Foto_Inventaris'] = "data/Inventaris/" . $input['imageName'];
 
 		Inventaris::create($data, [
 			'except' => '_token',
@@ -199,7 +207,7 @@ class AdminController extends Controller
 
 	public function updateKegiatan(Request $request){
 		$data = $request->all();
-		$kegiatans = Kegiatans::find($data['id']);
+		$kegiatans = Kegiatans::find($data['ID_Kegiatan']);
 
 		if($kegiatans->Tipe_Kegiatan == 'Pendaftaran'){
 			$validator = Validator::make($data, [
@@ -225,20 +233,20 @@ class AdminController extends Controller
 
 	public function updateInventaris(Request $request){
 		$data = $request->all();
-		$inventaris = Inventaris::find($data['id']);
+		$inventaris = Inventaris::find($data['ID_Inventaris']);
 
 		$validator = Validator::make($data, [
-			'foto_inv' => 'required'
+			'Foto_Inventaris' => 'required'
 		]);
 
 		if ($validator->fails()) {
 		}
 		else{
-			$image = $request->file('foto_inv');
-			$input['imageName'] = $data['nama_inv'] . '.' . $image->getClientOriginalExtension();
+			$image = $request->file('Foto_Inventaris');
+			$input['imageName'] = $data['Nama_Inventaris'] . '.' . $image->getClientOriginalExtension();
 			$destinationPath = public_path('data\Inventaris');
 			$image->move($destinationPath, $input['imageName']);
-			$data['foto_inv'] = "data/Inventaris/" . $input['imageName'];
+			$data['Foto_Inventaris'] = "data/Inventaris/" . $input['imageName'];
 		}
 
 		$inventaris->fill($data);
@@ -249,7 +257,7 @@ class AdminController extends Controller
 
 	public function updateBlog(Request $request){
 		$data = $request->all();
-		$informasi = Informasi::find($data['id']);
+		$informasi = Informasi::find($data['ID_Informasi']);
 
 		$validator = Validator::make($data, [
 			'Gambar_Informasi' => 'required'
@@ -274,20 +282,21 @@ class AdminController extends Controller
 	public function updateAnggota(Request $request){
 		$data = $request->all();
 
-		$anggota = Anggotas::find($data['id']);
+		$anggota = User::find($data['ID_Mahasiswa']);
 
 		$validator = Validator::make($data, [
-			'foto_anggota' => 'required'
+			'Foto_Mahasiswa' => 'required'
 		]);
 
 		if ($validator->fails()) {
 		}
 		else{
-			$image = $request->file('foto_anggota');
-            $input['imageName'] = $data['nrp_anggota'] . '.' . $image->getClientOriginalExtension();
-            $destinationPath = public_path('data\Oprec'.'\\'.$data['nrp_anggota']);
-            $image->move($destinationPath, $input['imageName']);
-            $data['foto_anggota'] = 'data\Oprec'.'\\'.$data['nrp_anggota'].'\\'.$input['imageName'];
+			//Upload Image
+			$image = $request->file('Foto_Mahasiswa');
+			$input['imageName'] = $data['NRP_Mahasiswa'] . '.' . $image->getClientOriginalExtension();
+			$destinationPath = public_path('data\Mahasiswa'.'\\'.$data['NRP_Mahasiswa']);
+			$image->move($destinationPath, $input['imageName']);
+			$data['Foto_Mahasiswa'] = "data/Mahasiswa/".$data['NRP_Mahasiswa']."/". $input['imageName'];
 		}
 
 		$anggota->fill($data);
@@ -297,24 +306,33 @@ class AdminController extends Controller
 	}
 
 	public function terimaAnggota($id){
-		$anggota = Anggotas::find($id);
+		$anggota = User::find($id);
 
-		$anggota->status_anggota = 'Anggota';
+		$anggota->Status_Mahasiswa = 'Anggota';
 		$anggota->save();
 
 		return redirect('/adminanggota')->withErrors(array('Success' => 'Pendaftar berhasil disetujui dan resmi menjadi anggota'));
 	}
 
+	public function setujuAkun($id){
+		$anggota = User::find($id);
+
+		$anggota->Status_Mahasiswa = 'Verified';
+		$anggota->save();
+
+		return redirect('/adminanggota')->withErrors(array('Success' => 'Mahasiswa berhasil terverifikasi'));
+	}
+
 	public function tolakAnggota($id){
-		$anggota = Anggotas::find($id);
+		$anggota = User::find($id);
 		$anggota->delete();
 		return redirect('/adminanggota')->withErrors(array('Tolak' => 'Pendaftar telah ditolak'));	
 	}
 
 	public function tolakPeminjaman($id){
 		$peminjaman = Peminjamans::find($id);
-		$inventaris = Inventaris::find($peminjaman->id_barang);
-		$inventaris->jumlah_inv = $inventaris->jumlah_inv + $peminjaman->Jumlah_Barang;
+		$inventaris = Inventaris::find($peminjaman->ID_Barang);
+		$inventaris->Jumlah_Inventaris = $inventaris->Jumlah_Inventaris + $peminjaman->Jumlah_Barang;
 		$inventaris->save();
 		$peminjaman->delete();
 		return redirect('/admininventaris')->withErrors(array('TolakPeminjaman' => 'Peminjaman telah ditolak'));	
@@ -336,15 +354,15 @@ class AdminController extends Controller
 
 	public function kembaliPeminjaman($id){
 		$peminjaman = Peminjamans::find($id);
-		$inventaris = Inventaris::find($peminjaman->id_barang);
-		$inventaris->jumlah_inv = $inventaris->jumlah_inv + $peminjaman->Jumlah_Barang;
+		$inventaris = Inventaris::find($peminjaman->ID_Barang);
+		$inventaris->Jumlah_Inventaris = $inventaris->Jumlah_Inventaris + $peminjaman->Jumlah_Barang;
 		$inventaris->save();
 		$peminjaman->delete();
 		return redirect('/admininventaris')->withErrors(array('KembaliPeminjaman' => 'Peminjaman telah dikembalikan'));	
 	}
 
 	public function hapusAnggota($id){
-		$anggota = Anggotas::find($id);
+		$anggota = User::find($id);
 		$anggota->delete();
 		return redirect('/adminanggota')->withErrors(array('Hapus' => 'Anggota telah dihapus'));	
 	}

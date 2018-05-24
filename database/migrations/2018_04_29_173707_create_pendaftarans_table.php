@@ -14,12 +14,12 @@ class CreatePendaftaransTable extends Migration
     public function up()
     {
         Schema::create('pendaftarans', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('ID_Pendaftaran');
             $table->timestamps();
-            $table->integer('Id_Kegiatan');
-            $table->string('NRP_Pendaftar', 14);
-            $table->string('Berkas_Pendaftar');
-            $table->string('Tipe_Pendaftar')->nullable();
+            $table->integer('ID_Kegiatan');
+            $table->integer('ID_Mahasiswa');
+            // $table->string('NRP_Pendaftar', 20);
+            $table->longText('Berkas_Pendaftar');
         });
     }
 

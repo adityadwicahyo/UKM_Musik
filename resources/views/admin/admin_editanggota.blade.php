@@ -16,69 +16,69 @@
 		<legend><span class="number">1</span>Basic info</legend>
 		{{ csrf_field() }}
 
-		@if($errors->any('nama_anggota'))
-		<p style="color: red; float: right; margin-bottom: 0px; font-weight: bold">{{ $errors->first('nama_anggota')}}</p>
+		@if($errors->any('Nama_Mahasiswa'))
+		<p style="color: red; float: right; margin-bottom: 0px; font-weight: bold">{{ $errors->first('Nama_Mahasiswa')}}</p>
 		@endif
 		<label for="nama">Nama:</label>
-		<input type="text" class="form-control" name="nama_anggota" value="{{$anggota->nama_anggota}}">
+		<input type="text" class="form-control" name="Nama_Mahasiswa" value="{{$anggota->Nama_Mahasiswa}}">
 
-		@if($errors->any('nrp_anggota'))
-		<p style="color: red; float: right; margin-bottom: 0px; font-weight: bold">{{ $errors->first('nrp_anggota')}}</p>
+		@if($errors->any('NRP_Mahasiswa'))
+		<p style="color: red; float: right; margin-bottom: 0px; font-weight: bold">{{ $errors->first('NRP_Mahasiswa')}}</p>
 		@endif
 		<label for="nrp">NRP:</label>
-		<input type="text" class="form-control" name="nrp_anggota" value="{{$anggota->nrp_anggota}}">
+		<input type="text" class="form-control" name="NRP_Mahasiswa" value="{{$anggota->NRP_Mahasiswa}}">
 
-		@if($errors->any('email_anggota'))
-		<p style="color: red; float: right; margin-bottom: 0px; font-weight: bold">{{ $errors->first('email_anggota')}}</p>
+		@if($errors->any('Email_Mahasiswa'))
+		<p style="color: red; float: right; margin-bottom: 0px; font-weight: bold">{{ $errors->first('Email_Mahasiswa')}}</p>
 		@endif
 		<label for="email">Email:</label>
-		<input type="email" class="form-control" name="email_anggota" value="{{$anggota->email_anggota}}">
+		<input type="email" class="form-control" name="Email_Mahasiswa" value="{{$anggota->Email_Mahasiswa}}">
 
 
-		@if($errors->any('notelp_anggota'))
-		<p style="color: red; float: right; margin-bottom: 0px; font-weight: bold">{{ $errors->first('notelp_anggota')}}</p>
+		@if($errors->any('No_telp_Mahasiswa'))
+		<p style="color: red; float: right; margin-bottom: 0px; font-weight: bold">{{ $errors->first('No_telp_Mahasiswa')}}</p>
 		@endif
 		<label for="number"> Telepon:</label>
-		<input type="text" class="form-control" name="notelp_anggota" value="{{$anggota->notelp_anggota}}">
+		<input type="text" class="form-control" name="No_telp_Mahasiswa" value="{{$anggota->No_telp_Mahasiswa}}">
 
 		<legend><span class="number">2</span>Profile</legend>
 
-		@if($errors->any('status_anggota'))
-		<p style="color: red; float: right; margin-bottom: 0px; font-weight: bold">{{ $errors->first('status_anggota')}}</p>
+		@if($errors->any('Status_Mahasiswa'))
+		<p style="color: red; float: right; margin-bottom: 0px; font-weight: bold">{{ $errors->first('Status_Mahasiswa')}}</p>
 		@endif
-		<label for="status_anggota">Status:</label>
+		<label for="Status_Mahasiswa">Status:</label>
 		
 		<div class="radio">
-			<label><input type="radio" name="status_anggota" value="Ketua" 
-				@if($anggota->status_anggota == 'Ketua')
+			<label><input type="radio" name="Status_Mahasiswa" value="Ketua" 
+				@if($anggota->Status_Mahasiswa == 'Ketua')
 					checked
 				@endif 
 			>Ketua</label>
 		</div>
 		<div class="radio">
-			<label><input type="radio" name="status_anggota" value="Wakil Ketua" 
-				@if($anggota->status_anggota == 'Wakil Ketua')
+			<label><input type="radio" name="Status_Mahasiswa" value="Wakil Ketua" 
+				@if($anggota->Status_Mahasiswa == 'Wakil Ketua')
 					checked
 				@endif 
 			>Wakil Ketua</label>
 		</div>
 		<div class="radio">
-			<label><input type="radio" name="status_anggota" value="Sekretaris" 
-				@if($anggota->status_anggota == 'Sekretaris')
+			<label><input type="radio" name="Status_Mahasiswa" value="Sekretaris" 
+				@if($anggota->Status_Mahasiswa == 'Sekretaris')
 					checked
 				@endif 
 			>Sekretaris</label>
 		</div>
 		<div class="radio">
-			<label><input type="radio" name="status_anggota" value="Bendahara" 
-				@if($anggota->status_anggota == 'Bendahara')
+			<label><input type="radio" name="Status_Mahasiswa" value="Bendahara" 
+				@if($anggota->Status_Mahasiswa == 'Bendahara')
 					checked
 				@endif 
 			>Bendahara</label>
 		</div>
 		<div class="radio">
-			<label><input type="radio" name="status_anggota" value="Anggota" 
-				@if($anggota->status_anggota == 'Anggota')
+			<label><input type="radio" name="Status_Mahasiswa" value="Anggota" 
+				@if($anggota->Status_Mahasiswa == 'Anggota')
 					checked
 				@endif 
 			>Anggota</label>
@@ -86,16 +86,16 @@
 		
 		<br>	
 		<label for="bio">Biodata:</label>
-		<textarea name="biodata_anggota">{{$anggota->biodata_anggota}}</textarea>
+		<textarea name="Biodata_Mahasiswa">{{$anggota->Biodata_Mahasiswa}}</textarea>
 
-		@if($errors->any('foto_anggota'))
-		<p style="color: red; float: right; margin-bottom: 0px; font-weight: bold">{{ $errors->first('foto_anggota')}}</p>
+		@if($errors->any('Foto_Mahasiswa'))
+		<p style="color: red; float: right; margin-bottom: 0px; font-weight: bold">{{ $errors->first('Foto_Mahasiswa')}}</p>
 		@endif
 		<label for="foto">Foto:</label>
-		<input type="file" name="foto_anggota" value="{{$anggota->foto_anggota}}">
+		<input type="file" name="Foto_Mahasiswa" value="{{$anggota->Foto_Mahasiswa}}">
 	</fieldset>
 
-	<input type="hidden" name="id" value="{{$anggota->id}}">
+	<input type="hidden" name="ID_Mahasiswa" value="{{$anggota->ID_Mahasiswa}}">
 
 	<button type="submit">Edit</button>
 </form>

@@ -14,14 +14,14 @@ class CreateInformasisTable extends Migration
     public function up()
     {
         Schema::create('informasis', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('ID_Informasi');
             $table->timestamps();
-            $table->string('Judul_Informasi');
+            $table->integer('ID_Mahasiswa');
+            $table->string('Judul_Informasi', 1024);
             $table->date('Tanggal_Informasi');
             $table->longText('Isi_Informasi');
-            $table->string('Gambar_Informasi');
-            $table->string('Singkat_Informasi');
-            $table->string('Poster_Informasi');
+            $table->string('Gambar_Informasi', 1024);
+            $table->string('Singkat_Informasi', 1024);
         });
     }
 

@@ -38,7 +38,7 @@
                   <p style="display: inline-block; margin: 0px">Daftar kegiatan rutin UKM Musik ITS</p>
                 </div>
                 <div class="col-md-6" align="right">
-                  <a href="{{action('AdminController@viewTambahKegiatan')}}" class="btn btn-success align-middle"><i class="fas fa-plus"></i> Tambah Kegiatan</a>
+                  <a href="{{action('AdminController@viewTambahKegiatanRutin')}}" class="btn btn-success align-middle"><i class="fas fa-plus"></i> Tambah Kegiatan</a>
                 </div>
               </div>
               <br>
@@ -61,13 +61,13 @@
                     <td class="align-middle text-center">{{$event->Waktu_Kegiatan}}</td>
                     <td class="align-middle text-center">{{$event->Deskripsi_Kegiatan}}</td>
                     <td class="align-middle text-left">
-                      <li style="list-style-type: none; padding: 5px"><a href="/editkegiatan/{{$event->id}}" style="margin: 5px;" type="button" class="btn btn-primary"><i class="fas fa-edit"></i> Edit</a></li>
-                      <li style="list-style-type: none; padding: 5px"><button  style="margin: 5px;" type="button" class="btn btn-danger" data-toggle="modal" data-target="#del{{$event->id}}"><i class="far fa-trash-alt"></i> Delete</button></li>
+                      <li style="list-style-type: none; padding: 5px"><a href="/editkegiatan/{{$event->ID_Kegiatan}}" style="margin: 5px;" type="button" class="btn btn-primary"><i class="fas fa-edit"></i> Edit</a></li>
+                      <li style="list-style-type: none; padding: 5px"><button  style="margin: 5px;" type="button" class="btn btn-danger" data-toggle="modal" data-target="#del{{$event->ID_Kegiatan}}"><i class="far fa-trash-alt"></i> Delete</button></li>
                     </td>
                   </tr>
 
                   <!--Tolak Modal -->
-                  <div class="modal fade" id="del{{$event->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                  <div class="modal fade" id="del{{$event->ID_Kegiatan}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                       <div class="modal-content">
                         <div class="modal-header">
@@ -80,7 +80,7 @@
                           Apakah Anda yakin menghapus kegiatan <b>{{$event->Nama_Kegiatan}}</b>?
                         </div>
                         <div class="modal-footer">
-                          <a href="/deletekegiatan/{{$event->id}}" class="btn btn-danger"><i class="far fa-trash-alt"></i> Yakin</a>
+                          <a href="/deletekegiatan/{{$event->ID_Kegiatan}}" class="btn btn-danger"><i class="far fa-trash-alt"></i> Yakin</a>
                         </div>
                       </div>
                     </div>
@@ -102,7 +102,7 @@
                   <p style="display: inline-block; margin: 0px">Daftar pendaftaran event UKM Musik ITS</p>
                 </div>
                 <div class="col-md-6" align="right">
-                  <a href="{{action('AdminController@viewTambahKegiatan')}}" class="btn btn-success align-middle"><i class="fas fa-plus"></i> Tambah Kegiatan</a>
+                  <a href="{{action('AdminController@viewTambahKegiatanPendaftaran')}}" class="btn btn-success align-middle"><i class="fas fa-plus"></i> Tambah Kegiatan</a>
                 </div>
               </div>
               <br>
@@ -131,14 +131,14 @@
                     <td class="align-middle text-center">{{$event->Batas_Tanggal_Kegiatan}}</td>
                     <td class="align-middle text-center">{{$event->Batas_Waktu_Kegiatan}}</td>
                     <td class="align-middle text-left">
-                      <li style="list-style-type: none; padding: 5px"><a href="/pendaftarkegiatan/{{$event->id}}" style="margin: 5px;" type="button" class="btn btn-success"><i class="fas fa-users"></i> Pendaftar</a></li>
-                      <li style="list-style-type: none; padding: 5px"><a href="/editkegiatan/{{$event->id}}" style="margin: 5px;" type="button" class="btn btn-primary"><i class="fas fa-edit"></i> Edit</a></li>
-                      <li style="list-style-type: none; padding: 5px"><button  style="margin: 5px;" type="button" class="btn btn-danger" data-toggle="modal" data-target="#del{{$event->id}}"><i class="far fa-trash-alt"></i> Delete</button></li>
+                      <li style="list-style-type: none; padding: 5px"><a href="/pendaftarkegiatan/{{$event->ID_Kegiatan}}" style="margin: 5px;" type="button" class="btn btn-success"><i class="fas fa-users"></i> Pendaftar</a></li>
+                      <li style="list-style-type: none; padding: 5px"><a href="/editkegiatan/{{$event->ID_Kegiatan}}" style="margin: 5px;" type="button" class="btn btn-primary"><i class="fas fa-edit"></i> Edit</a></li>
+                      <li style="list-style-type: none; padding: 5px"><button  style="margin: 5px;" type="button" class="btn btn-danger" data-toggle="modal" data-target="#del{{$event->ID_Kegiatan}}"><i class="far fa-trash-alt"></i> Delete</button></li>
                     </td>
                   </tr>
 
                   <!--Tolak Modal -->
-                  <div class="modal fade" id="del{{$event->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                  <div class="modal fade" id="del{{$event->ID_Kegiatan}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                       <div class="modal-content">
                         <div class="modal-header">
@@ -151,7 +151,7 @@
                           Apakah Anda yakin menghapus kegiatan <b>{{$event->Nama_Kegiatan}}</b>?
                         </div>
                         <div class="modal-footer">
-                          <a href="/deletekegiatan/{{$event->id}}" class="btn btn-danger"><i class="far fa-trash-alt"></i> Yakin</a>
+                          <a href="/deletekegiatan/{{$event->ID_Kegiatan}}" class="btn btn-danger"><i class="far fa-trash-alt"></i> Yakin</a>
                         </div>
                       </div>
                     </div>
@@ -172,9 +172,9 @@
                 <div class="col-md-6">
                   <p style="display: inline-block; margin: 0px">Daftar pendaftaran event UKM Musik ITS</p>
                 </div>
-                <div class="col-md-6" align="right">
+                {{-- <div class="col-md-6" align="right">
                   <a href="{{action('AdminController@viewTambahKegiatan')}}" class="btn btn-success align-middle"><i class="fas fa-plus"></i> Tambah Kegiatan</a>
-                </div>
+                </div> --}}
               </div>
               <br>
               <table class="table table-striped">
@@ -202,13 +202,13 @@
                     <td class="align-middle text-center">{{$event->Batas_Tanggal_Kegiatan}}</td>
                     <td class="align-middle text-center">{{$event->Batas_Waktu_Kegiatan}}</td>
                     <td class="align-middle text-center">
-                      <li style="list-style-type: none; padding: 5px"><a href="/editkegiatan/{{$event->id}}" style="margin: 5px;" type="button" class="btn btn-primary"><i class="fas fa-edit"></i> Edit</a></li>
-                      <li style="list-style-type: none; padding: 5px"><button  style="margin: 5px;" type="button" class="btn btn-danger" data-toggle="modal" data-target="#del{{$event->id}}"><i class="far fa-trash-alt"></i> Delete</button></li>
+                      <li style="list-style-type: none; padding: 5px"><a href="/editkegiatan/{{$event->ID_Kegiatan}}" style="margin: 5px;" type="button" class="btn btn-primary"><i class="fas fa-edit"></i> Edit</a></li>
+                      <li style="list-style-type: none; padding: 5px"><button  style="margin: 5px;" type="button" class="btn btn-danger" data-toggle="modal" data-target="#del{{$event->ID_Kegiatan}}"><i class="far fa-trash-alt"></i> Delete</button></li>
                     </td>
                   </tr>
 
                   <!--Tolak Modal -->
-                  <div class="modal fade" id="del{{$event->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                  <div class="modal fade" id="del{{$event->ID_Kegiatan}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                       <div class="modal-content">
                         <div class="modal-header">
@@ -221,7 +221,7 @@
                           Apakah Anda yakin menghapus kegiatan <b>{{$event->Nama_Kegiatan}}</b>?
                         </div>
                         <div class="modal-footer">
-                          <a href="/deletekegiatan/{{$event->id}}" class="btn btn-danger"><i class="far fa-trash-alt"></i> Yakin</a>
+                          <a href="/deletekegiatan/{{$event->ID_Kegiatan}}" class="btn btn-danger"><i class="far fa-trash-alt"></i> Yakin</a>
                         </div>
                       </div>
                     </div>
@@ -240,84 +240,6 @@
     </div>
   </div>
 
-  {{-- <div class="row">
-
-    <h3 style="margin-left: 10px; font-weight: bold; margin-top: 20px">Kegiatan Rutin : </h3>
-    @foreach($kegiatans->where('Tipe_Kegiatan', 'Rutin') as $event)
-    <div class="col-md-12" style="box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); margin: 10px">
-      <div style="background-color: white; margin: 10px 10px 15px 10px">
-        <div style="display: inline-block;">
-          <p style="font-size: 25px; vertical-align: middle; margin-bottom: 0px; padding-bottom: 10px">{{$event->Nama_Kegiatan}}</p>
-          <p style="font-size: 17px; vertical-align: middle; margin-bottom: 0px;">{{str_limit($event->Deskripsi_Kegiatan, 100, '...')}}</p>
-        </div>
-        <div style="float: right; padding-top: 15px">
-          <a href="/editkegiatan/{{$event->id}}" class="btn btn-primary" style="margin: 5px"><i class="far fa-edit"> </i> Edit</a>
-          <button  style="margin: 5px;" type="button" class="btn btn-danger" data-toggle="modal" data-target="#{{$event->id}}"><i class="far fa-trash-alt"></i> Delete</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Delete Rutin Modal -->
-    <div class="modal fade" id="{{$event->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">Konfirmasi Delete</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            Apakah Anda yakin ingin menghapus kegiatan <b>{{$event->Nama_Kegiatan}}</b> ?
-          </div>
-          <div class="modal-footer">
-            <a href="/deletekegiatan/{{$event->id}}" class="btn btn-danger"><i class="far fa-trash-alt"></i> Yakin</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Modal -->
-    @endforeach
-
-    <h3 style="margin-left: 10px; margin-top: 50px; font-weight: bold">Kegiatan Pendaftaran : </h3>
-    @foreach($kegiatans->where('Tipe_Kegiatan', 'Pendaftaran') as $event)
-    <div class="col-md-12" style="box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); margin: 10px">
-      <div style="background-color: white; margin: 10px 10px 15px 10px">
-        <div style="display: inline-block;">
-          <p style="font-size: 25px; vertical-align: middle; margin-bottom: 0px; padding-bottom: 10px">{{$event->Nama_Kegiatan}}</p>
-          <p style="font-size: 17px; vertical-align: middle; margin-bottom: 0px;">{{str_limit($event->Deskripsi_Kegiatan, 80, '...')}}</p>
-        </div>
-        <div style="float: right; padding-top: 15px">
-          <a href="/kegiatan/{{$event->id}}" class="btn btn-success" style="margin: 5px"><i class="fas fa-eye"> </i> View</a>
-          <a href="/editkegiatan/{{$event->id}}" class="btn btn-primary" style="margin: 5px"><i class="far fa-edit"> </i> Edit</a>
-          <button  style="margin: 5px;" type="button" class="btn btn-danger" data-toggle="modal" data-target="#{{$event->id}}"><i class="far fa-trash-alt"></i> Delete</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Delete Pendaftaran Modal -->
-    <div class="modal fade" id="{{$event->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">Konfirmasi Delete</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            Apakah Anda yakin ingin menghapus kegiatan <b>{{$event->Nama_Kegiatan}}</b> ?
-          </div>
-          <div class="modal-footer">
-            <a href="/deletekegiatan/{{$event->id}}" class="btn btn-danger"><i class="far fa-trash-alt"></i> Yakin</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Modal -->
-    @endforeach
-
-  </div> --}}
 </div>
 <br>
 

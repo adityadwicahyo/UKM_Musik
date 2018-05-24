@@ -79,19 +79,19 @@
 
                   <tr>
                     <td class="text-center">
-                      <img class="center" style="height: 100px; width: auto; margin: 0" src="{{url($invent->foto_inv)}}">
+                      <img class="center" style="height: 100px; width: auto; margin: 0" src="{{url($invent->Foto_Inventaris)}}">
                     </td>
-                    <td class="align-middle text-center">{{$invent->nama_inv}}</td>
-                    <td class="align-middle text-center">{{$invent->deskripsi_inv}}</td>
-                    <td class="align-middle text-center">{{$invent->jumlah_inv}}</td>
+                    <td class="align-middle text-center">{{$invent->Nama_Inventaris}}</td>
+                    <td class="align-middle text-center">{{$invent->Deskripsi_Inventaris}}</td>
+                    <td class="align-middle text-center">{{$invent->Jumlah_Inventaris}}</td>
                     <td class="align-middle text-center">
-                      <li style="list-style-type: none; padding: 5px"><a href="/editinventaris/{{$invent->id}}" style="margin: 5px;" type="button" class="btn btn-primary"><i class="fas fa-edit"></i> Edit</a></li>
-                      <li style="list-style-type: none; padding: 5px"><button  style="margin: 5px;" type="button" class="btn btn-danger" data-toggle="modal" data-target="#del{{$invent->id}}"><i class="far fa-trash-alt"></i> Delete</button></li>
+                      <li style="list-style-type: none; padding: 5px"><a href="/editinventaris/{{$invent->ID_Inventaris}}" style="margin: 5px;" type="button" class="btn btn-primary"><i class="fas fa-edit"></i> Edit</a></li>
+                      <li style="list-style-type: none; padding: 5px"><button  style="margin: 5px;" type="button" class="btn btn-danger" data-toggle="modal" data-target="#del{{$invent->ID_Inventaris}}"><i class="far fa-trash-alt"></i> Delete</button></li>
                     </td>
                   </tr>
 
                   <!--Tolak Modal -->
-                  <div class="modal fade" id="del{{$invent->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                  <div class="modal fade" id="del{{$invent->ID_Inventaris}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                       <div class="modal-content">
                         <div class="modal-header">
@@ -101,10 +101,10 @@
                           </button>
                         </div>
                         <div class="modal-body">
-                          Apakah Anda yakin menghapus inventaris <b>{{$invent->nama_inv}}</b>?
+                          Apakah Anda yakin menghapus inventaris <b>{{$invent->Nama_Inventaris}}</b>?
                         </div>
                         <div class="modal-footer">
-                          <a href="/deleteinventaris/{{$invent->id}}" class="btn btn-danger"><i class="far fa-trash-alt"></i> Yakin</a>
+                          <a href="/deleteinventaris/{{$invent->ID_Inventaris}}" class="btn btn-danger"><i class="far fa-trash-alt"></i> Yakin</a>
                         </div>
                       </div>
                     </div>
@@ -136,24 +136,24 @@
                 </thead>
                 <tbody>
                   @foreach($peminjamans->where('Status_Peminjaman', 'Tunggu') as $peminjaman)
-                  @foreach($inventaris->where('id', $peminjaman->id_barang) as $invent)
+                  @foreach($inventaris->where('ID_Inventaris', $transaksi->ID_Inventaris) as $invent)
                   <tr>
                     <td class="text-center">
-                      <img class="center" style="height: 100px; width: auto; margin: 0" src="{{url($invent->foto_inv)}}">
+                      <img class="center" style="height: 100px; width: auto; margin: 0" src="{{url($invent->Foto_Inventaris)}}">
                     </td>
-                    <td class="align-middle text-center">{{$invent->nama_inv}}</td>
+                    <td class="align-middle text-center">{{$invent->Nama_Inventaris}}</td>
                     <td class="align-middle text-center">{{$peminjaman->NRP_Peminjam}}</td>
                     <td class="align-middle text-center">{{$peminjaman->Jumlah_Barang}}</td>
                     <td class="align-middle text-center">{{$peminjaman->Tanggal_Peminjaman}}</td>
                     <td class="align-middle text-center">{{$peminjaman->Tanggal_Kembali}}</td>
                     <td class="align-middle text-center">
-                      <li style="list-style-type: none; padding: 5px"><button  style="margin: 5px;" type="button" class="btn btn-success" data-toggle="modal" data-target="#setuju{{$peminjaman->id}}"><i class="fas fa-check"></i> Setuju</button></li>
-                      <li style="list-style-type: none; padding: 5px"><button  style="margin: 5px;" type="button" class="btn btn-danger" data-toggle="modal" data-target="#tolak{{$peminjaman->id}}"><i class="far fa-trash-alt"></i> Tolak</button></li>
+                      <li style="list-style-type: none; padding: 5px"><button  style="margin: 5px;" type="button" class="btn btn-success" data-toggle="modal" data-target="#setuju{{$peminjaman->ID_Peminjaman}}"><i class="fas fa-check"></i> Setuju</button></li>
+                      <li style="list-style-type: none; padding: 5px"><button  style="margin: 5px;" type="button" class="btn btn-danger" data-toggle="modal" data-target="#tolak{{$peminjaman->ID_Peminjaman}}"><i class="far fa-trash-alt"></i> Tolak</button></li>
                     </td>
                   </tr>
 
                   <!--Setuju Modal -->
-                  <div class="modal fade" id="setuju{{$peminjaman->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                  <div class="modal fade" id="setuju{{$peminjaman->ID_Peminjaman}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                       <div class="modal-content">
                         <div class="modal-header">
@@ -163,10 +163,10 @@
                           </button>
                         </div>
                         <div class="modal-body">
-                          Apakah Anda yakin menyetujui peminjaman <b>{{$invent->nama_inv}}</b>?
+                          Apakah Anda yakin menyetujui peminjaman <b>{{$invent->Nama_Inventaris}}</b>?
                         </div>
                         <div class="modal-footer">
-                          <a href="/setujupeminjaman/{{$peminjaman->id}}" class="btn btn-success"><i class="fas fa-check"></i> Yakin</a>
+                          <a href="/setujupeminjaman/{{$peminjaman->ID_Peminjaman}}" class="btn btn-success"><i class="fas fa-check"></i> Yakin</a>
                         </div>
                       </div>
                     </div>
@@ -174,7 +174,7 @@
                   <!-- Modal -->
 
                   <!--Tolak Modal -->
-                  <div class="modal fade" id="tolak{{$peminjaman->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                  <div class="modal fade" id="tolak{{$peminjaman->ID_Peminjaman}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                       <div class="modal-content">
                         <div class="modal-header">
@@ -184,10 +184,10 @@
                           </button>
                         </div>
                         <div class="modal-body">
-                          Apakah Anda yakin menolak peminjaman <b>{{$invent->nama_inv}}</b>?
+                          Apakah Anda yakin menolak peminjaman <b>{{$invent->Nama_Inventaris}}</b>?
                         </div>
                         <div class="modal-footer">
-                          <a href="/tolakpeminjaman/{{$peminjaman->id}}" class="btn btn-danger"><i class="far fa-trash-alt"></i> Yakin</a>
+                          <a href="/tolakpeminjaman/{{$peminjaman->ID_Peminjaman}}" class="btn btn-danger"><i class="far fa-trash-alt"></i> Yakin</a>
                         </div>
                       </div>
                     </div>
@@ -220,23 +220,23 @@
                 </thead>
                 <tbody>
                   @foreach($peminjamans->where('Status_Peminjaman', 'Setuju') as $peminjaman)
-                  @foreach($inventaris->where('id', $peminjaman->id_barang) as $invent)
+                  @foreach($inventaris->where('ID_Inventaris', $peminjaman->ID_Barang) as $invent)
                   <tr>
                     <td class="text-center">
-                      <img class="center" style="height: 100px; width: auto; margin: 0" src="{{url($invent->foto_inv)}}">
+                      <img class="center" style="height: 100px; width: auto; margin: 0" src="{{url($invent->Foto_Inventaris)}}">
                     </td>
-                    <td class="align-middle text-center">{{$invent->nama_inv}}</td>
+                    <td class="align-middle text-center">{{$invent->Nama_Inventaris}}</td>
                     <td class="align-middle text-center">{{$peminjaman->NRP_Peminjam}}</td>
                     <td class="align-middle text-center">{{$peminjaman->Jumlah_Barang}}</td>
                     <td class="align-middle text-center">{{$peminjaman->Tanggal_Peminjaman}}</td>
                     <td class="align-middle text-center">{{$peminjaman->Tanggal_Kembali}}</td>
                     <td class="align-middle text-center">
-                      <li style="list-style-type: none; padding: 5px"><button  style="margin: 5px;" type="button" class="btn btn-primary" data-toggle="modal" data-target="#diambil{{$peminjaman->id}}"><i class="fas fa-check"></i> Diambil</button></li>
+                      <li style="list-style-type: none; padding: 5px"><button  style="margin: 5px;" type="button" class="btn btn-primary" data-toggle="modal" data-target="#diambil{{$peminjaman->ID_Peminjaman}}"><i class="fas fa-check"></i> Diambil</button></li>
                     </td>
                   </tr>
 
                   <!--Diambil Modal -->
-                  <div class="modal fade" id="diambil{{$peminjaman->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                  <div class="modal fade" id="diambil{{$peminjaman->ID_Peminjaman}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                       <div class="modal-content">
                         <div class="modal-header">
@@ -246,10 +246,10 @@
                           </button>
                         </div>
                         <div class="modal-body">
-                          Apakah Anda yakin inventaris <b>{{$invent->nama_inv}}</b> telah diambil?
+                          Apakah Anda yakin inventaris <b>{{$invent->Nama_Inventaris}}</b> telah diambil?
                         </div>
                         <div class="modal-footer">
-                          <a href="/ambilpeminjaman/{{$peminjaman->id}}" class="btn btn-primary"><i class="fas fa-check"></i> Yakin</a>
+                          <a href="/ambilpeminjaman/{{$peminjaman->ID_Peminjaman}}" class="btn btn-primary"><i class="fas fa-check"></i> Yakin</a>
                         </div>
                       </div>
                     </div>
@@ -282,23 +282,23 @@
                 </thead>
                 <tbody>
                   @foreach($peminjamans->where('Status_Peminjaman', 'Diambil') as $peminjaman)
-                  @foreach($inventaris->where('id', $peminjaman->id_barang) as $invent)
+                  @foreach($inventaris->where('ID_Inventaris', $peminjaman->ID_Barang) as $invent)
                   <tr>
                     <td class="text-center">
-                      <img class="center" style="height: 100px; width: auto; margin: 0" src="{{url($invent->foto_inv)}}">
+                      <img class="center" style="height: 100px; width: auto; margin: 0" src="{{url($invent->Foto_Inventaris)}}">
                     </td>
-                    <td class="align-middle text-center">{{$invent->nama_inv}}</td>
+                    <td class="align-middle text-center">{{$invent->Nama_Inventaris}}</td>
                     <td class="align-middle text-center">{{$peminjaman->NRP_Peminjam}}</td>
                     <td class="align-middle text-center">{{$peminjaman->Jumlah_Barang}}</td>
                     <td class="align-middle text-center">{{$peminjaman->Tanggal_Peminjaman}}</td>
                     <td class="align-middle text-center">{{$peminjaman->Tanggal_Kembali}}</td>
                     <td class="align-middle text-center">
-                      <li style="list-style-type: none; padding: 5px"><button  style="margin: 5px;" type="button" class="btn btn-primary" data-toggle="modal" data-target="#kembali{{$peminjaman->id}}"><i class="fas fa-check"></i> Kembali</button></li>
+                      <li style="list-style-type: none; padding: 5px"><button  style="margin: 5px;" type="button" class="btn btn-primary" data-toggle="modal" data-target="#kembali{{$peminjaman->ID_Peminjaman}}"><i class="fas fa-check"></i> Kembali</button></li>
                     </td>
                   </tr>
 
                   <!--Diambil Modal -->
-                  <div class="modal fade" id="kembali{{$peminjaman->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                  <div class="modal fade" id="kembali{{$peminjaman->ID_Peminjaman}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                       <div class="modal-content">
                         <div class="modal-header">
@@ -308,10 +308,10 @@
                           </button>
                         </div>
                         <div class="modal-body">
-                          Apakah Anda yakin inventaris <b>{{$invent->nama_inv}}</b> telah dikembalikan?
+                          Apakah Anda yakin inventaris <b>{{$invent->Nama_Inventaris}}</b> telah dikembalikan?
                         </div>
                         <div class="modal-footer">
-                          <a href="/kembalipeminjaman/{{$peminjaman->id}}" class="btn btn-primary"><i class="fas fa-check"></i> Yakin</a>
+                          <a href="/kembalipeminjaman/{{$peminjaman->ID_Peminjaman}}" class="btn btn-primary"><i class="fas fa-check"></i> Yakin</a>
                         </div>
                       </div>
                     </div>

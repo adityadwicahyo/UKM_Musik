@@ -14,14 +14,18 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('ID_Mahasiswa');
             $table->timestamps();
-            $table->string('Nama_User');
-            $table->string('NRP_User');
-            $table->string('password');
-            $table->string('Foto_User');
-            $table->string('KTM_User');
-            $table->string('Level_User');
+            $table->rememberToken();
+            $table->string('Nama_Mahasiswa', 100);
+            $table->string('NRP_Mahasiswa', 20);
+            $table->string('Email_Mahasiswa', 100);
+            $table->string('No_telp_Mahasiswa', 100);
+            $table->string('Biodata_Mahasiswa', 200)->nullable();
+            $table->string('Status_Mahasiswa', 200);
+            $table->longText('Berkas_Mahasiswa');
+            $table->string('password', 255);
+            $table->longText('Foto_Mahasiswa');
         });
     }
 

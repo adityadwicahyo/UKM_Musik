@@ -11,13 +11,14 @@
 <link rel="stylesheet" type="text/css" href="{{url('css/signup.css')}}">
 <div class="container">
 <div class="row">
+
 	<div class="col-md-6">
 		<div class="card" style="width: 30rem; margin-top: 10px">
-			<img class="card-img-top" style="height: 200px; object-fit: scale-down;" src="{{url($inventaris->foto_inv)}}" alt="Card image cap">
+			<img class="card-img-top" style="height: 200px; object-fit: scale-down;" src="{{url($inventaris->Foto_Inventaris)}}" alt="Card image cap">
 			<div class="card-body">
-				<h5 class="card-title" style="font-weight: bold">{{$inventaris->nama_inv}}</h5>
-				<p class="card-text" style="margin-bottom: 15px">{{$inventaris->deskripsi_inv}}</p>
-				<p style="font-weight: bold; margin-bottom: 20px"><i class="fas fa-check-circle" style="color: green"></i> Jumlah : {{$inventaris->jumlah_inv}}</p>
+				<h5 class="card-title" style="font-weight: bold">{{$inventaris->Nama_Inventaris}}</h5>
+				<p class="card-text" style="margin-bottom: 15px">{{$inventaris->Deskripsi_Inventaris}}</p>
+				<p style="font-weight: bold; margin-bottom: 20px"><i class="fas fa-check-circle" style="color: green"></i> Jumlah : {{$inventaris->Jumlah_Inventaris}}</p>
 			</div>	
 		</div>
 	</div>
@@ -38,8 +39,10 @@
 				@endif
 				<label for="nrp">Tanggal Kembali:</label>
 				<input type="date" class="form-control" name="Tanggal_Kembali" value="{{old('Tanggal_Kembali')}}">
-				<input type="hidden" name="id" value="{{$inventaris->id}}">
-				<input type="hidden" name="NRP_Peminjam" value="{{Auth::user()->NRP_User}}">
+				
+				<input type="hidden" name="ID_Inventaris" value="{{$inventaris->ID_Inventaris}}">
+				<input type="hidden" name="ID_Mahasiswa" value="{{Auth::user()->ID_Mahasiswa}}">
+
 			<button type="submit">Pinjam</button>
 		</form>
 	</div>

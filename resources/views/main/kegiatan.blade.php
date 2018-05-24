@@ -57,7 +57,7 @@
 				</div>
 
 				<footer class="card__footer">
-					<a class="btn btn-primary" href="/kegiatan/{{$event->id}}" style="color: white; font-size: 12px">Read More</a>
+					<a class="btn btn-primary" href="/kegiatan/{{$event->ID_Kegiatan}}" style="color: white; font-size: 12px">Read More</a>
 				</footer>
 			</article>
 		</div>

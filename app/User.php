@@ -14,8 +14,10 @@ class User extends Authenticatable
      *
      * @var array
      */
+    protected $primaryKey = 'ID_Mahasiswa';
+
     protected $fillable = [
-        'Nama_User', 'NRP_User', 'password', 'KTM_User', 'Foto_User', 'Level_User'
+        'Nama_Mahasiswa', 'NRP_Mahasiswa', 'password', 'Berkas_Mahasiswa', 'Foto_Mahasiswa', 'Status_Mahasiswa', 'Email_Mahasiswa', 'No_telp_Mahasiswa', 'Biodata_Mahasiswa', 'Berkas_Mahasiswa'
     ];
 
     /**

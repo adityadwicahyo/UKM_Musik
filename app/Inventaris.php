@@ -6,5 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Inventaris extends Model
 {
-    protected $fillable = ['nama_inv', 'foto_inv', 'deskripsi_inv', 'jumlah_inv'];
+	protected $primaryKey = 'ID_Inventaris';
+
+    protected $fillable = ['Nama_Inventaris', 'Foto_Inventaris', 'Deskripsi_Inventaris', 'Jumlah_Inventaris'];
 }

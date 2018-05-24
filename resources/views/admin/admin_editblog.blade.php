@@ -35,6 +35,19 @@
 	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
 	<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css" rel="stylesheet">
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script>
+    <style type="text/css">
+  .div-profil {
+    display: inline-block;
+    margin-left: 55px;
+    height: 20px;
+    width: 20px;
+    border-radius: 100%;
+    border: 1px solid white;
+    text-align: center;
+    background: url({{url(Auth::user()->Foto_Mahasiswa)}}) center no-repeat;
+    background-size: cover
+  }
+</style>
 </head>
 <body>
 	<main id="main">
@@ -51,47 +64,65 @@
     		</div>
 
     		<nav id="nav-menu-container">
-    			<ul class="nav-menu">
-    				<li class="menu-active"><a href="{{action('HomeController@getIndex')}}" @yield('active-beranda')>Beranda</a></li>
-    				<li class="menu-active"><a href="/blog" @yield('active-blog')>Blog</a></li>
-    				<li><a href="{{action('KegiatansController@getIndex')}}" @yield('active-kegiatan')>Kegiatan</a></li>
-    				<li><a href="{{action('InventarisController@getIndex')}}" @yield('active-inventaris')>Inventaris</a></li>
+          <ul class="nav-menu">
+            <li class="menu-active"><a href="{{action('HomeController@getIndex')}}" @yield('active-beranda')>Beranda</a></li>
+            {{--<li class="menu-active"><a href="/blog" @yield('active-blog')>Blog</a></li>--}}
+            {{--<li><a href="{{action('KegiatansController@getIndex')}}" @yield('active-kegiatan')>Kegiatan</a></li>--}}
+            <li class="menu-has-children">
+              <a href="" @yield('active-kegiatan')>Kegiatan</a>
+              <ul>
+                <li><a href="{{action('KegiatansController@getIndexRutin')}}">Rutin</a></li>
+                <li><a href="{{action('KegiatansController@getIndexPendaftaran')}}">Event</a></li>
+              </ul>
+            </li>
 
-    				@if(Auth::user()->Level_User == 'Admin')
-                    <li class="menu-has-children">
-                        <a href="" style="font-weight: bold">Kelola</a>
-                        <ul>
-                          <li><a href="{{action('AdminController@adminBlog')}}">Blog</a></li>
-                          <li><a href="{{action('AdminController@adminKegiatan')}}">Kegiatan</a></li>
-                          <li><a href="{{action('AdminController@adminInventaris')}}">Inventaris</a></li>
-                          <li><a href="{{action('AdminController@adminAnggota')}}">Anggota</a></li>
-                      </ul>
-                  </li>
-                  @endif
+            <li><a href="{{action('InventarisController@getIndex')}}" @yield('active-inventaris')>Inventaris</a></li>
 
-                  <li class="menu-has-children">
-                    @if(Auth::user())
-                    <a href="" class="align-middle">
-                        <div class="social div-profil align-middle" id="social1" style="margin: 0px"></div>
-                        <div class="align-middle" style="display: inline-block;"> {{Auth::user()->Nama_User}}</div>
-                    </a>
-                    <ul>
-                        <li><a href="{{action('ViewController@login')}}">Logout</a></li>
-                        <li><a href="#">Setting</a></li>
-                    </ul>
-                    @else
-                    <a href=""><i class="fas fa-user-circle"></i> Akun</a>
-                    <ul>
-                        <li><a href="{{action('ViewController@login')}}">Login</a></li>
-                        <li><a href="{{action('ViewController@signup')}}">Signup</a></li>
-                    </ul>
-                    @endif
-                </li>
+            <li class="menu-has-children">
+              <a href="" @yield('active-anggota')>Anggota</a>
+              <ul>
+                <li><a href="{{action('ViewController@oprec')}}">Pendaftaran</a></li>
+                <li><a href="{{action('AnggotasController@organisasi')}}">Organisasi</a></li>
+              </ul>
+            </li>
 
-    			</ul>
-    		</nav><!-- #nav-menu-container -->
+            @if(Auth::user())
+            @if(Auth::user()->Status_Mahasiswa == 'Admin')
+            <li class="menu-has-children">
+              <a href="" @yield('active-admin')>Kelola</a>
+              <ul>
+                <li><a href="{{action('AdminController@adminBlog')}}">Informasi</a></li>
+                <li><a href="{{action('AdminController@adminKegiatan')}}">Kegiatan</a></li>
+                <li><a href="{{action('AdminController@adminInventaris')}}">Inventaris</a></li>
+                <li><a href="{{action('AdminController@adminAnggota')}}">Mahasiswa</a></li>
+              </ul>
+            </li>
+            @endif
+            @endif
+
+            <li class="menu-has-children">
+              @if(Auth::user())
+              <a href="" class="align-middle">
+                <div class="social div-profil align-middle" id="social1" style="margin: 0px"></div>
+                <div class="align-middle" style="display: inline-block;"> {{Auth::user()->Nama_Mahasiswa}}</div>
+              </a>
+              <ul>
+                <li><a href="/logout">Logout</a></li>
+                <li><a href="/editprofil">Setting</a></li>
+              </ul>
+              @else
+              <a href=""><i class="fas fa-user-circle"></i> Akun</a>
+              <ul>
+                <li><a href="{{action('ViewController@login')}}">Login</a></li>
+                <li><a href="{{action('ViewController@signup')}}">Signup</a></li>
+              </ul>
+              @endif
+            </li>
+          </ul>
+        </nav><!-- #nav-menu-container -->
     	</div>
     </header><!-- #header -->
+
     <br><br><br><br><br>
     <form action="/editblog" method="post" enctype="multipart/form-data">
     	<div class="container">
@@ -142,7 +173,7 @@
     				<textarea id="summernote" name="Isi_Informasi">{{$informasi->Isi_Informasi}}</textarea>
     			</div>
     		</div>
-            <input type="hidden" name="id" value="{{$informasi->id}}">
+            <input type="hidden" name="ID_Informasi" value="{{$informasi->ID_Informasi}}">
     	</div>
     </form>
     @include('partials.footer')

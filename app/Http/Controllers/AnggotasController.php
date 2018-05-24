@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Validator;
 
 use Illuminate\Http\Request;
-use App\Anggotas;
+use App\User;
 
 class AnggotasController extends Controller
 {
@@ -13,14 +13,14 @@ class AnggotasController extends Controller
         $data = $request->all();
 
         $validator = Validator::make($data, [
-            'nrp_anggota' => 'required|min:14|max:14|unique:anggotas',
-            'nama_anggota' => 'required',
-            // 'password' => 'required|confirmed',
-            // 'password_confirmation' => 'required',
-            'email_anggota' => 'required',
-            'notelp_anggota' => 'required',
-            'berkas_anggota' => 'required',
-            'foto_anggota' => 'required'
+            'NRP_Mahasiswa' => 'required|min:14|max:14|unique:users',
+            'Nama_Mahasiswa' => 'required',
+            'password' => 'required|confirmed',
+            'password_confirmation' => 'required',
+            'Foto_Mahasiswa' => 'required',
+            'Email_Mahasiswa' => 'required|unique:users',
+            'No_telp_Mahasiswa' => 'required',
+            'Berkas_Mahasiswa' => 'required'
         ]);
 
         if ($validator->fails()) {
@@ -29,37 +29,36 @@ class AnggotasController extends Controller
             ->withInput();
         }
         else{
-            //Default status
-            $data['status_anggota'] = 'Pendaftar';
-
             //Encrypt password
-            // $data['password_anggota'] = bcrypt($data['password']);
+            $data['password'] = bcrypt($data['password']);
 
             //Upload Image
-            $image = $request->file('foto_anggota');
-            $input['imageName'] = $data['nrp_anggota'] . '.' . $image->getClientOriginalExtension();
-            $destinationPath = public_path('data\Oprec'.'\\'.$data['nrp_anggota']);
+            $image = $request->file('Foto_Mahasiswa');
+            $input['imageName'] = $data['NRP_Mahasiswa'] . '.' . $image->getClientOriginalExtension();
+            $destinationPath = public_path('data\Mahasiswa'.'\\'.$data['NRP_Mahasiswa']);
             $image->move($destinationPath, $input['imageName']);
-            $data['foto_anggota'] = 'data\Oprec'.'\\'.$data['nrp_anggota'].'\\'.$input['imageName'];
+            $data['Foto_Mahasiswa'] = "data/Mahasiswa/".$data['NRP_Mahasiswa']."/". $input['imageName'];
 
             //Upload Document
-            $doc = $request->file('berkas_anggota');
+            $berkas = $request->file('Berkas_Mahasiswa');
+            $input['berkasName'] = $data['NRP_Mahasiswa'] . '.' . $berkas->getClientOriginalExtension();
+            $destinationPath = public_path('data\Mahasiswa'.'\\'.$data['NRP_Mahasiswa']);
+            $berkas->move($destinationPath, $input['berkasName']);
+            $data['Berkas_Mahasiswa'] = "data/Mahasiswa/".$data['NRP_Mahasiswa']."/". $input['berkasName'];
 
-            $input['docName'] = $data['nrp_anggota'] . '.' . $doc->getClientOriginalExtension();
-            $destinationPath = public_path('data\Oprec'.'\\'.$data['nrp_anggota']);
-            $doc->move($destinationPath, $input['docName']);
-            $data['berkas_anggota'] = 'data\Oprec'.'\\'.$data['nrp_anggota'].'\\'.$input['docName'];
+            //Status
+            $data['Status_Mahasiswa'] = 'Pendaftar';
 
-            Anggotas::create($data, [
-                'except' => '_token'
-                // 'except' => 'confirm'
+            User::create($data, [
+                'except' => '_token',
+                'except' => 'confirm'
             ]);
         }
         return redirect('/oprec')->withErrors(array('Success' => 'Pendaftaran berhasil'));
     }
 
     public function organisasi(){
-        $anggotas = Anggotas::all();
+        $anggotas = User::all();
 
         return view('main.organisasi', ['anggotas' => $anggotas]);
     }

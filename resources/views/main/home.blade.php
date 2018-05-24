@@ -58,7 +58,7 @@
                 | Posted <a href="">{{ Carbon\Carbon::parse($info->Tanggal_Informasi)->format('d F Y') }}</a>
               </p>
               <p>{{str_limit($info->Singkat_Informasi, 280, '...')}}</p>
-              <a href="/blog/{{$info->id}}">Read More</a>
+              <a href="/blog/{{$info->ID_Informasi}}">Read More</a>
             </div>
           </div>
         </div>

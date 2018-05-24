@@ -14,12 +14,12 @@ class CreateInventarisTable extends Migration
     public function up()
     {
         Schema::create('inventaris', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('ID_Inventaris');
             $table->timestamps();
-            $table->string('nama_inv');
-            $table->string('foto_inv');
-            $table->string('deskripsi_inv');
-            $table->integer('jumlah_inv');
+            $table->string('Nama_Inventaris', 200);
+            $table->longText('Foto_Inventaris');
+            $table->string('Deskripsi_Inventaris', 200);
+            $table->integer('Jumlah_Inventaris');
         });
     }
 

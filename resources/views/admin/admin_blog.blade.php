@@ -35,15 +35,15 @@
           <p style="font-size: 17px; vertical-align: middle; margin-bottom: 0px;">{{str_limit($info->Singkat_Informasi, 80, '...')}}</p>
         </div>
         <div style="float: right; padding-top: 15px">
-          <a href="/blog/{{$info->id}}" class="btn btn-success" style="margin: 5px"><i class="fas fa-eye"> </i> View</a>
-          <a href="/editblog/{{$info->id}}" class="btn btn-primary" style="margin: 5px"><i class="far fa-edit"> </i> Edit</a>
-          <button  style="margin: 5px;" type="button" class="btn btn-danger" data-toggle="modal" data-target="#{{$info->id}}"><i class="far fa-trash-alt"></i> Delete</button>
+          <a href="/blog/{{$info->ID_Informasi}}" class="btn btn-success" style="margin: 5px"><i class="fas fa-eye"> </i> View</a>
+          <a href="/editblog/{{$info->ID_Informasi}}" class="btn btn-primary" style="margin: 5px"><i class="far fa-edit"> </i> Edit</a>
+          <button  style="margin: 5px;" type="button" class="btn btn-danger" data-toggle="modal" data-target="#{{$info->ID_Informasi}}"><i class="far fa-trash-alt"></i> Delete</button>
         </div>
       </div>
     </div>
 
     <!-- Modal -->
-    <div class="modal fade" id="{{$info->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal fade" id="{{$info->ID_Informasi}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -56,7 +56,7 @@
             Apakah Anda yakin ingin menghapus informasi <b>{{$info->Judul_Informasi}}</b>?
           </div>
           <div class="modal-footer">
-            <a href="/deleteblog/{{$info->id}}" class="btn btn-danger"><i class="far fa-trash-alt"></i> Yakin</a>
+            <a href="/deleteblog/{{$info->ID_Informasi}}" class="btn btn-danger"><i class="far fa-trash-alt"></i> Yakin</a>
           </div>
         </div>
       </div>

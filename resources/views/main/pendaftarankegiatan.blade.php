@@ -14,38 +14,38 @@
 <body>
 	<div class="container" style="margin-top: 60px">
 		<div class="row">
-		<div class="col-md-6">
-			<img style="height: 500px" src="{{url($kegiatans->Foto_Kegiatan)}}">
-		</div>
-		<div class="col-md-6">
-			<form action="{{action('KegiatansController@pendaftaranStore')}}" method="post" enctype="multipart/form-data">
-		<h1>Pendaftaran Kegiatan</h1>
-		<fieldset>
-			<legend><span class="number">1</span>Your basic info</legend>
-			{{ csrf_field() }}
+			<div class="col-md-6">
+				<img style="height: 500px" src="{{url($kegiatans->Foto_Kegiatan)}}">
+			</div>
+			<div class="col-md-6">
+				<form action="{{action('KegiatansController@pendaftaranStore')}}" method="post" enctype="multipart/form-data">
+					<h1>Pendaftaran Kegiatan</h1>
+					<fieldset>
+						<legend><span class="number">1</span>Your basic info</legend>
+						{{ csrf_field() }}
 
-			@if($errors->any('NRP_Pendaftar'))
-			<p style="color: red; float: right; margin-bottom: 0px; font-weight: bold">{{ $errors->first('NRP_Pendaftar')}}</p>
-			@endif
-			<label for="nrp">NRP:</label>
-			<input type="text" class="form-control" name="NRP_Pendaftar" value="{{old('NRP_Pendaftar')}}">
+						@if($errors->any('NRP_Pendaftar'))
+						<p style="color: red; float: right; margin-bottom: 0px; font-weight: bold">{{ $errors->first('NRP_Pendaftar')}}</p>
+						@endif
+						<label for="nrp">NRP:</label>
+						<input type="text" class="form-control" name="NRP_Pendaftar" value="{{old('NRP_Pendaftar')}}">
 
-			<legend><span class="number">2</span>Your documents</legend>
+						<legend><span class="number">2</span>Your documents</legend>
 
+						@if($errors->any('Berkas_Pendaftar'))
+						<p style="color: red; float: right; margin-bottom: 0px; font-weight: bold">{{ $errors->first('Berkas_Pendaftar')}}</p>
+						@endif
+						<label for="berkas" style="padding-top: 30px">Berkas:</label>
+						<input type="file" name="Berkas_Pendaftar" value="{{old('Berkas_Pendaftar')}}">
 
-			@if($errors->any('Berkas_Pendaftar'))
-			<p style="color: red; float: right; margin-bottom: 0px; font-weight: bold">{{ $errors->first('Berkas_Pendaftar')}}</p>
-			@endif
-			<label for="berkas" style="padding-top: 30px">Berkas:</label>
-			<input type="file" name="Berkas_Pendaftar" value="{{old('Berkas_Pendaftar')}}">
-			<input type="hidden" name="id" value="{{$kegiatans->id}}">
-		</fieldset>
-		<button type="submit">Daftar</button>
-	</form>
+						<input type="hidden" name="ID_Kegiatan" value="{{$kegiatans->ID_Kegiatan}}">
+						<input type="hidden" name="ID_Mahasiswa" value="{{Auth::user()->ID_Mahasiswa}}">
+
+					</fieldset>
+					<button type="submit">Daftar</button>
+				</form>
+			</div>
 		</div>
 	</div>
-	</div>
-	
-	
 </body>
 </html>

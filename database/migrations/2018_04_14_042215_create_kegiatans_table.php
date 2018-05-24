@@ -14,7 +14,7 @@ class CreateKegiatansTable extends Migration
     public function up()
     {
         Schema::create('kegiatans', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('ID_Kegiatan');
             $table->timestamps();
             $table->string('Foto_Kegiatan')->nullable();
             $table->string('Nama_Kegiatan', 100);

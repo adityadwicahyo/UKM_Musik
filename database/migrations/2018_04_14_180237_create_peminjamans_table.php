@@ -14,14 +14,13 @@ class CreatePeminjamansTable extends Migration
     public function up()
     {
         Schema::create('peminjamans', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('ID_Peminjaman');
             $table->timestamps();
-            $table->integer('id_barang');
-            $table->string('NRP_Peminjam', 14);
-            $table->string('Nama_Barang', 200);
+            $table->integer('ID_Mahasiswa');
             $table->integer('Jumlah_Barang');
             $table->date('Tanggal_Peminjaman');
             $table->date('Tanggal_Kembali');
+            $table->string('Status_Peminjaman');
         });
     }
 

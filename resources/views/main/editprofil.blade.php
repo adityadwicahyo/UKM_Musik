@@ -30,16 +30,18 @@
           </legend>
 
           <!-- Text input-->
-
           <div class="form-group">
-            <label class="col-md-3 control-label" for="Name (Full name)">Nama</label>  
+            <label class="col-md-3 control-label" for="Name (Full name)">Nama</label>
             <div class="col-md-6">
-             <div class="input-group">
+              @if($errors->any('Nama_Mahasiswa'))
+              <p style="color: red; float: right; margin-bottom: 0px; font-weight: bold">{{ $errors->first('Nama_Mahasiswa')}}</p>
+              @endif 
+              <div class="input-group">
                <div class="input-group-addon">
                 <i class="fa fa-user">
                 </i>
               </div>
-              <input id="Name (Full name)" name="Nama_User" type="text" class="form-control input-md" value="{{Auth::user()->Nama_User}}">
+              <input id="Name (Full name)" name="Nama_Mahasiswa" type="text" class="form-control input-md" value="{{Auth::user()->Nama_Mahasiswa}}">
             </div>
           </div>
         </div>
@@ -48,59 +50,107 @@
         <div class="form-group">
           <label class="col-md-3 control-label" for="Primary Occupation">NRP</label>  
           <div class="col-md-6">
+            @if($errors->any('NRP_Mahasiswa'))
+            <p style="color: red; float: right; margin-bottom: 0px; font-weight: bold">{{ $errors->first('NRP_Mahasiswa')}}</p>
+            @endif 
             <div class="input-group">
              <div class="input-group-addon">
                <i class="fa fa-briefcase"></i>
              </div>
-             <input id="Primary Occupation" name="NRP_User" type="text" class="form-control input-md" value="{{Auth::user()->NRP_User}}">
+             <input id="Primary Occupation" name="NRP_Mahasiswa" type="text" class="form-control input-md" value="{{Auth::user()->NRP_Mahasiswa}}">
            </div>
          </div>
        </div>
 
-       {{-- Password --}}
+       <!-- Text input-->
        <div class="form-group">
-        <label class="col-md-3 control-label col-xs-12" for="Temporary Address">Password</label>  
-        <div class="col-md-3  col-xs-4">
-          @if($errors->any('password'))
-          <p style="color: red; float: right; margin-bottom: 0px; font-weight: bold">{{ $errors->first('password')}}</p>
-          @endif
-          <input id="password" name="password" type="password" placeholder="Password" class="form-control input-md ">
-        </div>
-        <div class="col-md-3 col-xs-4">
-          <input id="Temporary Address" name="password_confirmation" type="password" placeholder="Confirm Password" class="form-control input-md ">
-        </div>
-      </div>
+        <label class="col-md-3 control-label" for="Primary Occupation">Email</label>  
+        <div class="col-md-6">
+          @if($errors->any('Email_Mahasiswa'))
+          <p style="color: red; float: right; margin-bottom: 0px; font-weight: bold">{{ $errors->first('Email_Mahasiswa')}}</p>
+          @endif 
+          <div class="input-group">
+           <div class="input-group-addon">
+             <i class="fa fa-briefcase"></i>
+           </div>
+           <input id="Primary Occupation" name="Email_Mahasiswa" type="email" class="form-control input-md" value="{{Auth::user()->Email_Mahasiswa}}">
+         </div>
+       </div>
+     </div>
 
-      <!-- File Button --> 
-      <div class="form-group">
-        <label class="col-md-3 control-label" for="Upload photo">Upload Foto</label>
-        <div class="col-md-4">
-          <input id="Upload photo" name="Foto_User" class="input-file" type="file" value="{{Auth::user()->Foto_User}}">
-        </div>
-      </div>
+     <!-- Text input-->
+     <div class="form-group">
+      <label class="col-md-3 control-label" for="Primary Occupation">Nomor Telepon</label>  
+      <div class="col-md-6">
+        @if($errors->any('No_telp_Mahasiswa'))
+        <p style="color: red; float: right; margin-bottom: 0px; font-weight: bold">{{ $errors->first('No_Telp_Mahasiswa')}}</p>
+        @endif 
+        <div class="input-group">
+         <div class="input-group-addon">
+           <i class="fa fa-briefcase"></i>
+         </div>
+         <input id="Primary Occupation" name="No_telp_Mahasiswa" type="text" class="form-control input-md" value="{{Auth::user()->No_telp_Mahasiswa}}">
+       </div>
+     </div>
+   </div>
 
-      <!-- File Button --> 
-      <div class="form-group">
-        <label class="col-md-3 control-label" for="Upload photo">Upload KTM</label>
-        <div class="col-md-4">
-          <input id="Upload photo" name="KTM_User" class="input-file" type="file" value="{{Auth::user()->KTM_User}}">
-        </div>
-      </div>
+   {{-- Password --}}
+   <div class="form-group">
+    <label class="col-md-3 control-label col-xs-12" for="Temporary Address">Password</label>  
+    <div class="col-md-3  col-xs-4">
+      @if($errors->any('password'))
+      <p style="color: red; float: right; margin-bottom: 0px; font-weight: bold">{{ $errors->first('password')}}</p>
+      @endif
+      <input id="password" name="password" type="password" placeholder="Password" class="form-control input-md ">
+    </div>
+    <div class="col-md-3 col-xs-4">
+      <input id="Temporary Address" name="password_confirmation" type="password" placeholder="Confirm Password" class="form-control input-md ">
+    </div>
+  </div>
 
-      <div class="form-group">
-        <label class="col-md-3 control-label" ></label>  
-        <div class="col-md-4">
-          <button type="submit" class="btn btn-success"><span class="fa fa-check"></span> Edit</button>
-        </div>
-      </div>
-      <input type="hidden" name="id" value="{{Auth::user()->id}}">
+  <!-- Text input-->
+  <div class="form-group">
+    <label class="col-md-3 control-label" for="Primary Occupation">Biodata</label>  
+    <div class="col-md-6">
+      <div class="input-group">
+       <div class="input-group-addon">
+         <i class="fa fa-briefcase"></i>
+       </div>
+       <textarea id="Primary Occupation" name="Biodata_Mahasiswa" class="form-control">{{Auth::user()->Biodata_Mahasiswa}}</textarea>
+     </div>
+   </div>
+ </div>
 
-    </fieldset>
-  </form>
+ <!-- File Button --> 
+ <div class="form-group">
+  <label class="col-md-3 control-label" for="Upload photo">Upload Foto</label>
+  <div class="col-md-4">
+    <input id="Upload photo" name="Foto_Mahasiswa" class="input-file" type="file" value="{{Auth::user()->Foto_Mahasiswa}}">
+  </div>
+</div>
+
+<!-- File Button --> 
+<div class="form-group">
+  <label class="col-md-3 control-label" for="Upload photo">Upload Berkas</label>
+  <div class="col-md-4">
+    <input id="Upload photo" name="Berkas_Mahasiswa" class="input-file" type="file" value="{{Auth::user()->Berkas_Mahasiswa}}">
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-3 control-label" ></label>  
+  <div class="col-md-4">
+    <button type="submit" class="btn btn-success"><span class="fa fa-check"></span> Edit</button>
+  </div>
+</div>
+<input type="hidden" name="ID_Mahasiswa" value="{{Auth::user()->ID_Mahasiswa}}">
+
+</fieldset>
+</form>
 </div>
 
 <div class="col-md-2 hidden-xs">
-  <img src="{{Auth::user()->Foto_User}}" class="img-responsive img-thumbnail ">
+  <img src="{{Auth::user()->Foto_Mahasiswa}}" class="img-responsive img-thumbnail ">
 </div>
 
 </div>

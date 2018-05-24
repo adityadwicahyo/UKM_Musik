@@ -44,19 +44,19 @@
           </thead>
           <tbody>
             @foreach($pendaftaran as $pen)
-            @foreach($user->where('NRP_User', $pen->NRP_Pendaftar) as $use)
+            @foreach($user->where('ID_Mahasiswa', $pen->ID_Mahasiswa) as $use)
             <tr>
-              <td class="align-middle text-center">{{$pen->NRP_Pendaftar}}</td>
+              <td class="align-middle text-center">{{$use->NRP_Mahasiswa}}</td>
               <td class="align-middle text-center">{{$pen->Berkas_Pendaftar}}</td>
-              <td class="align-middle text-center">{{$use->Notelp_User}}</td>
+              <td class="align-middle text-center">{{$use->No_telp_Mahasiswa}}</td>
               <td class="align-middle text-center">
-                <li style="list-style-type: none; padding: 5px"><button  style="margin: 5px;" type="button" class="btn btn-success" data-toggle="modal" data-target="#setuju{{$pen->id}}"><i class="fas fa-check"></i> Setuju</button></li>
-                <li style="list-style-type: none; padding: 5px"><button  style="margin: 5px;" type="button" class="btn btn-danger" data-toggle="modal" data-target="#tolak{{$pen->id}}"><i class="far fa-trash-alt"></i> Tolak</button></li>
+                <li style="list-style-type: none; padding: 5px"><button  style="margin: 5px;" type="button" class="btn btn-success" data-toggle="modal" data-target="#setuju{{$pen->ID_Pendaftaran}}"><i class="fas fa-check"></i> Setuju</button></li>
+                <li style="list-style-type: none; padding: 5px"><button  style="margin: 5px;" type="button" class="btn btn-danger" data-toggle="modal" data-target="#tolak{{$pen->ID_Pendaftaran}}"><i class="far fa-trash-alt"></i> Tolak</button></li>
               </td>
             </tr>
 
             <!--Tolak Modal -->
-            <div class="modal fade" id="tolak{{$pen->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <div class="modal fade" id="tolak{{$pen->ID_Pendaftaran}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -66,10 +66,10 @@
                     </button>
                   </div>
                   <div class="modal-body">
-                    Apakah Anda yakin menolak pendaftar dengan NRP <b>{{$pen->NRP_Pendaftar}}</b>?
+                    Apakah Anda yakin menolak pendaftar dengan NRP <b>{{$pen->NRP_Mahasiswa}}</b>?
                   </div>
                   <div class="modal-footer">
-                    <a href="/tolakpendaftar/{{$pen->id}}" class="btn btn-danger"><i class="far fa-trash-alt"></i> Yakin</a>
+                    <a href="/tolakpendaftar/{{$pen->ID_Pendaftaran}}" class="btn btn-danger"><i class="far fa-trash-alt"></i> Yakin</a>
                   </div>
                 </div>
               </div>
@@ -77,7 +77,7 @@
             <!-- Modal -->
 
             <!--Setuju Modal -->
-            <div class="modal fade" id="setuju{{$pen->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <div class="modal fade" id="setuju{{$pen->ID_Pendaftaran}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -87,7 +87,7 @@
                     </button>
                   </div>
                   <div class="modal-body">
-                    Apakah Anda yakin menyetujui pendaftar dengan NRP <b>{{$pen->NRP_Pendaftar}}</b>?
+                    Apakah Anda yakin menyetujui pendaftar dengan NRP <b>{{$pen->NRP_Mahasiswa}}</b>?
                   </div>
                   <div class="modal-footer">
                     <a href="#" class="btn btn-success"><i class="fas fa-check"></i> Yakin</a>

@@ -10,7 +10,11 @@
       border-radius: 100%;
       border: 1px solid white;
       text-align: center;
-      background: url({{url(Auth::user()->Foto_User)}}) center no-repeat;
+      @if(Auth::user())
+        background: url({{url(Auth::user()->Foto_Mahasiswa)}}) center no-repeat;
+      @else
+        background: url() center no-repeat;  
+      @endif
       background-size: cover
     }
   </style>
@@ -38,7 +42,6 @@
 
           <li><a href="{{action('InventarisController@getIndex')}}" @yield('active-inventaris')>Inventaris</a></li>
 
-          @if(Auth::user()->Level_User == 'User')
           <li class="menu-has-children">
             <a href="" @yield('active-anggota')>Anggota</a>
             <ul>
@@ -46,25 +49,26 @@
               <li><a href="{{action('AnggotasController@organisasi')}}">Organisasi</a></li>
             </ul>
           </li>
-          @endif
 
-          @if(Auth::user()->Level_User == 'Admin')
+          @if(Auth::user())
+          @if(Auth::user()->Status_Mahasiswa == 'Admin')
           <li class="menu-has-children">
             <a href="" @yield('active-admin')>Kelola</a>
             <ul>
               <li><a href="{{action('AdminController@adminBlog')}}">Informasi</a></li>
               <li><a href="{{action('AdminController@adminKegiatan')}}">Kegiatan</a></li>
               <li><a href="{{action('AdminController@adminInventaris')}}">Inventaris</a></li>
-              <li><a href="{{action('AdminController@adminAnggota')}}">Anggota</a></li>
+              <li><a href="{{action('AdminController@adminAnggota')}}">Mahasiswa</a></li>
             </ul>
           </li>
+          @endif
           @endif
 
           <li class="menu-has-children">
             @if(Auth::user())
             <a href="" class="align-middle">
               <div class="social div-profil align-middle" id="social1" style="margin: 0px"></div>
-               <div class="align-middle" style="display: inline-block;"> {{Auth::user()->Nama_User}}</div>
+               <div class="align-middle" style="display: inline-block;"> {{Auth::user()->Nama_Mahasiswa}}</div>
             </a>
             <ul>
               <li><a href="/logout">Logout</a></li>
@@ -78,8 +82,8 @@
             </ul>
             @endif
           </li>
-
         </ul>
       </nav><!-- #nav-menu-container -->
+      
     </div>
   </header><!-- #header -->

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Informasi;
+use App\User;
 
 class BlogController extends Controller
 {

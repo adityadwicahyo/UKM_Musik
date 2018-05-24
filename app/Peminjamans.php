@@ -6,5 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Peminjamans extends Model
 {
-    protected $fillable = ['id_barang', 'Jumlah_Barang', 'Tanggal_Kembali', 'Nama_Barang', 'Tanggal_Peminjaman', 'NRP_Peminjam', 'Status_Peminjaman'];
+	protected $primaryKey = 'ID_Peminjaman';
+
+    protected $fillable = ['ID_Mahasiswa', 'Jumlah_Barang', 'Tanggal_Kembali', 'Tanggal_Peminjaman', 'Status_Peminjaman'];
 }

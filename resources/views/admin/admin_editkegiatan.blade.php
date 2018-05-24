@@ -75,7 +75,7 @@
 				<label for="deskripsi_kegiatan">Deskripsi Kegiatan:</label>
 				<textarea type="text" class="form-control" name="Deskripsi_Kegiatan">{{$kegiatans->Deskripsi_Kegiatan}}</textarea>
 				
-				<input type="hidden" name="id" value="{{$kegiatans->id}}">
+				<input type="hidden" name="ID_Kegiatan" value="{{$kegiatans->ID_Kegiatan}}">
 
 				<button type="submit">Edit</button>
 			</form>

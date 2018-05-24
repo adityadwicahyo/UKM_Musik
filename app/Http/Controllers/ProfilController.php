@@ -12,42 +12,58 @@ class ProfilController extends Controller
 	public function viewEditProfil(){
 		return view('main.editprofil');
 	}
+
 	public function updateProfil(Request $request){
 		$data = $request->all();
-		$user = User::find($data['id']);
+		$user = User::find($data['ID_Mahasiswa']);
 
-		$validator = Validator::make($data, [
-			'Foto_User' => 'required'
+		//Validate All
+		$validall = Validator::make($data, [
+			'Nama_Mahasiswa' => 'required',
+			'NRP_Mahasiswa' => 'required|min:14|max:14',
+			'Email_Mahasiswa' => 'required',
+			'No_telp_Mahasiswa' => 'required'
 		]);
+		if ($validall->fails()) {
+			return redirect('/editprofil')
+			->withErrors($validall)
+			->withInput();
+		}
 
+		//Validate Foto
+		$validator = Validator::make($data, [
+			'Foto_Mahasiswa' => 'required'
+		]);
 		if ($validator->fails()) {
 		}
 		else{
-			$image = $request->file('Foto_User');
-			$input['imageName'] = $data['NRP_User'] . '.' . $image->getClientOriginalExtension();
-			$destinationPath = public_path('data\Foto_User');
+			//Upload Image
+			$image = $request->file('Foto_Mahasiswa');
+			$input['imageName'] = $data['NRP_Mahasiswa'] . '.' . $image->getClientOriginalExtension();
+			$destinationPath = public_path('data\Mahasiswa'.'\\'.$data['NRP_Mahasiswa']);
 			$image->move($destinationPath, $input['imageName']);
-			$data['Foto_User'] = "data/Foto_User/" . $input['imageName'];
+			$data['Foto_Mahasiswa'] = "data/Mahasiswa/".$data['NRP_Mahasiswa']."/". $input['imageName'];
 		}
 
-		$validktm = Validator::make($data, [
-			'KTM_User' => 'required'
+		//Validate Berkas
+		$validberkas = Validator::make($data, [
+			'Berkas_Mahasiswa' => 'required'
 		]);
-
-		if ($validktm->fails()) {
+		if ($validberkas->fails()) {
 		}
 		else{
-			$ktm = $request->file('KTM_User');
-			$input['ktmName'] = $data['NRP_User'] . '.' . $ktm->getClientOriginalExtension();
-			$destinationPath = public_path('data\KTM_User');
-			$ktm->move($destinationPath, $input['ktmName']);
-			$data['KTM_User'] = $destinationPath . "\\" . $input['ktmName'];
+			//Upload Document
+			$berkas = $request->file('Berkas_Mahasiswa');
+			$input['berkasName'] = $data['NRP_Mahasiswa'] . '.' . $berkas->getClientOriginalExtension();
+			$destinationPath = public_path('data\Mahasiswa'.'\\'.$data['NRP_Mahasiswa']);
+			$berkas->move($destinationPath, $input['berkasName']);
+			$data['Berkas_Mahasiswa'] = "data/Mahasiswa/".$data['NRP_Mahasiswa']."/". $input['berkasName'];
 		}
 
+		//Validate Password
 		$validpass = Validator::make($data, [
 			'password' => 'required'
 		]);
-
 		if ($validpass->fails()) {
 			$data['password'] = $user->password;
 		}

@@ -19,10 +19,10 @@
 				{{ csrf_field() }}
 
 				<div>
-					@if($errors->any('NRP_User'))
-					<p style="color: white; margin-bottom: 5px; font-weight: bold">{{ $errors->first('NRP_User')}}</p>
+					@if($errors->any('NRP_Mahasiswa'))
+					<p style="color: white; margin-bottom: 5px; font-weight: bold">{{ $errors->first('NRP_Mahasiswa')}}</p>
 					@endif
-					<input type="text" placeholder="NRP" name="NRP_User">
+					<input type="text" placeholder="NRP" name="NRP_Mahasiswa">
 				</div>
 				<div>
 					@if($errors->any('password'))

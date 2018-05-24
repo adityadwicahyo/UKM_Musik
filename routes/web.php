@@ -11,9 +11,10 @@
 |
 */
 
-// Route::get('/about', function () {
-//     return view('main.about');
+// Route::get('/tes', function () {
+//     return view('user.signup2');
 // });
+
 Route::get('/', 'HomeController@getIndex');
 
 Route::get('/editprofil', 'ProfilController@viewEditProfil');
@@ -51,8 +52,10 @@ Route::get('/adminkegiatan', 'AdminController@adminKegiatan');
 Route::get('/editkegiatan/{id}', 'AdminController@viewEditKegiatan');
 Route::post('/editkegiatan', 'AdminController@updateKegiatan');
 Route::get('/deletekegiatan/{id}', 'AdminController@deleteKegiatan');
-Route::get('/tambahkegiatan', 'AdminController@viewTambahKegiatan');
-Route::post('/tambahkegiatan', 'AdminController@storeKegiatan');
+Route::get('/tambahkegiatanrutin', 'AdminController@viewTambahKegiatanRutin');
+Route::get('/tambahkegiatanpendaftaran', 'AdminController@viewTambahKegiatanPendaftaran');
+Route::post('/tambahkegiatanrutin', 'AdminController@storeKegiatanRutin');
+Route::post('/tambahkegiatanpendaftaran', 'AdminController@storeKegiatanPendaftaran');
 Route::get('/pendaftarkegiatan/{id}', 'AdminController@getPendaftar');
 Route::get('/tolakpendaftar/{id}', 'AdminController@tolakPendaftar');
 
@@ -80,3 +83,4 @@ Route::get('/anggotatolak/{id}', 'AdminController@tolakAnggota');
 Route::get('/anggotahapus/{id}', 'AdminController@hapusAnggota');
 Route::get('/anggotaedit/{id}', 'AdminController@viewEditAnggota');
 Route::post('/anggotaedit', 'AdminController@updateAnggota');
+Route::get('/akunsetujui/{id}', 'AdminController@setujuAkun');

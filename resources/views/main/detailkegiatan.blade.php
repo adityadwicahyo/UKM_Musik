@@ -22,7 +22,7 @@
 		</div>
 		<div class="col-md-7">
 			<h1>{{$kegiatans->Nama_Kegiatan}}</h1>
-			<h5>Deadline Pendaftaran :</h5>
+			<h5>Waktu Kegiatan :</h5>
 			<table>
 				<tr>
 					<td style="padding: 0px 10px 10px 10px"><i style="font-size: 25px" class="far fa-calendar-alt"></i></td>
@@ -34,11 +34,25 @@
 				</tr>
 			</table>
 			<br>
+			<h5>Deadline Pendaftaran :</h5>
+			<table>
+				<tr>
+					<td style="padding: 0px 10px 10px 10px"><i style="font-size: 25px" class="far fa-calendar-alt"></i></td>
+					<td style="padding: 0px 10px 10px 10px">{{$kegiatans->Batas_Tanggal_Kegiatan}}</td>
+				</tr>
+				<tr>
+					<td style="padding: 0px 10px 10px 10px"><i style="font-size: 25px" class="far fa-clock"></i></td>
+					<td style="padding: 0px 10px 10px 10px">{{$kegiatans->Batas_Waktu_Kegiatan}}</td>
+				</tr>
+			</table>
+			<br>
 			<p>
 				{{$kegiatans->Deskripsi_Kegiatan}}
 			</p>
-			@if(Auth::user()->Level_User == 'User')
-			<a class="btn btn-success" href="/kegiatan/{{$kegiatans->id}}/pendaftaran">Daftar</a>
+			@if(Auth::user())
+			@if(Auth::user()->Status_Mahasiswa != 'Verified' && Auth::user()->Status_Mahasiswa != 'Admin')
+			<a class="btn btn-success" href="/kegiatan/{{$kegiatans->ID_Kegiatan}}/pendaftaran">Daftar</a>
+			@endif
 			@endif
 		</div>
 	</div>

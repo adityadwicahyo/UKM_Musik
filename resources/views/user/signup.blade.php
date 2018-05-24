@@ -16,17 +16,35 @@
 			<legend><span class="number">1</span>Your basic info</legend>
 			{{ csrf_field() }}
 
-			@if($errors->any('Nama_User'))
-			<p style="color: red; float: right; margin-bottom: 0px; font-weight: bold">{{ $errors->first('Nama_User')}}</p>
+			@if($errors->any('Nama_Mahasiswa'))
+			<p style="color: red; float: right; margin-bottom: 0px; font-weight: bold">{{ $errors->first('Nama_Mahasiswa')}}</p>
 			@endif
 			<label for="nama">Nama:</label>
-			<input type="text" class="form-control" name="Nama_User" value="{{old('Nama_User')}}">
+			<input type="text" class="form-control" name="Nama_Mahasiswa" value="{{old('Nama_Mahasiswa')}}">
 
-			@if($errors->any('NRP_User'))
-			<p style="color: red; float: right; margin-bottom: 0px; font-weight: bold">{{ $errors->first('NRP_User')}}</p>
+			@if($errors->any('NRP_Mahasiswa'))
+			<p style="color: red; float: right; margin-bottom: 0px; font-weight: bold">{{ $errors->first('NRP_Mahasiswa')}}</p>
 			@endif
 			<label for="nrp">NRP:</label>
-			<input type="text" class="form-control" name="NRP_User" value="{{old('NRP_User')}}">
+			<input type="text" class="form-control" name="NRP_Mahasiswa" value="{{old('NRP_Mahasiswa')}}">
+
+			@if($errors->any('Email_Mahasiswa'))
+			<p style="color: red; float: right; margin-bottom: 0px; font-weight: bold">{{ $errors->first('Email_Mahasiswa')}}</p>
+			@endif
+			<label for="email">Email:</label>
+			<input type="email" class="form-control" name="Email_Mahasiswa" value="{{old('Email_Mahasiswa')}}">
+
+			@if($errors->any('No_telp_Mahasiswa'))
+			<p style="color: red; float: right; margin-bottom: 0px; font-weight: bold">{{ $errors->first('No_telp_Mahasiswa')}}</p>
+			@endif
+			<label for="notelp">Nomor Telepon:</label>
+			<input type="text" class="form-control" name="No_telp_Mahasiswa" value="{{old('No_telp_Mahasiswa')}}">
+
+			@if($errors->any('Biodata_Mahasiswa'))
+			<p style="color: red; float: right; margin-bottom: 0px; font-weight: bold">{{ $errors->first('Biodata_Mahasiswa')}}</p>
+			@endif
+			<label for="biodata">Biodata:</label>
+			<textarea class="form-control" name="Biodata_Mahasiswa">{{old('Biodata_Mahasiswa')}}</textarea>
 
 			<div class="form-group">
 				@if($errors->any('password'))
@@ -45,17 +63,17 @@
 
 			<legend><span class="number">2</span>Your documents</legend>
 
-			@if($errors->any('Foto_User'))
-			<p style="color: red; float: right; margin-bottom: 0px; font-weight: bold">{{ $errors->first('Foto_User')}}</p>
+			@if($errors->any('Foto_Mahasiswa'))
+			<p style="color: red; float: right; margin-bottom: 0px; font-weight: bold">{{ $errors->first('Foto_Mahasiswa')}}</p>
 			@endif
 			<label for="foto">Foto:</label>
-			<input type="file" name="Foto_User" value="{{old('Foto_User')}}">
+			<input type="file" name="Foto_Mahasiswa" value="{{old('Foto_Mahasiswa')}}">
 
-			@if($errors->any('KTM_User'))
-			<p style="color: red; float: right; margin-bottom: 0px; font-weight: bold">{{ $errors->first('KTM_User')}}</p>
+			@if($errors->any('Berkas_Mahasiswa'))
+			<p style="color: red; float: right; margin-bottom: 0px; font-weight: bold">{{ $errors->first('Berkas_Mahasiswa')}}</p>
 			@endif
-			<label for="berkas" style="padding-top: 30px">Scan KTM:</label>
-			<input type="file" name="KTM_User" value="{{old('KTM_User')}}">
+			<label for="berkas" style="padding-top: 30px">Berkas:</label>
+			<input type="file" name="Berkas_Mahasiswa" value="{{old('Berkas_Mahasiswa')}}">
 
 		</fieldset>
 

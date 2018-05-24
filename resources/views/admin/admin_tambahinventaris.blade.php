@@ -16,29 +16,29 @@
 				<h1>Form Tambah Inventaris</h1>
 				{{ csrf_field() }}
 
-				@if($errors->any('nama_inv'))
-				<p style="color: red; float: right; margin-bottom: 0px; font-weight: bold">{{ $errors->first('nama_inv')}}</p>
+				@if($errors->any('Nama_Inventaris'))
+				<p style="color: red; float: right; margin-bottom: 0px; font-weight: bold">{{ $errors->first('Nama_Inventaris')}}</p>
 				@endif
 				<label for="nama_inv">Nama Inventaris:</label>
-				<input type="text" class="form-control" name="nama_inv" value="{{old('nama_inv')}}">
+				<input type="text" class="form-control" name="Nama_Inventaris" value="{{old('Nama_Inventaris')}}">
 
-				@if($errors->any('foto_inv'))
-				<p style="color: red; float: right; margin-bottom: 0px; font-weight: bold">{{ $errors->first('foto_inv')}}</p>
+				@if($errors->any('Foto_Inventaris'))
+				<p style="color: red; float: right; margin-bottom: 0px; font-weight: bold">{{ $errors->first('Foto_Inventaris')}}</p>
 				@endif
-				<label for="foto_inv">Foto Inventaris:</label>
-				<input type="file" style="margin-bottom: 30px" class="form-control" name="foto_inv" value="{{old('foto_inv')}}">
+				<label for="Foto_Inventaris">Foto Inventaris:</label>
+				<input type="file" style="margin-bottom: 30px" class="form-control" name="Foto_Inventaris" value="{{old('Foto_Inventaris')}}">
 
-				@if($errors->any('jumlah_inv'))
-				<p style="color: red; float: right; margin-bottom: 0px; font-weight: bold">{{ $errors->first('jumlah_inv')}}</p>
+				@if($errors->any('Jumlah_Inventaris'))
+				<p style="color: red; float: right; margin-bottom: 0px; font-weight: bold">{{ $errors->first('Jumlah_Inventaris')}}</p>
 				@endif
-				<label for="jumlah_inv">Jumlah Inventaris:</label>
-				<input type="number" style="margin-bottom: 30px" class="form-control" name="jumlah_inv" value="{{old('jumlah_inv')}}">
+				<label for="Jumlah_Inventaris">Jumlah Inventaris:</label>
+				<input type="number" style="margin-bottom: 30px" class="form-control" name="Jumlah_Inventaris" value="{{old('Jumlah_Inventaris')}}">
 
-				@if($errors->any('deskripsi_inv'))
-				<p style="color: red; float: right; margin-bottom: 0px; font-weight: bold">{{ $errors->first('deskripsi_inv')}}</p>
+				@if($errors->any('Deskripsi_Inventaris'))
+				<p style="color: red; float: right; margin-bottom: 0px; font-weight: bold">{{ $errors->first('Deskripsi_Inventaris')}}</p>
 				@endif
 				<label for="deskripsi_inv">Deskripsi Inventaris:</label>
-				<textarea type="text" class="form-control" name="deskripsi_inv">{{old('deskripsi_inv')}}</textarea>
+				<textarea type="text" class="form-control" name="Deskripsi_Inventaris">{{old('Deskripsi_Inventaris')}}</textarea>
 
 				<button type="submit">Submit</button>
 			</form>

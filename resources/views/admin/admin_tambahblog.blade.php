@@ -35,108 +35,116 @@
 	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
 	<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css" rel="stylesheet">
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script>
-    <style type="text/css">
-    .div-profil {
-      display: inline-block;
-      margin-left: 55px;
-      height: 20px;
-      width: 20px;
-      border-radius: 100%;
-      border: 1px solid white;
-      text-align: center;
-      background: url({{url(Auth::user()->Foto_User)}}) center no-repeat;
-      background-size: cover
+  <style type="text/css">
+  .div-profil {
+    display: inline-block;
+    margin-left: 55px;
+    height: 20px;
+    width: 20px;
+    border-radius: 100%;
+    border: 1px solid white;
+    text-align: center;
+    background: url({{url(Auth::user()->Foto_Mahasiswa)}}) center no-repeat;
+    background-size: cover
   }
 </style>
 </head>
 <body>
 	<main id="main">
-		<!--==========================
-    Header
-    ============================-->
+
     <header id="header" style="background: linear-gradient(45deg, #1de099, #1dc8cd)">
     	<div class="container">
 
     		<div id="logo" class="pull-left">
     			<h1><a href="{{action('HomeController@getIndex')}}" class="scrollto">SIMUSIK</a></h1>
-    			<!-- Uncomment below if you prefer to use an image logo -->
-    			<!-- <a href="#intro"><img src="img/logo.png" alt="" title=""></a> -->
     		</div>
 
-    		<nav id="nav-menu-container">
-    			<ul class="nav-menu">
-    				<li class="menu-active"><a href="{{action('HomeController@getIndex')}}" @yield('active-beranda')>Beranda</a></li>
-    				<li class="menu-active"><a href="/blog" @yield('active-blog')>Blog</a></li>
-    				<li><a href="{{action('KegiatansController@getIndex')}}" @yield('active-kegiatan')>Kegiatan</a></li>
-    				<li><a href="{{action('InventarisController@getIndex')}}" @yield('active-inventaris')>Inventaris</a></li>
+        <nav id="nav-menu-container">
+          <ul class="nav-menu">
+            <li class="menu-active"><a href="{{action('HomeController@getIndex')}}" @yield('active-beranda')>Beranda</a></li>
+            {{--<li class="menu-active"><a href="/blog" @yield('active-blog')>Blog</a></li>--}}
+            {{--<li><a href="{{action('KegiatansController@getIndex')}}" @yield('active-kegiatan')>Kegiatan</a></li>--}}
+            <li class="menu-has-children">
+              <a href="" @yield('active-kegiatan')>Kegiatan</a>
+              <ul>
+                <li><a href="{{action('KegiatansController@getIndexRutin')}}">Rutin</a></li>
+                <li><a href="{{action('KegiatansController@getIndexPendaftaran')}}">Event</a></li>
+              </ul>
+            </li>
 
-                    <li class="menu-has-children">
-                        <a href="" @yield('active-anggota')>Anggota</a>
-                        <ul>
-                            <li><a href="{{action('ViewController@oprec')}}">Pendaftaran</a></li>
-                            <li><a href="{{action('AnggotasController@organisasi')}}">Organisasi</a></li>
-                        </ul>
-                    </li>
+            <li><a href="{{action('InventarisController@getIndex')}}" @yield('active-inventaris')>Inventaris</a></li>
 
-                    @if(Auth::user()->Level_User == 'Admin')
-                    <li class="menu-has-children">
-                        <a href="" style="font-weight: bold">Kelola</a>
-                        <ul>
-                          <li><a href="{{action('AdminController@adminBlog')}}">Blog</a></li>
-                          <li><a href="{{action('AdminController@adminKegiatan')}}">Kegiatan</a></li>
-                          <li><a href="{{action('AdminController@adminInventaris')}}">Inventaris</a></li>
-                          <li><a href="{{action('AdminController@adminAnggota')}}">Anggota</a></li>
-                      </ul>
-                  </li>
-                  @endif
+            <li class="menu-has-children">
+              <a href="" @yield('active-anggota')>Anggota</a>
+              <ul>
+                <li><a href="{{action('ViewController@oprec')}}">Pendaftaran</a></li>
+                <li><a href="{{action('AnggotasController@organisasi')}}">Organisasi</a></li>
+              </ul>
+            </li>
 
-                  <li class="menu-has-children">
-                    @if(Auth::user())
-                    <a href="" class="align-middle">
-                        <div class="social div-profil align-middle" id="social1" style="margin: 0px"></div>
-                        <div class="align-middle" style="display: inline-block;"> {{Auth::user()->Nama_User}}</div>
-                    </a>
-                    <ul>
-                        <li><a href="{{action('ViewController@login')}}">Logout</a></li>
-                        <li><a href="#">Setting</a></li>
-                    </ul>
-                    @else
-                    <a href=""><i class="fas fa-user-circle"></i> Akun</a>
-                    <ul>
-                        <li><a href="{{action('ViewController@login')}}">Login</a></li>
-                        <li><a href="{{action('ViewController@signup')}}">Signup</a></li>
-                    </ul>
-                    @endif
-                </li>
-            </ul>
+            @if(Auth::user())
+            @if(Auth::user()->Status_Mahasiswa == 'Admin')
+            <li class="menu-has-children">
+              <a href="" @yield('active-admin')>Kelola</a>
+              <ul>
+                <li><a href="{{action('AdminController@adminBlog')}}">Informasi</a></li>
+                <li><a href="{{action('AdminController@adminKegiatan')}}">Kegiatan</a></li>
+                <li><a href="{{action('AdminController@adminInventaris')}}">Inventaris</a></li>
+                <li><a href="{{action('AdminController@adminAnggota')}}">Mahasiswa</a></li>
+              </ul>
+            </li>
+            @endif
+            @endif
+
+            <li class="menu-has-children">
+              @if(Auth::user())
+              <a href="" class="align-middle">
+                <div class="social div-profil align-middle" id="social1" style="margin: 0px"></div>
+                <div class="align-middle" style="display: inline-block;"> {{Auth::user()->Nama_Mahasiswa}}</div>
+              </a>
+              <ul>
+                <li><a href="/logout">Logout</a></li>
+                <li><a href="/editprofil">Setting</a></li>
+              </ul>
+              @else
+              <a href=""><i class="fas fa-user-circle"></i> Akun</a>
+              <ul>
+                <li><a href="{{action('ViewController@login')}}">Login</a></li>
+                <li><a href="{{action('ViewController@signup')}}">Signup</a></li>
+              </ul>
+              @endif
+            </li>
+          </ul>
         </nav><!-- #nav-menu-container -->
-    </div>
-</header><!-- #header -->
-<br><br><br><br><br>
-<form action="/tambahblog" method="post" enctype="multipart/form-data">
- <div class="container">
-  <div class="row">
-   <div class="col-md-12 text-center">
-    <h1>Form Tambah Informasi</h1>
-    <br>
-</div>
-</div>
-<div class="row">
-   <div class="col-md-6">
-    {{ csrf_field() }}
 
-    @if($errors->any('Judul_Informasi'))
-    <p style="color: red; float: right; margin-bottom: 0px; font-weight: bold">{{ $errors->first('Judul_Informasi')}}</p>
-    @endif
-    <label for="judul_informasi">Judul Informasi:</label>
-    <input type="text" class="form-control" name="Judul_Informasi" value="{{old('Judul_Informasi')}}">
-    <br>
-</div>
-<div class="col-md-6 text-right">
-    <button type="submit" class="btn btn-success"><i class="fas fa-cloud-upload-alt"></i> Publish</button>
-</div>
-</div>
-<div class="row">
+      </div>
+    </header><!-- #header -->
+
+    <br><br><br><br><br>
+    <form action="/tambahblog" method="post" enctype="multipart/form-data">
+     <div class="container">
+      <div class="row">
+       <div class="col-md-12 text-center">
+        <h1>Form Tambah Informasi</h1>
+        <br>
+      </div>
+    </div>
+    <div class="row">
+     <div class="col-md-6">
+      {{ csrf_field() }}
+
+      @if($errors->any('Judul_Informasi'))
+      <p style="color: red; float: right; margin-bottom: 0px; font-weight: bold">{{ $errors->first('Judul_Informasi')}}</p>
+      @endif
+      <label for="judul_informasi">Judul Informasi:</label>
+      <input type="text" class="form-control" name="Judul_Informasi" value="{{old('Judul_Informasi')}}">
+      <br>
+    </div>
+    <div class="col-md-6 text-right">
+      <button type="submit" class="btn btn-success"><i class="fas fa-cloud-upload-alt"></i> Publish</button>
+    </div>
+  </div>
+  <div class="row">
    <div class="col-md-6">
     @if($errors->any('Singkat_Informasi'))
     <p style="color: red; float: right; margin-bottom: 0px; font-weight: bold">{{ $errors->first('Singkat_Informasi')}}</p>
@@ -144,31 +152,31 @@
     <label for="Singkat_informasi">Deskripsi Singkat Informasi:</label>
     <textarea type="text" class="form-control" name="Singkat_Informasi">{{old('Singkat_Informasi')}}</textarea>
     <br>
-</div>
-<div class="col-md-6">
+  </div>
+  <div class="col-md-6">
     @if($errors->any('Gambar_Informasi'))
     <p style="color: red; float: right; margin-bottom: 0px; font-weight: bold">{{ $errors->first('Gambar_Informasi')}}</p>
     @endif
     <label for="Gambar_informasi">Gambar Sampul Informasi:</label>
     <input type="file" class="form-control" name="Gambar_Informasi">{{old('Gambar_Informasi')}}</input>
-</div>
+  </div>
 </div>
 <div class="row">
-   <div class="col-md-12">
-    @if($errors->any('Isi_Informasi'))
-    <p style="color: red; float: right; margin-bottom: 0px; font-weight: bold">{{ $errors->first('Isi_Informasi')}}</p>
-    @endif
-    <label for="isi_informasi">Isi Informasi:</label>
-    <textarea id="summernote" name="Isi_Informasi">{{old('Isi_Informasi')}}</textarea>
+ <div class="col-md-12">
+  @if($errors->any('Isi_Informasi'))
+  <p style="color: red; float: right; margin-bottom: 0px; font-weight: bold">{{ $errors->first('Isi_Informasi')}}</p>
+  @endif
+  <label for="isi_informasi">Isi Informasi:</label>
+  <textarea id="summernote" name="Isi_Informasi">{{old('Isi_Informasi')}}</textarea>
 </div>
 </div>
 </div>
-<input type="hidden" name="Pembuat_Informasi" value="{{Auth::user()->NRP_User}}">
+<input type="hidden" name="ID_Mahasiswa" value="{{Auth::user()->ID_Mahasiswa}}">
 </form>
 @include('partials.footer')
 </main>
+
 <!-- JavaScript Libraries -->
-{{-- <script src="{{url('NEW/lib/jquery/jquery.min.js')}}"></script> --}}
 <script src="{{url('NEW/lib/jquery/jquery-migrate.min.js')}}"></script>
 <script src="{{url('NEW/lib/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <script src="{{url('NEW/lib/easing/easing.min.js')}}"></script>

@@ -12,8 +12,8 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-12">
-			<form action="/tambahkegiatan" method="post" enctype="multipart/form-data">
-				<h1>Form Tambah Kegiatan</h1>
+			<form action="/tambahkegiatanpendaftaran" method="post" enctype="multipart/form-data">
+				<h1>Form Tambah Kegiatan Pendaftaran</h1>
 				{{ csrf_field() }}
 
 				@if($errors->any('Nama_Kegiatan'))
@@ -21,17 +21,6 @@
 				@endif
 				<label for="nama_kegiatan">Nama Kegiatan:</label>
 				<input type="text" class="form-control" name="Nama_Kegiatan" value="{{old('Nama_Kegiatan')}}">
-
-				@if($errors->any('Tipe_Kegiatan'))
-				<p style="color: red; float: right; margin-bottom: 0px; font-weight: bold">{{ $errors->first('Tipe_Kegiatan')}}</p>
-				@endif
-				<label for="tipe_kegiatan">Tipe Kegiatan:</label>
-				<div class="radio">
-					<label><input type="radio" name="Tipe_Kegiatan" value="Rutin" checked>Kegiatan Rutin</label>
-				</div>
-				<div class="radio" style="margin-bottom: 30px">
-					<label><input type="radio" name="Tipe_Kegiatan" value="Pendaftaran">Kegiatan Pendaftaran</label>
-				</div>
 
 				@if($errors->any('Foto_Kegiatan'))
 				<p style="color: red; float: right; margin-bottom: 0px; font-weight: bold">{{ $errors->first('Foto_Kegiatan')}}</p>

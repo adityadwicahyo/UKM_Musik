@@ -44,7 +44,7 @@ class KegiatansController extends Controller
 	public function pendaftaranStore(Request $request){
 		$data = $request->all();
 
-		$kegiatans = Kegiatans::find($data['id']);
+		$kegiatans = Kegiatans::find($data['ID_Kegiatan']);
 
 		$validator = Validator::make($data, [
 			'NRP_Pendaftar' => 'required|min:14|max:14',
@@ -52,24 +52,21 @@ class KegiatansController extends Controller
 		]);
 
 		if ($validator->fails()) {
-			return redirect('/kegiatan/'.$data['id'].'/pendaftaran')
+			return redirect('/kegiatan/'.$data['ID_Kegiatan'].'/pendaftaran')
 			->withErrors($validator)
 			->withInput();
 		}
 		else{
 			$doc = $request->file('Berkas_Pendaftar');
-
             $input['docName'] = $data['NRP_Pendaftar'] . '.' . $doc->getClientOriginalExtension();
-            $destinationPath = public_path('data\Pendaftaran' . "\\" . $kegiatans->Nama_Kegiatan);
+            $destinationPath = public_path('data\PendaftaranKegiatan' . "\\" . $kegiatans->Nama_Kegiatan);
             $doc->move($destinationPath, $input['docName']);
-            
-            $data['Berkas_Pendaftar'] = $destinationPath . "\\" . $input['docName'];
+            $data['Berkas_Pendaftar'] = 'data\PendaftaranKegiatan' . "\\" . $kegiatans->Nama_Kegiatan . $input['docName'];
 
-			$data['Id_Kegiatan'] = $kegiatans->id;
 			Pendaftarans::create($data, [
 				'except' => '_token',
 			]);
 		}
-		return redirect('/kegiatan/'.$data['id'])->withErrors(array('Success' => 'Pendaftaran berhasil'));
+		return redirect('/kegiatan/'.$data['ID_Kegiatan'])->withErrors(array('Success' => 'Pendaftaran berhasil'));
 	}
 }
