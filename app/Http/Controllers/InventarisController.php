@@ -57,12 +57,6 @@ class InventarisController extends Controller
 				Peminjamans::create($data, [
 					'except' => '_token',
 				]);
-
-				$peminjam = Peminjamans::all()->last();
-				$data['ID_Peminjaman'] = $peminjam->ID_Peminjaman;
-				Transaksi_peminjaman::create($data, [
-					'except' => '_token'
-				]);
 			}
 		}
 

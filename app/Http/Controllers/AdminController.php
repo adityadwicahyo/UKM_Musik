@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Kegiatans;
 use App\Inventaris;
 use App\Informasi;
-use App\Transaksi_peminjaman;
 use App\Peminjamans;
 use App\Pendaftarans;
 use App\User;
@@ -21,9 +20,8 @@ class AdminController extends Controller
 
 	public function adminInventaris(){
 		$inventaris = Inventaris::all();
-		$peminjamans = Peminjamans::all()->where('Status_Peminjaman', 'Tunggu');
-		$transaksi = Transaksi_peminjaman::all();
-		return view('admin.admin_inventaris', ['inventaris' => $inventaris], ['peminjamans' => $peminjamans], ['transaksi' => $transaksi]);
+		$peminjamans = Peminjamans::all();
+		return view('admin.admin_inventaris', ['inventaris' => $inventaris], ['peminjamans' => $peminjamans]);
 	}
 
 	public function adminBlog(){
@@ -354,7 +352,7 @@ class AdminController extends Controller
 
 	public function kembaliPeminjaman($id){
 		$peminjaman = Peminjamans::find($id);
-		$inventaris = Inventaris::find($peminjaman->ID_Barang);
+		$inventaris = Inventaris::find($peminjaman->ID_Inventaris);
 		$inventaris->Jumlah_Inventaris = $inventaris->Jumlah_Inventaris + $peminjaman->Jumlah_Barang;
 		$inventaris->save();
 		$peminjaman->delete();

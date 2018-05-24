@@ -18,7 +18,6 @@ class CreatePendaftaransTable extends Migration
             $table->timestamps();
             $table->integer('ID_Kegiatan');
             $table->integer('ID_Mahasiswa');
-            // $table->string('NRP_Pendaftar', 20);
             $table->longText('Berkas_Pendaftar');
         });
     }

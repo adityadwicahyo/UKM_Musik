@@ -136,7 +136,7 @@
                 </thead>
                 <tbody>
                   @foreach($peminjamans->where('Status_Peminjaman', 'Tunggu') as $peminjaman)
-                  @foreach($inventaris->where('ID_Inventaris', $transaksi->ID_Inventaris) as $invent)
+                  @foreach($inventaris->where('ID_Inventaris', $peminjaman->ID_Inventaris) as $invent)
                   <tr>
                     <td class="text-center">
                       <img class="center" style="height: 100px; width: auto; margin: 0" src="{{url($invent->Foto_Inventaris)}}">
@@ -220,7 +220,7 @@
                 </thead>
                 <tbody>
                   @foreach($peminjamans->where('Status_Peminjaman', 'Setuju') as $peminjaman)
-                  @foreach($inventaris->where('ID_Inventaris', $peminjaman->ID_Barang) as $invent)
+                  @foreach($inventaris->where('ID_Inventaris', $peminjaman->ID_Inventaris) as $invent)
                   <tr>
                     <td class="text-center">
                       <img class="center" style="height: 100px; width: auto; margin: 0" src="{{url($invent->Foto_Inventaris)}}">
@@ -282,7 +282,7 @@
                 </thead>
                 <tbody>
                   @foreach($peminjamans->where('Status_Peminjaman', 'Diambil') as $peminjaman)
-                  @foreach($inventaris->where('ID_Inventaris', $peminjaman->ID_Barang) as $invent)
+                  @foreach($inventaris->where('ID_Inventaris', $peminjaman->ID_Inventaris) as $invent)
                   <tr>
                     <td class="text-center">
                       <img class="center" style="height: 100px; width: auto; margin: 0" src="{{url($invent->Foto_Inventaris)}}">

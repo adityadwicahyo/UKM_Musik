@@ -36,6 +36,7 @@
         <table class="table table-striped">
           <thead>
             <tr>
+              <th class="text-center">Foto</th>
               <th class="text-center">NRP</th>
               <th class="text-center">Berkas</th>
               <th class="text-center">Nomor</th>
@@ -46,6 +47,9 @@
             @foreach($pendaftaran as $pen)
             @foreach($user->where('ID_Mahasiswa', $pen->ID_Mahasiswa) as $use)
             <tr>
+              <td class="text-center">
+                <img class="center" style="height: 110px; width: auto; margin: 0" src="{{url($use->Foto_Mahasiswa)}}">
+              </td>
               <td class="align-middle text-center">{{$use->NRP_Mahasiswa}}</td>
               <td class="align-middle text-center">{{$pen->Berkas_Pendaftar}}</td>
               <td class="align-middle text-center">{{$use->No_telp_Mahasiswa}}</td>

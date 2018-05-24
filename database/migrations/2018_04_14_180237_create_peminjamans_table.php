@@ -17,6 +17,7 @@ class CreatePeminjamansTable extends Migration
             $table->increments('ID_Peminjaman');
             $table->timestamps();
             $table->integer('ID_Mahasiswa');
+            $table->integer('ID_Inventaris');
             $table->integer('Jumlah_Barang');
             $table->date('Tanggal_Peminjaman');
             $table->date('Tanggal_Kembali');
